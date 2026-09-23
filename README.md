@@ -1,16 +1,43 @@
 # SIS Website Redesign (v2)
 
-An unofficial concept redesign of the [SIS Group of Schools](https://sisschools.org/) website, **designed with [Open Design](https://github.com/nexu-io/open-design)** — the open-source, local-first design tool where your coding agent is the design engine.
+**English** · [中文](README.zh-CN.md)
+
+An unofficial concept redesign of the [SIS Group of Schools](https://sisschools.org/) website, **designed by [Sol](https://github.com/sol1560) with [Open Design](https://github.com/nexu-io/open-design)** — the open-source, local-first design tool where your coding agent is the design engine.
 
 > Not affiliated with SIS Group of Schools. School name, logo, photos and facts belong to SIS and were taken from sisschools.org for this concept. Forms are front-end only and never send data.
 
-**Live:** https://sis-website-redesign.vercel.app
+**Live:** https://sis-website-redesign.vercel.app · If you like it, a ⭐ on this repo is appreciated.
 
 ![Home hero](docs/hero.png)
 
 | Core values | PACE | University |
 |---|---|---|
 | ![](docs/values.png) | ![](docs/pace.png) | ![](docs/university.png) |
+
+## Before / after
+
+The current sisschools.org, the first pass (v1) and the final design (v2), captured at 1440px on 23 Sep 2026.
+
+| SIS today | v1 · first pass | v2 · final |
+|---|---|---|
+| ![](docs/compare/sis-current-desktop.jpg) | ![](docs/compare/v1-desktop.jpg) | ![](docs/compare/v2-desktop.jpg) |
+
+On a phone (390px):
+
+| SIS today | v1 | v2 |
+|---|---|---|
+| ![](docs/compare/sis-current-mobile.jpg) | ![](docs/compare/v1-mobile.jpg) | ![](docs/compare/v2-mobile.jpg) |
+
+<details>
+<summary>Whole homepage, side by side</summary>
+
+![Full-page comparison](docs/compare/long-scroll.jpg)
+
+</details>
+
+- **SIS today:** a carousel of banners, centred teal headings, lots of small type and a template feel. The real brand assets (the values, PACE, the murals) are hidden on inner pages.
+- **v1:** tidier and more editorial, but a serif, shield crops and uppercase labels that could belong to any school. That generic polish is what reads as "AI".
+- **v2:** built from SIS's own campus walls, with value-colored banners, duotone photos, pill headlines and one rounded sans. It looks like SIS because it borrows directly from SIS.
 
 ---
 
@@ -81,6 +108,7 @@ scholarships.html, careers.html, contact.html
 assets/               sis.css / home.css / pages.css, sis.js / home.js, data.js, images
 archive/              v1 and pages removed during iteration, kept for comparison
 design-references/    the campus photos that defined v2
+docs/                 screenshots and before/after comparisons
 ```
 
 No build step. Open `index.html`, or serve the folder with any static server:
@@ -91,6 +119,6 @@ python3 -m http.server 8000
 
 ## Credits
 
-- Design: made in **[Open Design](https://github.com/nexu-io/open-design)** by nexu-io.
+- Design: by [Sol](https://github.com/sol1560), made in **[Open Design](https://github.com/nexu-io/open-design)** by nexu-io.
 - Content, logo and photography: [SIS Group of Schools](https://sisschools.org/). Values and PACE explanations are draft copy.
 - Deployed on Vercel.
