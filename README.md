@@ -2,7 +2,7 @@
 
 **English** · [中文](README.zh-CN.md)
 
-An unofficial concept redesign of the [SIS Group of Schools](https://sisschools.org/) website, **designed by [Sol](https://github.com/sol1560) with [Open Design](https://github.com/nexu-io/open-design)** — the open-source, local-first design tool where your coding agent is the design engine.
+An unofficial concept redesign of the [SIS Group of Schools](https://sisschools.org/) website, designed by [Sol](https://github.com/sol1560) with [Open Design](https://github.com/nexu-io/open-design) — an open-source, local-first design tool where your coding agent is the design engine.
 
 > Not affiliated with SIS Group of Schools. School name, logo, photos and facts belong to SIS and were taken from sisschools.org for this concept. Forms are front-end only and never send data.
 
@@ -18,7 +18,7 @@ An unofficial concept redesign of the [SIS Group of Schools](https://sisschools.
 
 The current sisschools.org, the first pass (v1) and the final design (v2), captured at 1440px on 23 Sep 2026.
 
-| SIS today | v1 · first pass | v2 · final |
+| SIS today | v1 | v2 |
 |---|---|---|
 | ![](docs/compare/sis-current-desktop.jpg) | ![](docs/compare/v1-desktop.jpg) | ![](docs/compare/v2-desktop.jpg) |
 
@@ -35,64 +35,49 @@ On a phone (390px):
 
 </details>
 
-- **SIS today:** a carousel of banners, centred teal headings, lots of small type and a template feel. The real brand assets (the values, PACE, the murals) are hidden on inner pages.
-- **v1:** tidier and more editorial, but a serif, shield crops and uppercase labels that could belong to any school. That generic polish is what reads as "AI".
-- **v2:** built from SIS's own campus walls, with value-colored banners, duotone photos, pill headlines and one rounded sans. It looks like SIS because it borrows directly from SIS.
+**SIS today**: a carousel of banners, centred teal headings, lots of small type and a template feel. The real brand assets — the values, PACE, the murals — are hidden on inner pages.
 
----
+**v1**: AI slop.
+
+**v2**: built from SIS's own campus walls. Value-colored banners, duotone photos, pill headlines, one rounded sans. It looks like SIS because the materials are SIS's.
 
 ## How it was built
 
-The whole site came out of one Open Design session: a single conversation, about 90 minutes, and around 15 rounds of feedback. What follows is what actually moved it from generic to good.
+The whole site came out of one Open Design session — a single conversation, about 90 minutes, around 15 rounds of feedback. Here are the key moments.
 
-### 1. v1 looked fine and still missed
+### v1: AI slop
 
-The first prompt was roughly: *"Redesign sisschools.org, the current one is dated. Study their core values and PACE, and borrow the narrative logic of jisedu.or.id (not its UI)."*
+The first prompt was roughly: "Redesign sisschools.org, the current one is dated. Study their core values and PACE, and borrow the narrative logic of jisedu.or.id (not its UI)."
 
-The agent read both sites, picked up the real material (the five FRICC values, the four PACE outcomes, the logo, 30 years of history photos) and took **JIS's storytelling order**: vision → character → learning → proof (history, alumni) → admissions. That order is still how the page runs.
+The agent read both sites and picked up the real material: the five FRICC values, the four PACE outcomes, the logo, 30 years of history photos. It took JIS's storytelling order — vision → character → learning → proof → admissions — and that order survived all the way to the final version.
 
-The visuals were another story. v1 (kept at [`archive/v1.html`](archive/v1.html)) used a Fraunces serif, shield-shaped photo crops and small uppercase labels everywhere. It was polished and it could have been any school, which is exactly the "AI look". The feedback was one line: *"It doesn't feel like SIS, and it feels AI-made."*
+But the visuals weren't there. v1 (kept at [`archive/v1.html`](archive/v1.html)) used a Fraunces serif, shield-shaped photo crops and small uppercase labels everywhere. Polished, but it could have been any school. My feedback was one line: "It doesn't feel like SIS, and it feels AI-made."
 
-### 2. The fix was photos of the actual building
+### The fix: two phone photos of the actual building
 
-The turning point was two phone photos from the SIS campus, now in [`design-references/`](design-references/):
+What changed everything was two photos I took on my phone at the SIS campus (now in [`design-references/`](design-references/)): the "Feelings are Part of You" wall and the Core Values façade by the entrance.
 
-| The "Feelings are Part of You" wall | The Core Values façade |
+| "Feelings are Part of You" wall | Core Values façade |
 |---|---|
 | ![](design-references/feelings-wall.png) | ![](design-references/campus-core-values-facade.png) |
 
-The agent threw out its own taste and **lifted the design language off those walls**:
+Once the agent saw those, it dropped its own aesthetic and started lifting the design language directly off the walls:
 
-- **Tall vertical banners, one color per value** (teal, blue, mustard, orange, red), set in rotated type with a bold initial, just like the façade. They became the hero.
-- **Duotone kid photos** tinted to their banner color, done with SVG `feColorMatrix` + `feComponentTransfer` filters (`#duo-fairness` and the rest in `index.html`), so any real SIS photo fits the palette.
-- **Geometric triangle facets** that fade from the top of each color block into white.
-- **Pill-word headlines.** The wall writes "Joy · Helps · You · Connect" as alternating filled and outlined capsules. That became the site's headline system: *SIS Roots · Help · Every Child · Grow · World-Ready*.
-- **The PACE wall** follows the mural directly: four columns of "Perseverance Helps You Keep Going", with "Learning is Part of You" in the middle.
-- **One rounded humanist sans** (Ubuntu) close to the lettering on the posters, on pure white. No beige, no gradients, no serif.
+Tall vertical banners, one color per value (teal, blue, mustard, orange, red), rotated type with a bold initial — same as the façade. These became the hero. Photos tinted to their banner color using SVG `feColorMatrix` + `feComponentTransfer` filters (`#duo-fairness` and friends in `index.html`), so any real SIS photo slots right into the palette. The wall writes "Joy · Helps · You · Connect" as alternating filled and outlined capsules — that became the site's headline system: *SIS Roots · Help · Every Child · Grow · World-Ready*. One rounded humanist sans (Ubuntu) close to the lettering on the posters, pure white background, no beige, no gradients, no serif.
 
-**Lesson:** the strongest design input isn't a mood word. It's real artifacts from the brand's physical world. The agent gets much better when it can copy the brand's own visual grammar rather than inventing one.
+Looking back, feeding the AI real physical artifacts from the campus worked far better than feeding it adjectives.
 
-### 3. Many small, specific critiques
+### Then a bunch of small fixes
 
-After that it was a loop of short, concrete feedback, and each round was one or two sentences:
+Each round was one or two sentences of concrete feedback:
 
-- *"The 'Compassion' heading is clipped by the photo"* → type sizes follow the container width, not the viewport.
-- *"Right column doesn't line up with the pills; the nav wraps at this width"* → top alignment, `white-space: nowrap`, hamburger below 1240px.
-- *"Add a little easter egg to the banners"* → banners sway in the wind as your cursor passes, photos regain color on hover, and typing **`fricc`** sends a wave across all five.
-- *"Two lonely logos in a vertical image look odd"* / *"Where's university placement?"* / *"'Where SIS alumni study' has no design"* → each section redone as color-block posters in the same language.
-- *"Integrity and Compassion turned black text, make them white"* → a contrast rule was reverted on purpose, with a soft text-shadow as a compromise.
-- *"The campus list is boring and bloated"* → cut the map, filters and 16 cards down to a light directory grouped by country.
-- *"Menu items that just duplicate the homepage should go"* → the top nav went down to Home · Admissions · News.
+"The 'Compassion' heading is clipped by the photo" → type sizes follow the container, not the viewport. "Right column doesn't line up with the pills" → top alignment, `white-space: nowrap` on nav items, hamburger below 1240px. "Add a little easter egg to the banners" → banners sway as your cursor passes, photos regain color on hover, and typing `fricc` sends a wave across all five. "The campus list is boring and bloated" → cut the map, filters and 16 cards down to a light directory grouped by country.
 
-Things that helped: point at the exact element (Open Design lets you click-select it), say what's wrong rather than how to fix it, and keep taste decisions for yourself (*"make them white"*) even when the agent pushes back.
+What worked: point at the exact element (Open Design lets you click-select), say what's wrong rather than how to fix it, keep taste decisions for yourself.
 
-### 4. Getting it production-ready (Claude Code)
+### Production cleanup (Claude Code)
 
-The Open Design export was already plain static HTML/CSS/JS with a handoff doc (`DESIGN-HANDOFF.md`, `DESIGN-MANIFEST.json`). Before deploying it, Claude Code ran every page in headless Chromium at 1440 / 390 / 360 px and fixed what turned up:
-
-- `stories.html` threw `moreLabel is not defined`, so the story tiles never rendered.
-- On phones the header was 60–73px wider than the screen, which pushed the **hamburger menu off-screen** on every page. Tighter header rules now apply below 480px.
-- Added a footer disclaimer, the Open Design credit and `noindex`, since this is a concept and not the official site.
+The Open Design export was already plain static HTML/CSS/JS with a handoff doc (`DESIGN-HANDOFF.md`, `DESIGN-MANIFEST.json`). Before deploying, Claude Code ran every page in headless Chromium at 1440 / 390 / 360px and fixed what turned up: `stories.html` threw `moreLabel is not defined` so the story tiles never rendered; on phones the header was 60–73px wider than the screen, pushing the hamburger off-screen; added a footer disclaimer, the Open Design credit and `noindex`.
 
 After those fixes, all 27 internal links load with no JS errors, the mobile drawer opens and form validation works.
 
@@ -111,7 +96,7 @@ design-references/    the campus photos that defined v2
 docs/                 screenshots and before/after comparisons
 ```
 
-No build step. Open `index.html`, or serve the folder with any static server:
+No build step. Open `index.html`, or serve the folder:
 
 ```bash
 python3 -m http.server 8000
@@ -119,6 +104,4 @@ python3 -m http.server 8000
 
 ## Credits
 
-- Design: by [Sol](https://github.com/sol1560), made in **[Open Design](https://github.com/nexu-io/open-design)** by nexu-io.
-- Content, logo and photography: [SIS Group of Schools](https://sisschools.org/). Values and PACE explanations are draft copy.
-- Deployed on Vercel.
+Design: by [Sol](https://github.com/sol1560), made in [Open Design](https://github.com/nexu-io/open-design) by nexu-io. Content, logo and photography: [SIS Group of Schools](https://sisschools.org/). Values and PACE explanations are draft copy. Deployed on Vercel.
