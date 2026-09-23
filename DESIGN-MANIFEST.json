@@ -1,0 +1,407 @@
+{
+  "schema": "open-design.design-manifest.v1",
+  "title": "3f1eaec5-234f-45d5-a91b-e556a26dacfd",
+  "entryFile": "index.html",
+  "sourceFiles": {
+    "all": [
+      "admissions.html",
+      "archive/index-before-pages.html",
+      "archive/removed/about.html",
+      "archive/removed/academics.html",
+      "archive/removed/schools.html",
+      "archive/v1.html",
+      "article.html",
+      "assets/c-chennai.webp",
+      "assets/c-cilegon.webp",
+      "assets/c-mumbai.webp",
+      "assets/c-palembang.webp",
+      "assets/c-pik.jpg",
+      "assets/c-sedayu.jpg",
+      "assets/c-semarang.webp",
+      "assets/chrome.html",
+      "assets/data.js",
+      "assets/DimazAndreanshah-SIS-in-Every-Step.webp",
+      "assets/ELT-Circles-Jaspal-White-Circle-e1518662885141.png",
+      "assets/grads.webp",
+      "assets/home.css",
+      "assets/home.js",
+      "assets/j-1995-conception.webp",
+      "assets/j-1996-jaspal-sidhu.webp",
+      "assets/j-1998-may-riot.webp",
+      "assets/j-2003-expanding-horizon.webp",
+      "assets/j-2004-compassion.webp",
+      "assets/j-2005-sis-kelapa-gading-old.webp",
+      "assets/j-2006-leadership-collaboration.webp",
+      "assets/j-2007-first-sis-olympics.webp",
+      "assets/j-2008-supporting-edu.webp",
+      "assets/j-2012-making-eduation-affordable.webp",
+      "assets/j-2014-sis-logo.webp",
+      "assets/j-2016-cambridge-ib.webp",
+      "assets/j-2018-sis-staff.webp",
+      "assets/j-2019-IFC-award-update.webp",
+      "assets/j-2020-sis-myanmar.webp",
+      "assets/j-2021-expanding-to-india.webp",
+      "assets/j-2022-sis-south-jakarta-old.webp",
+      "assets/j-2022-UNSDG.webp",
+      "assets/j-2023-sis-surabaya.webp",
+      "assets/j-2024-sis-bandung.webp",
+      "assets/j-2025-sis-north-east-jakarta.webp",
+      "assets/Jin-Hoo-SIS-in-Every-Step.webp",
+      "assets/logo-cambridge.png",
+      "assets/logo-ib.png",
+      "assets/Logo-SIS-Brand_Group.png",
+      "assets/Lubna-Brilla-Andemstia-GATEWAY-Online-Learning-Programme.webp",
+      "assets/Madeline-SIS-in-Every-Step.webp",
+      "assets/Muskan-Jhujunwala-SIS-in-Every-Step-Update.webp",
+      "assets/n-asean-business-summit-2025.jpg",
+      "assets/n-cambridge-curriculum-scaled.webp",
+      "assets/n-cambridge-curriculum.webp",
+      "assets/n-international-school-students.webp",
+      "assets/n-investor-daily.jpg",
+      "assets/n-SIS-2560-x-1114-Diversity-copy-scaled.webp",
+      "assets/n-SIS-30-years-2026.webp",
+      "assets/n-sis-bandung-lennard-murray.webp",
+      "assets/n-sis-bsd-hiera.jpg",
+      "assets/n-sis-cambridge.webp",
+      "assets/n-sis-group-of-schools-update.webp",
+      "assets/n-sis-preschool-senayan-jakarta-scaled.jpg",
+      "assets/n-sis-space.jpg",
+      "assets/n-sis-surabaya-international-school.webp",
+      "assets/Nikita-Mawarni-SIS-in-Every-Step.webp",
+      "assets/pages.css",
+      "assets/PSG2.jpg",
+      "assets/sis-30-anniversary.png",
+      "assets/SIS-Logo-Fixed.png",
+      "assets/SIS-Logo-Website.png",
+      "assets/sis.css",
+      "assets/sis.js",
+      "assets/Thiha-Win-SIS-Myanmar.webp",
+      "assets/Victoria-Isabelle-Abadi-SIS-in-Every-Step-Update.webp",
+      "campus.html",
+      "careers.html",
+      "contact.html",
+      "image-1.png",
+      "image.png",
+      "index.html",
+      "news.html",
+      "scholarships.html",
+      "stories.html"
+    ],
+    "html": [
+      "admissions.html",
+      "archive/index-before-pages.html",
+      "archive/removed/about.html",
+      "archive/removed/academics.html",
+      "archive/removed/schools.html",
+      "archive/v1.html",
+      "article.html",
+      "assets/chrome.html",
+      "campus.html",
+      "careers.html",
+      "contact.html",
+      "index.html",
+      "news.html",
+      "scholarships.html",
+      "stories.html"
+    ],
+    "css": [
+      "assets/home.css",
+      "assets/pages.css",
+      "assets/sis.css"
+    ],
+    "scriptsAndComponents": [
+      "assets/data.js",
+      "assets/home.js",
+      "assets/sis.js"
+    ],
+    "assets": [
+      "assets/c-chennai.webp",
+      "assets/c-cilegon.webp",
+      "assets/c-mumbai.webp",
+      "assets/c-palembang.webp",
+      "assets/c-pik.jpg",
+      "assets/c-sedayu.jpg",
+      "assets/c-semarang.webp",
+      "assets/DimazAndreanshah-SIS-in-Every-Step.webp",
+      "assets/ELT-Circles-Jaspal-White-Circle-e1518662885141.png",
+      "assets/grads.webp",
+      "assets/j-1995-conception.webp",
+      "assets/j-1996-jaspal-sidhu.webp",
+      "assets/j-1998-may-riot.webp",
+      "assets/j-2003-expanding-horizon.webp",
+      "assets/j-2004-compassion.webp",
+      "assets/j-2005-sis-kelapa-gading-old.webp",
+      "assets/j-2006-leadership-collaboration.webp",
+      "assets/j-2007-first-sis-olympics.webp",
+      "assets/j-2008-supporting-edu.webp",
+      "assets/j-2012-making-eduation-affordable.webp",
+      "assets/j-2014-sis-logo.webp",
+      "assets/j-2016-cambridge-ib.webp",
+      "assets/j-2018-sis-staff.webp",
+      "assets/j-2019-IFC-award-update.webp",
+      "assets/j-2020-sis-myanmar.webp",
+      "assets/j-2021-expanding-to-india.webp",
+      "assets/j-2022-sis-south-jakarta-old.webp",
+      "assets/j-2022-UNSDG.webp",
+      "assets/j-2023-sis-surabaya.webp",
+      "assets/j-2024-sis-bandung.webp",
+      "assets/j-2025-sis-north-east-jakarta.webp",
+      "assets/Jin-Hoo-SIS-in-Every-Step.webp",
+      "assets/logo-cambridge.png",
+      "assets/logo-ib.png",
+      "assets/Logo-SIS-Brand_Group.png",
+      "assets/Lubna-Brilla-Andemstia-GATEWAY-Online-Learning-Programme.webp",
+      "assets/Madeline-SIS-in-Every-Step.webp",
+      "assets/Muskan-Jhujunwala-SIS-in-Every-Step-Update.webp",
+      "assets/n-asean-business-summit-2025.jpg",
+      "assets/n-cambridge-curriculum-scaled.webp",
+      "assets/n-cambridge-curriculum.webp",
+      "assets/n-international-school-students.webp",
+      "assets/n-investor-daily.jpg",
+      "assets/n-SIS-2560-x-1114-Diversity-copy-scaled.webp",
+      "assets/n-SIS-30-years-2026.webp",
+      "assets/n-sis-bandung-lennard-murray.webp",
+      "assets/n-sis-bsd-hiera.jpg",
+      "assets/n-sis-cambridge.webp",
+      "assets/n-sis-group-of-schools-update.webp",
+      "assets/n-sis-preschool-senayan-jakarta-scaled.jpg",
+      "assets/n-sis-space.jpg",
+      "assets/n-sis-surabaya-international-school.webp",
+      "assets/Nikita-Mawarni-SIS-in-Every-Step.webp",
+      "assets/PSG2.jpg",
+      "assets/sis-30-anniversary.png",
+      "assets/SIS-Logo-Fixed.png",
+      "assets/SIS-Logo-Website.png",
+      "assets/Thiha-Win-SIS-Myanmar.webp",
+      "assets/Victoria-Isabelle-Abadi-SIS-in-Every-Step-Update.webp",
+      "image-1.png",
+      "image.png"
+    ]
+  },
+  "screens": [
+    {
+      "file": "admissions.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "archive/index-before-pages.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "archive/removed/about.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "archive/removed/academics.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "archive/removed/schools.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "archive/v1.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "article.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "assets/chrome.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "campus.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "careers.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "contact.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "index.html",
+      "role": "launcher-overview",
+      "implementationNote": "Use this as the navigation/overview entry only; implement each linked screen file as its own route/surface."
+    },
+    {
+      "file": "news.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "scholarships.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "stories.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    }
+  ],
+  "screenFilePolicy": {
+    "mode": "screen-file-first",
+    "entryFileRole": "launcher-overview",
+    "rules": [
+      "Each distinct user-facing screen or surface must be delivered and implemented as its own file/route.",
+      "If a landing page is present or requested, keep it in landing.html and do not merge it into the product app screen.",
+      "When multiple HTML screens exist, index.html is a launcher/overview only; it must not be treated as the combined final UI.",
+      "Keep product app screens, landing pages, platform screens, and OS widget surfaces separate in production code."
+    ]
+  },
+  "appModules": [
+    "Identify domain-specific in-app modules from the exported UI; do not reduce them to generic cards.",
+    "For each major module, implement purpose, default/loading/empty/error/success states, and responsive behavior.",
+    "Keep app modules separate from OS home-screen widgets in the production component model."
+  ],
+  "osWidgets": [
+    "If the export includes home-screen, lock-screen, Live Activity, tablet glance, or Android widget surfaces, implement them as platform quick-access surfaces outside the app UI.",
+    "If none are present, do not invent OS widgets unless the product requirements request them."
+  ],
+  "landingPage": {
+    "detection": "Inspect files and screen names for a marketing/landing page surface. If present, keep it separate from product app screens.",
+    "requiredSections": [
+      "hero",
+      "value props",
+      "product proof/screenshots",
+      "feature proof",
+      "CTA"
+    ]
+  },
+  "tokens": {
+    "source": [
+      "assets/home.css",
+      "assets/pages.css",
+      "assets/sis.css"
+    ],
+    "required": [
+      "background",
+      "surface",
+      "foreground",
+      "muted text",
+      "border",
+      "accent",
+      "radius",
+      "shadow",
+      "spacing",
+      "type scale",
+      "motion"
+    ],
+    "note": "Extract/freeze tokens before framework implementation so coding tools do not substitute default theme colors or typography."
+  },
+  "interactions": {
+    "source": [
+      "assets/data.js",
+      "assets/home.js",
+      "assets/sis.js"
+    ],
+    "requiredStates": [
+      "default",
+      "hover",
+      "focus",
+      "active",
+      "disabled",
+      "loading",
+      "empty",
+      "error",
+      "success"
+    ],
+    "requiredBehaviors": [
+      "forms/validation where present",
+      "tabs/filters where present",
+      "dialogs/sheets/drawers where present",
+      "copy/generate/share actions where present",
+      "player or quick controls where present"
+    ],
+    "note": "If the prototype is static, derive missing behavior from visible controls and document it before coding."
+  },
+  "responsiveViewports": [
+    {
+      "name": "mobile-compact",
+      "width": 360,
+      "height": 800,
+      "category": "mobile",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "mobile-standard",
+      "width": 390,
+      "height": 844,
+      "category": "mobile",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "mobile-large",
+      "width": 430,
+      "height": 932,
+      "category": "mobile",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "foldable-small-tablet",
+      "width": 600,
+      "height": 960,
+      "category": "foldable-tablet",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "tablet-portrait",
+      "width": 820,
+      "height": 1180,
+      "category": "tablet",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "tablet-landscape",
+      "width": 1024,
+      "height": 768,
+      "category": "tablet",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "laptop",
+      "width": 1366,
+      "height": 768,
+      "category": "desktop",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "category": "desktop",
+      "mustAvoidHorizontalScroll": true
+    },
+    {
+      "name": "wide",
+      "width": 1920,
+      "height": 1080,
+      "category": "wide",
+      "mustAvoidHorizontalScroll": true
+    }
+  ],
+  "implementationChecklist": [
+    "Open entryFile first and map screens, modules, tokens, and interactions.",
+    "Extract tokens before writing framework components.",
+    "Implement app-specific modules with real states instead of generic card grids.",
+    "Preserve or rebuild JS interactions for meaningful UX actions.",
+    "Validate screenshots at desktop/tablet/mobile viewports with no horizontal overflow.",
+    "Keep landing pages, in-app modules, and OS widgets as separate implementation surfaces."
+  ]
+}

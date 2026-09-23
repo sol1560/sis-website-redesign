@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The SIS Founder Scholarship · SIS Group of Schools</title>
+<meta name="description" content="The SIS Founder Scholarship: who it is for, how awards are decided, the story of Karam Sidhu, and how to talk to admissions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/sis.css">
+<style>
+/* page layer: built only on sis.css tokens */
+.poster { position: relative; overflow: hidden; background: var(--c-fill, var(--ink)); color: var(--c-on-fill, #fff); }
+.poster > .facets { position: absolute; top: 0; right: 0; width: min(64%, 440px); height: 72%; color: var(--facet, #fff); opacity: .26; pointer-events: none; }
+/* dark fills get ink facets so white text keeps its contrast; light fills keep white facets */
+.poster[data-c="fairness"], .poster[data-c="respect"], .poster[data-c="courage"], .poster[data-c="sisred"] { --facet: var(--ink); }
+.poster > :not(.facets) { position: relative; }
+.poster :focus-visible { outline-color: currentColor; }
+.poster a:not(.btn) { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.tint { background: var(--paper); }
+.h-sub { margin: 0; }
+.stat { --od-gap: var(--s-2); }
+.stat .bar { width: 48px; height: 8px; border-radius: var(--pill); background: var(--c); }
+.stat-num { font-size: clamp(32px, 3vw + 8px, 52px); font-weight: 700; line-height: 1.05; }
+.stat-num small { font-size: .45em; font-weight: 500; margin-left: 4px; }
+.stat-label { font-size: var(--fs-16); color: var(--muted); line-height: 1.45; }
+.stat-note { margin: var(--s-4) 0 0; font-size: var(--fs-14); color: var(--muted); }
+.mail-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: var(--fs-16); font-weight: 500; color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; text-decoration-thickness: 2px; overflow-wrap: anywhere; }
+@media (hover: hover) { .mail-link:hover { text-decoration-color: currentColor; } }
+.status-line { margin: 0 0 var(--s-3); font-size: var(--fs-16); color: var(--muted); }
+.status-line b { color: var(--ink); font-weight: 500; }
+.tools { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 360px); gap: var(--s-3); align-items: center; margin-bottom: var(--s-4); }
+@media (max-width: 860px) { .tools { grid-template-columns: 1fr; } }
+.hero-facets { position: relative; min-height: 100%; }
+.quick { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.quick a { display: grid; grid-template-rows: 1fr auto; gap: var(--s-4); min-height: 200px; padding: var(--s-4); text-decoration: none; transition: transform var(--dur-in) var(--ease-out); }
+.quick .q-title { font-size: var(--fs-28); font-weight: 500; line-height: 1.15; align-self: end; }
+.quick .q-go { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--s-2); font-size: var(--fs-16); font-weight: 500; border-top: 2px solid currentColor; padding-top: var(--s-2); }
+@media (hover: hover) { .quick a:hover { transform: translateY(-4px); } }
+@media (max-width: 960px) { .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .quick { grid-template-columns: 1fr; } .quick a { min-height: 140px; } }
+@media (prefers-reduced-motion: reduce) { .quick a:hover { transform: none; } }
+.sch-hero-text { display: grid; gap: var(--s-4); align-content: end; }
+.hero-facts { display: grid; gap: var(--s-2); margin: 0; font-size: var(--fs-16); color: var(--muted); max-width: 56ch; }
+.hero-facts p { margin: 0; }
+.hero-facts .od-row-top { --od-gap: 10px; }
+.hero-facts .icon { margin-top: 3px; color: var(--ink); }
+.hero-poster { margin: 0; display: grid; padding-top: clamp(56px, 8vw, 104px); max-width: 520px; width: 100%; justify-self: end; }
+.hero-poster > .facets { width: 100%; height: 46%; opacity: .5; }
+.hero-poster img { position: relative; }
+.hero-poster .tagline { position: absolute; top: var(--s-3); left: var(--s-3); z-index: 1; font-size: var(--fs-14); font-weight: 500; }
+@media (max-width: 960px) { .hero-poster { justify-self: start; max-width: 420px; } }
+
+.quote-poster { padding-block: var(--s-8); }
+.quote-poster .wrap { display: grid; gap: var(--s-4); }
+.quote-poster .qmark { width: 56px; height: 56px; stroke-width: 1.5; }
+.quote-poster blockquote { margin: 0; max-width: 32ch; font-size: var(--fs-40); line-height: 1.25; font-weight: 500; }
+.quote-poster blockquote p { margin: 0; }
+.quote-poster cite { display: block; margin-top: var(--s-4); font-style: normal; font-size: var(--fs-18); }
+.quote-poster > .facets { width: min(56%, 620px); height: 100%; opacity: .22; }
+
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.tile { display: grid; grid-template-rows: auto 1fr; gap: var(--s-5); min-height: 340px; padding: var(--s-5) var(--s-4) var(--s-4); }
+.tile-num { font-size: var(--fs-80); font-weight: 700; line-height: .9; letter-spacing: -.02em; }
+.tile-text { align-self: end; margin: 0; font-size: var(--fs-22); font-weight: 500; line-height: 1.35; }
+@media (max-width: 900px) { .tiles { grid-template-columns: 1fr; } .tile { min-height: 0; } }
+
+.facts { --od-cols: 3; --od-gap: var(--s-5); }
+.facts .stat-num.small { font-size: var(--fs-28); line-height: 1.2; }
+@media (max-width: 900px) { .facts { --od-cols: 1; --od-gap: var(--s-5); } }
+
+.story-grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s-7); align-items: start; }
+.press { padding: var(--s-5); background: var(--white); border: 2px solid var(--ink); }
+.press .kicker { margin: 0 0 var(--s-2); font-size: var(--fs-14); font-weight: 500; color: var(--muted); }
+.press h3 { margin: 0 0 var(--s-4); font-size: var(--fs-28); font-weight: 500; line-height: 1.25; }
+.press .prose { font-size: var(--fs-16); }
+.press .source-note { margin: var(--s-4) 0 0; }
+@media (max-width: 960px) { .story-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+@media (max-width: 560px) { .press { padding: var(--s-4); } }
+
+.selfcheck { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-6); align-items: start; }
+.q { margin: 0; padding: var(--s-4) 0; border: 0; border-top: 1px solid var(--line); min-width: 0; }
+.q:last-of-type { border-bottom: 1px solid var(--line); }
+.q legend { padding: 0; font-size: var(--fs-22); font-weight: 500; line-height: 1.35; }
+.q legend .qn { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 10px; background: var(--ink); color: #fff; font-size: var(--fs-16); vertical-align: 2px; }
+.q .basis { margin: var(--s-2) 0 0; font-size: var(--fs-14); color: var(--muted); }
+.yn { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-3); }
+.yn label { position: relative; display: inline-flex; cursor: pointer; }
+.yn input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.yn span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; border: 2px solid var(--ink); border-radius: var(--pill); background: #fff; font-size: var(--fs-16); font-weight: 500; transition: background-color var(--dur-in) var(--ease-out), color var(--dur-in) var(--ease-out); }
+.yn input:checked + span { background: var(--ink); color: #fff; }
+.yn input:focus-visible + span { outline: 3px solid var(--ink); outline-offset: 3px; }
+@media (hover: hover) { .yn input:not(:checked):hover + span { background: var(--paper); } }
+.check-foot { --od-gap: var(--s-3); margin-top: var(--s-4); }
+.result { position: sticky; top: calc(var(--header-h) + 24px); padding: var(--s-5); border: 2px solid var(--ink); background: #fff; }
+.result h3 { margin: 0 0 var(--s-3); font-size: var(--fs-28); font-weight: 500; line-height: 1.2; }
+.result p { margin: 0 0 var(--s-4); font-size: var(--fs-16); line-height: 1.55; }
+.result .od-cluster { --od-gap: var(--s-2); }
+.result.poster { border-color: transparent; }
+.result.poster > .facets { height: 60%; }
+.disclaimer { margin-top: var(--s-4); padding: var(--s-3) var(--s-4); background: #fff; border: 2px dashed var(--muted); font-size: var(--fs-14); color: var(--ink); }
+.disclaimer b { font-weight: 500; }
+@media (max-width: 960px) { .selfcheck { grid-template-columns: 1fr; } .result { position: static; } }
+@media (max-width: 560px) { .result { padding: var(--s-4); } }
+
+.notice { display: flex; gap: var(--s-2); align-items: flex-start; margin-bottom: var(--s-4); padding: var(--s-3) var(--s-4); border: 2px solid var(--ink); border-radius: 12px; font-size: var(--fs-16); background: #fff; }
+.notice .icon { margin-top: 3px; }
+.notice b { font-weight: 500; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.step { display: grid; grid-template-rows: auto auto 1fr auto; gap: var(--s-3); min-height: 300px; padding: var(--s-5) var(--s-4) var(--s-4); }
+.step-num { font-size: var(--fs-56); font-weight: 700; line-height: 1; }
+.step h3 { margin: 0; font-size: var(--fs-28); font-weight: 500; line-height: 1.2; }
+.step p { margin: 0; font-size: var(--fs-16); line-height: 1.55; }
+.step .btn { justify-self: start; }
+.deadline { margin: var(--s-4) 0 0; font-size: var(--fs-16); color: var(--muted); }
+.official { max-width: 68ch; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; } .step { min-height: 0; } }
+
+.linked .chips a { text-decoration: none; min-height: 44px; }
+@media (hover: hover) { .linked .chips a:hover { background: var(--ink); color: #fff; } }
+.linked .source-note { margin: var(--s-3) 0 0; max-width: 68ch; }
+</style>
+</head>
+<body class="no-js" data-page="scholarships">
+<!-- ============ 1. SKIP LINK ============ -->
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ 2. SVG DEFS + SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="duo-fairness" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.051 0.180 0.918"></feFuncR><feFuncG type="table" tableValues="0.171 0.612 0.961"></feFuncG><feFuncB type="table" tableValues="0.169 0.604 0.960"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-respect" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.049 0.176 0.918"></feFuncR><feFuncG type="table" tableValues="0.121 0.431 0.943"></feFuncG><feFuncB type="table" tableValues="0.154 0.549 0.955"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-integrity" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.249 0.890 0.989"></feFuncR><feFuncG type="table" tableValues="0.183 0.655 0.965"></feFuncG><feFuncB type="table" tableValues="0.052 0.184 0.918"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-compassion" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.251 0.898 0.990"></feFuncR><feFuncG type="table" tableValues="0.139 0.498 0.950"></feFuncG><feFuncB type="table" tableValues="0.065 0.231 0.923"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-courage" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.235 0.839 0.984"></feFuncR><feFuncG type="table" tableValues="0.064 0.227 0.923"></feFuncG><feFuncB type="table" tableValues="0.059 0.212 0.921"></feFuncB></feComponentTransfer></filter>
+  </defs>
+  <symbol id="facets" viewBox="0 0 240 160" preserveAspectRatio="xMidYMin slice">
+    <polygon points="0,0 40,0 40,40" fill="currentColor" fill-opacity="0.87"></polygon>
+    <polygon points="0,0 40,40 0,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="40,0 80,0 40,40" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,0 80,40 40,40" fill="currentColor" fill-opacity="0.83"></polygon>
+    <polygon points="120,0 120,40 80,40" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="120,0 160,0 120,40" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="160,0 160,40 120,40" fill="currentColor" fill-opacity="0.73"></polygon>
+    <polygon points="160,0 200,0 160,40" fill="currentColor" fill-opacity="0.50"></polygon>
+    <polygon points="200,0 200,40 160,40" fill="currentColor" fill-opacity="0.96"></polygon>
+    <polygon points="240,0 240,40 200,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,40 40,40 40,80" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="0,40 40,80 0,80" fill="currentColor" fill-opacity="0.78"></polygon>
+    <polygon points="40,40 80,40 40,80" fill="currentColor" fill-opacity="0.74"></polygon>
+    <polygon points="80,40 80,80 40,80" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,40 120,80 80,80" fill="currentColor" fill-opacity="0.65"></polygon>
+    <polygon points="120,40 160,40 120,80" fill="currentColor" fill-opacity="0.79"></polygon>
+    <polygon points="160,40 160,80 120,80" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="200,40 240,40 200,80" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="240,40 240,80 200,80" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,80 40,80 0,120" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="40,80 40,120 0,120" fill="currentColor" fill-opacity="0.51"></polygon>
+    <polygon points="40,80 80,80 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="40,80 80,120 40,120" fill="currentColor" fill-opacity="0.40"></polygon>
+    <polygon points="80,80 120,80 80,120" fill="currentColor" fill-opacity="0.37"></polygon>
+    <polygon points="120,80 120,120 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="120,80 160,80 160,120" fill="currentColor" fill-opacity="0.42"></polygon>
+    <polygon points="120,80 160,120 120,120" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="160,80 200,80 160,120" fill="currentColor" fill-opacity="0.34"></polygon>
+    <polygon points="200,80 200,120 160,120" fill="currentColor" fill-opacity="0.36"></polygon>
+    <polygon points="200,80 240,80 200,120" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="240,80 240,120 200,120" fill="currentColor" fill-opacity="0.23"></polygon>
+    <polygon points="0,120 40,120 40,160" fill="currentColor" fill-opacity="0.22"></polygon>
+    <polygon points="0,120 40,160 0,160" fill="currentColor" fill-opacity="0.17"></polygon>
+    <polygon points="40,120 80,120 80,160" fill="currentColor" fill-opacity="0.24"></polygon>
+    <polygon points="40,120 80,160 40,160" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="80,120 120,120 120,160" fill="currentColor" fill-opacity="0.13"></polygon>
+    <polygon points="80,120 120,160 80,160" fill="currentColor" fill-opacity="0.21"></polygon>
+    <polygon points="120,120 160,120 160,160" fill="currentColor" fill-opacity="0.18"></polygon>
+    <polygon points="120,120 160,160 120,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="160,120 200,120 200,160" fill="currentColor" fill-opacity="0.15"></polygon>
+    <polygon points="160,120 200,160 160,160" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="200,120 240,120 200,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="240,120 240,160 200,160" fill="currentColor" fill-opacity="0.18"></polygon>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5.5 3.5-5.5 3.5z"></path></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 005.1 5.1l1.4-2.3L19 14.5V18a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z"></path></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.3"></circle></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"></path></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2"></rect><path d="M9 7.5v-2A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5v2M3.5 12.5h17M10.5 12.5v1.5h3v-1.5"></path></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 7.5A3.5 3.5 0 006 11v5.5h4.5V12H6M18 7.5a3.5 3.5 0 00-3.5 3.5v5.5H19V12h-4.5"></path></symbol>
+</svg>
+<!-- ============ /SVG DEFS ============ -->
+
+<!-- ============ 3. HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="wrap od-row bar">
+    <a class="brand od-row od-fixed" href="index.html" aria-label="SIS Group of Schools, home">
+      <img src="assets/SIS-Logo-Website.png" width="150" height="150" alt="">
+      <span class="od-stack" style="--od-gap:0">
+        <span class="brand-name">SIS Group of Schools</span>
+        <span class="brand-sub">Singapore Intercultural School</span>
+      </span>
+    </a>
+    <span class="od-fill" aria-hidden="true"></span>
+    <nav class="nav od-row" aria-label="Primary">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="admissions.html" data-nav="admissions">Admissions</a>
+      <a href="news.html" data-nav="news">News</a>
+    </nav>
+    <div class="header-cta od-row od-fixed">
+      <a class="btn btn-outline" href="contact.html">Inquire</a>
+      <a class="btn btn-primary" href="admissions.html#admissions">Book a tour</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+    </div>
+  </div>
+</header>
+<!-- ============ /HEADER ============ -->
+
+<!-- ============ 4. DRAWER ============ -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="drawer-scrim" type="button" tabindex="-1" aria-label="Close menu"></button>
+  <div class="drawer-panel">
+    <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="drawer-body">
+      <div class="od-row">
+        <span class="brand-name od-fill">Menu</span>
+        <button class="icon-btn" type="button" data-close aria-label="Close menu"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+      <nav aria-label="Mobile">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="news.html" data-nav="news">News</a>
+        <a href="admissions.html#admissions" data-nav="admissions">Admissions</a>
+        <div class="drawer-sub">
+          <a href="stories.html" data-nav="stories">Stories</a>
+          <a href="scholarships.html" data-nav="scholarships">Scholarships</a>
+          <a href="careers.html" data-nav="careers">Careers</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </div>
+      </nav>
+      <div class="od-stack" style="--od-gap:12px">
+        <a class="btn btn-primary" href="admissions.html#admissions">Book a campus tour</a>
+        <a class="btn btn-outline" href="contact.html">Make an inquiry</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ /DRAWER ============ -->
+
+<main id="main">
+  <!-- HERO -->
+  <section class="page-hero" data-c="respect" aria-labelledby="page-title">
+    <div class="wrap page-hero-inner">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a href="admissions.html#admissions">Admissions</a></li><li><a aria-current="page">Scholarships</a></li></ol></nav>
+      <div class="page-hero-split">
+        <div class="sch-hero-text">
+          <p class="page-kicker" id="s-name">The SIS Founder Scholarship</p>
+          <h1 id="page-title" class="h-pills pills">
+            <span class="pill o">The SIS</span>
+            <span class="pill f red">Founder</span>
+            <span class="pill f fair">Scholarship</span>
+          </h1>
+          <p class="page-intro" id="s-aim"></p>
+          <div class="hero-facts">
+            <p class="od-row-top" id="s-frequency-row"><svg class="icon" aria-hidden="true"><use href="#i-calendar"></use></svg><span id="s-frequency"></span></p>
+            <p class="od-row-top" id="s-established-row"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span id="s-established"></span></p>
+          </div>
+          <div class="page-actions od-cluster">
+            <a class="btn btn-primary" href="#check">Is this for you? <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn-outline" href="#how">How to apply</a>
+          </div>
+        </div>
+        <figure class="hero-poster poster" data-c="compassion" aria-hidden="true">
+          <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+          <img class="od-media od-media-cover duo" style="--od-ratio:4/5" src="assets/j-2012-making-eduation-affordable.webp" width="1080" height="1350" alt="">
+        </figure>
+      </div>
+    </div>
+    <div class="fricc-band" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <!-- QUOTE POSTER -->
+  <section class="quote-poster poster" data-c="respect" id="quote" aria-label="In the founder's words">
+    <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+    <div class="wrap reveal">
+      <svg class="icon qmark" aria-hidden="true"><use href="#i-quote"></use></svg>
+      <blockquote><p id="s-quote"></p><cite id="s-cite"></cite></blockquote>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section" id="criteria" aria-labelledby="crit-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 id="crit-title" class="h-sub pills reveal">
+            <span class="pill o">Who</span>
+            <span class="pill f fair">It's For</span>
+          </h2>
+          <p class="reveal">The scholarship criteria, as SIS publishes them.</p>
+        </div>
+      </div>
+      <ol class="tiles" id="crit-list"></ol>
+    </div>
+  </section>
+
+  <!-- FACTS -->
+  <section class="section tint" id="facts" aria-labelledby="facts-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="facts-title" class="h-sub pills reveal">
+          <span class="pill o">How</span>
+          <span class="pill f intg">Awards</span>
+          <span class="pill o">Work</span>
+        </h2>
+      </div>
+      <div class="facts od-grid" id="facts-grid"></div>
+      <p class="stat-note">Details as published on sisschools.org. SIS does not publish a fixed award amount.</p>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="section" id="story" aria-labelledby="story-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="story-title" class="h-sub pills reveal">
+          <span class="pill o">In Memory</span>
+          <span class="pill o">of</span>
+          <span class="pill f cour">Karam Sidhu</span>
+        </h2>
+      </div>
+      <div class="story-grid">
+        <div class="prose reveal" id="about-prose"></div>
+        <article class="press reveal" id="press" aria-labelledby="press-title">
+          <p class="kicker">Press release<span id="press-date"></span></p>
+          <h3 id="press-title"></h3>
+          <div class="prose" id="press-body"></div>
+          <p class="source-note" id="press-source"></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELF-CHECK -->
+  <section class="section tint" id="check" aria-labelledby="check-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 id="check-title" class="h-sub pills reveal">
+            <span class="pill o">Is This</span>
+            <span class="pill f resp">for You?</span>
+          </h2>
+          <p class="reveal">A quick self-check built only from the published criteria. Answer each question to see a suggested next step.</p>
+        </div>
+      </div>
+      <div class="selfcheck">
+        <form id="check-form" novalidate>
+          <div id="check-qs"></div>
+          <div class="check-foot od-cluster">
+            <button class="btn btn-outline" type="reset" id="check-reset">Start again</button>
+            <span class="status-line" id="check-progress" aria-live="polite" style="margin:0"></span>
+          </div>
+        </form>
+        <div>
+          <div class="result" id="check-result" aria-live="polite">
+            <h3>Your suggestion appears here</h3>
+            <p>Answer all the questions and we will point you to the right next step.</p>
+          </div>
+          <p class="disclaimer"><b>This is a guide, not a decision.</b> It does not assess eligibility. Awards are decided case by case by SIS, and only your campus admissions team can tell you whether a student may be considered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO APPLY -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="how-title" class="h-sub pills reveal">
+          <span class="pill o">How</span>
+          <span class="pill f red">to Apply</span>
+        </h2>
+      </div>
+      <div class="official prose" id="apply-official" hidden></div>
+      <div id="apply-generic">
+        <p class="notice"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span><b>General guidance, not the official process.</b> SIS does not publish an application process for this scholarship. Please confirm the process and deadlines with your campus admissions team.</span></p>
+        <ol class="steps">
+          <li class="step poster reveal" data-c="fairness">
+            <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+            <span class="step-num" aria-hidden="true">01</span>
+            <h3>Visit a campus</h3>
+            <p>See the school, meet the teachers and ask your questions in person.</p>
+            <a class="btn btn-white" href="admissions.html#admissions">Book a campus tour</a>
+          </li>
+          <li class="step poster reveal" data-c="respect" style="--d:1">
+            <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+            <span class="step-num" aria-hidden="true">02</span>
+            <h3>Talk to admissions</h3>
+            <p>Tell the admissions team you would like to be considered for the Founder Scholarship.</p>
+            <a class="btn btn-white" href="contact.html?topic=scholarships">Contact admissions</a>
+          </li>
+          <li class="step poster reveal" data-c="courage" style="--d:2">
+            <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+            <span class="step-num" aria-hidden="true">03</span>
+            <h3>Submit an application</h3>
+            <p>Complete the school application your campus asks for.</p>
+            <a class="btn btn-white" id="apply-link" href="contact.html?topic=admissions">Start an application</a>
+          </li>
+        </ol>
+      </div>
+      <p class="deadline" id="deadline"></p>
+    </div>
+  </section>
+
+  <!-- CAMPUSES LINKED -->
+  <section class="section tint linked" id="linked" aria-labelledby="linked-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="linked-title" class="h-sub pills reveal">
+          <span class="pill o">Linked</span>
+          <span class="pill f fair">Campuses</span>
+        </h2>
+      </div>
+      <div class="chips od-cluster" id="linked-chips"></div>
+      <p class="source-note" id="linked-note"></p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 6. FOOTER ============ -->
+<footer class="site-footer">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="petals-bg" aria-hidden="true"></div>
+  <div class="wrap footer-inner">
+    <div class="footer-cta">
+      <p class="h-sub pills" style="margin:0">
+        <span class="pill o">Find</span>
+        <span class="pill f intg">Your PACE</span>
+        <span class="pill o">with Us</span>
+      </p>
+      <a class="btn btn-white" href="admissions.html#admissions">Book a campus tour <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand od-stack">
+        <img class="crest" src="assets/SIS-Logo-Website.png" width="150" height="150" alt="SIS crest: a lion above an open book">
+        <p>SIS Group of Schools. Singapore-rooted international education in Indonesia, India, Myanmar and South Korea since 1996.</p>
+        <a class="od-row" href="tel:+622175914414" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg><span class="od-nowrap">+62 21 759 14414</span></a>
+        <a class="od-row" href="mailto:admissions@sisschools.org" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><span class="od-nowrap">admissions@sisschools.org</span></a>
+      </div>
+      <div><h4>Discover</h4><ul><li><a href="index.html#story">About SIS</a></li><li><a href="index.html#values">Core Values</a></li><li><a href="index.html#pace">PACE</a></li><li><a href="stories.html">Stories</a></li></ul></div>
+      <div><h4>Learn</h4><ul><li><a href="index.html#academics">Academics</a></li><li><a href="index.html#university">University pathways</a></li><li><a href="index.html#campuses">Our Schools</a></li><li><a href="scholarships.html">Scholarships</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="news.html">News</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="legal"><span>Unofficial redesign concept, not affiliated with SIS Group of Schools. Content &amp; photos © SIS · official site: <a href="https://sisschools.org/">sisschools.org</a></span><span>Designed with <a href="https://github.com/nexu-io/open-design">Open Design</a> · <a href="https://github.com/sol1560/sis-website-redesign">Source</a></span></div>
+  </div>
+</footer>
+<!-- ============ /FOOTER ============ -->
+
+<!-- ============ 7. TOAST ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span></span></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/sis.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.SIS, D = window.SIS_DATA || {};
+  if (!S) return;
+  var $ = S.$, esc = S.esc;
+  var sch = D.scholarships || {};
+  var campuses = D.campuses || [];
+  var contact = D.contact || {};
+  var COLORS = ['fairness', 'integrity', 'courage', 'respect', 'compassion'];
+
+  function byId(id) { for (var i = 0; i < campuses.length; i++) if (campuses[i].id === id) return campuses[i]; return null; }
+  function fill(sel, text, hideSel) {
+    var el = $(sel);
+    if (!el) return;
+    if (text) el.textContent = text;
+    else { var h = hideSel ? $(hideSel) : el; if (h) h.hidden = true; }
+  }
+  function hostPath(u) { try { var x = new URL(u); return x.hostname.replace(/^www\./, '') + x.pathname.replace(/\/$/, ''); } catch (e) { return u; } }
+  function paras(list) { return (list || []).filter(Boolean).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join(''); }
+
+  /* ---------- hero ---------- */
+  fill('#s-name', sch.name);
+  fill('#s-aim', sch.aim);
+  fill('#s-frequency', sch.frequency, '#s-frequency-row');
+  fill('#s-established', sch.established, '#s-established-row');
+
+  /* ---------- quote poster ---------- */
+  if (sch.quote && sch.quote.text) {
+    $('#s-quote').textContent = '“' + sch.quote.text + '”';
+    fill('#s-cite', sch.quote.cite);
+  } else { $('#quote').hidden = true; }
+
+  /* ---------- criteria tiles ---------- */
+  var crit = (sch.criteria || []).filter(Boolean);
+  if (crit.length) {
+    $('#crit-list').innerHTML = crit.map(function (c, i) {
+      var n = i + 1;
+      return '<li class="tile poster reveal" data-c="' + COLORS[i % COLORS.length] + '" style="--d:' + i + '">' +
+        '<svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>' +
+        '<span class="tile-num" aria-hidden="true">' + (n < 10 ? '0' + n : n) + '</span>' +
+        '<p class="tile-text">' + esc(c) + '</p></li>';
+    }).join('');
+  } else { $('#criteria').hidden = true; }
+
+  /* ---------- facts: only what the data states ---------- */
+  var facts = [];
+  if (sch.frequency) facts.push({ c: 'fairness', num: /annual/i.test(sch.frequency) ? 'Annual' : '', label: sch.frequency });
+  if (sch.amount) facts.push({ c: 'integrity', num: /case by case/i.test(sch.amount) ? 'Case by case' : '', label: sch.amount });
+  var pr = sch.pressRelease || null;
+  var prText = pr ? (pr.paragraphs || []).join(' ') : '';
+  var pct = prText.match(/covers\s+(\d{1,3}%)\s+of\s+[^.]*?school fees\s+until graduation/i);
+  if (pct) facts.push({ c: 'courage', num: pct[1], label: 'of school fees, until graduation, for the inaugural recipient (from the SIS press release).' });
+  if (sch.deadline) facts.push({ c: 'respect', num: '', label: 'Deadline: ' + sch.deadline });
+  if (facts.length) {
+    $('#facts-grid').innerHTML = facts.map(function (f, i) {
+      return '<div class="stat od-stat reveal" data-c="' + f.c + '" style="--d:' + i + '"><span class="bar"></span>' +
+        (f.num ? '<span class="stat-num">' + esc(f.num) + '</span>' : '') +
+        '<span class="stat-label">' + esc(f.label) + '</span></div>';
+    }).join('');
+  } else { $('#facts').hidden = true; }
+
+  /* ---------- story + press release ---------- */
+  var about = paras(sch.aboutKaram);
+  if (about) $('#about-prose').innerHTML = (sch.established ? '<p class="lede">' + esc(sch.established) + '</p>' : '') + about;
+  else $('#about-prose').hidden = true;
+  if (pr && pr.title) {
+    $('#press-title').textContent = pr.title;
+    if (pr.date) $('#press-date').textContent = ' · ' + pr.date;
+    $('#press-body').innerHTML = paras(pr.paragraphs);
+  } else { $('#press').hidden = true; }
+  if (sch.url) {
+    $('#press-source').innerHTML = 'Source: <a href="' + esc(sch.url) + '" target="_blank" rel="noopener">' + esc(hostPath(sch.url)) + '</a>. Text as published by SIS Group of Schools.';
+  } else { $('#press-source').hidden = true; }
+  if (!about && !(pr && pr.title)) $('#story').hidden = true;
+
+  /* ---------- self-check (questions derived only from the criteria) ---------- */
+  var QDEFS = [
+    { test: /financial need/i, text: 'Does the student’s family need financial help to meet school fees?' },
+    { test: /passion for learning/i, text: 'Has the student shown a real passion for learning?' },
+    { test: /integrity|humility|compassion|perseverance/i, text: 'Does the student show qualities like integrity, humility, compassion and perseverance?' },
+    { test: /collaborate|communicate/i, text: 'Does the student collaborate and communicate well with others?' }
+  ];
+  var qs = [];
+  QDEFS.forEach(function (q) {
+    for (var i = 0; i < crit.length; i++) if (q.test.test(crit[i])) { qs.push({ text: q.text, basis: crit[i] }); return; }
+  });
+  var form = $('#check-form'), result = $('#check-result'), progress = $('#check-progress');
+  var neutralHTML = result ? result.innerHTML : '';
+  if (qs.length && form) {
+    $('#check-qs').innerHTML = qs.map(function (q, i) {
+      var n = 'q' + i;
+      return '<fieldset class="q"><legend><span class="qn" aria-hidden="true">' + (i + 1) + '</span>' + esc(q.text) + '</legend>' +
+        '<p class="basis">Based on the criterion: “' + esc(q.basis) + '”</p>' +
+        '<div class="yn"><label><input type="radio" name="' + n + '" value="yes"><span>Yes</span></label>' +
+        '<label><input type="radio" name="' + n + '" value="no"><span>No</span></label></div></fieldset>';
+    }).join('');
+    var update = function () {
+      var answered = 0, yes = 0;
+      qs.forEach(function (q, i) {
+        var c = form.querySelector('input[name="q' + i + '"]:checked');
+        if (c) { answered++; if (c.value === 'yes') yes++; }
+      });
+      progress.textContent = answered + ' of ' + qs.length + ' answered';
+      result.classList.remove('poster'); result.removeAttribute('data-c');
+      if (answered < qs.length) { result.innerHTML = neutralHTML; return; }
+      var ok = yes === qs.length;
+      result.classList.add('poster');
+      result.setAttribute('data-c', ok ? 'fairness' : 'integrity');
+      result.innerHTML = '<svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>' + (ok
+        ? '<h3>You may be eligible — talk to admissions</h3><p>Your answers match the published criteria. Awards are made case by case, so the next step is a conversation with your campus admissions team.</p>' +
+          '<div class="od-cluster"><a class="btn btn-white" href="contact.html?topic=scholarships">Talk to admissions</a><a class="btn btn-white" href="#how">How to apply</a></div>'
+        : '<h3>Other support may fit — contact us</h3><p>Some answers do not match the published criteria for this scholarship. Your campus admissions team can talk you through what is available.</p>' +
+          '<div class="od-cluster"><a class="btn btn-outline" href="contact.html?topic=scholarships">Contact us</a><a class="btn btn-outline" href="index.html#campuses">Find a campus</a></div>');
+    };
+    form.addEventListener('change', update);
+    form.addEventListener('reset', function () { setTimeout(update, 0); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    update();
+  } else if (form) { $('#check').hidden = true; }
+
+  /* ---------- how to apply ---------- */
+  var proc = sch.applicationProcess;
+  if (proc && (typeof proc === 'string' || proc.length)) {
+    var off = $('#apply-official');
+    off.innerHTML = typeof proc === 'string' ? '<p>' + esc(proc) + '</p>' : '<ol>' + proc.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol>';
+    off.hidden = false;
+    $('#apply-generic').hidden = true;
+  } else if (contact.applyUrl) {
+    var al = $('#apply-link');
+    al.href = contact.applyUrl; al.target = '_blank'; al.rel = 'noopener';
+    al.textContent = 'SIS online application';
+  }
+  $('#deadline').textContent = sch.deadline
+    ? 'Deadline: ' + sch.deadline
+    : 'No deadline is published for this scholarship. Ask your campus admissions team for current dates.';
+
+  /* ---------- campuses linked ---------- */
+  var linked = (sch.campusesLinked || []).filter(Boolean);
+  if (linked.length) {
+    $('#linked-chips').innerHTML = linked.map(function (id) {
+      var c = byId(id);
+      return '<a class="chip" href="campus.html?c=' + encodeURIComponent(id) + '">' + esc(c ? c.name : id) + '</a>';
+    }).join('');
+    fill('#linked-note', sch.campusesLinkedNote);
+  } else { $('#linked').hidden = true; }
+
+  S.observeReveal();
+})();
+</script>
+</body></html>

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIS in Every Step: student stories · SIS Group of Schools</title>
+<meta name="description" content="SIS in Every Step: SIS students write letters to their younger selves about what they learned along the way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/sis.css">
+<style>
+/* ---------- stories.html: page layer, built only on sis.css tokens ---------- */
+html, body { overflow-x: clip; }
+
+/* hero poster: square colour block with the faceted mosaic */
+.st-hero .page-hero-split { align-items: center; }
+.st-poster { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 440px; justify-self: end; overflow: hidden;
+  background: var(--c-fill); color: var(--c-on-fill); display: grid; align-content: end; gap: var(--s-3); padding: var(--s-5); }
+.st-poster .facets { position: absolute; top: 0; left: 0; width: 100%; height: 62%; color: #fff; opacity: .32; pointer-events: none; }
+.st-poster dl { position: relative; margin: 0; display: grid; gap: var(--s-3); }
+.st-poster dl > div { display: flex; align-items: baseline; gap: var(--s-3); flex-wrap: wrap; }
+.st-poster dt { order: 2; font-size: var(--fs-18); font-weight: 500; }
+.st-poster dd { order: 1; margin: 0; font-size: var(--fs-80); font-weight: 700; line-height: 1; }
+@media (max-width: 960px) { .st-poster { justify-self: start; max-width: 360px; } }
+@media (max-width: 560px) { .st-poster { max-width: none; aspect-ratio: 4 / 3; padding: var(--s-4); } }
+
+/* filter bar */
+.st-wall-sec { padding-block: var(--s-6) var(--s-8); }
+.st-filter-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-3); align-items: end; margin-bottom: var(--s-3); }
+.st-filter-head h2 { margin: 0; font-size: var(--fs-28); font-weight: 500; line-height: 1.2; }
+.st-count { margin: 0; font-size: var(--fs-16); color: var(--muted); }
+.st-count b { color: var(--ink); font-weight: 700; }
+.st-filter { margin-bottom: var(--s-5); }
+.st-filter .fbtn { max-width: 100%; }
+.st-filter .fbtn .lbl { overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 640px) { .st-filter-head { grid-template-columns: 1fr; } }
+
+/* the wall: a 12-column poster grid with mixed tile shapes */
+.st-wall { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-3); }
+.st-wall > li { grid-column: span 12; min-width: 0; display: grid; }
+.st-wall > li[hidden] { display: none; }
+.st-wall > li.span-7 { grid-column: span 7; }
+.st-wall > li.span-5 { grid-column: span 5; }
+@media (max-width: 1023px) { .st-wall > li.span-7, .st-wall > li.span-5 { grid-column: span 6; } }
+@media (max-width: 640px) { .st-wall > li.span-7, .st-wall > li.span-5 { grid-column: span 12; } }
+
+.tile { appearance: none; position: relative; display: grid; align-content: start; gap: var(--s-4); width: 100%; margin: 0; padding: var(--s-4);
+  border: 0; border-radius: 0; background: var(--c-fill); color: var(--c-on-fill); text-align: left; cursor: pointer; overflow: hidden; font: inherit;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+  transition: transform var(--dur-in) var(--ease-out); }
+.tile .facets { position: absolute; top: 0; right: 0; width: 64%; height: 58%; color: #fff; opacity: .26; pointer-events: none; }
+.tile-shot { position: relative; display: grid; background: var(--ink); border: 6px solid var(--white); }
+.tile-shot > img { grid-area: 1 / 1; }
+.tile-shot .color { opacity: 0; transition: opacity 300ms var(--ease-out); }
+.tile-shot .play { position: absolute; right: var(--s-2); bottom: var(--s-2); width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: var(--white); color: var(--ink); }
+.tile-shot .play .icon { width: 24px; height: 24px; }
+.tile-text { position: relative; display: grid; gap: var(--s-2); align-content: start; }
+.tile-name { font-size: var(--fs-28); --pg: 8px; }
+.tile-name .pill { white-space: normal; border-width: 3px; background: var(--white); border-color: var(--white); color: var(--ink); }
+.tile-campus { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-16); font-weight: 500; margin-top: var(--s-1); }
+.tile-excerpt { font-size: var(--fs-16); line-height: 1.55; }
+.tile-more { display: inline-flex; align-items: center; gap: var(--s-2); margin-top: var(--s-1); font-size: var(--fs-16); font-weight: 500; }
+.tile-more .txt { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.tile.flip .tile-text { order: -1; }
+.tile.flip .facets { top: auto; bottom: 0; transform: scaleY(-1); }
+.tile:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.tile:focus-visible .tile-shot .color { opacity: 1; }
+@media (hover: hover) {
+  .tile:hover { transform: translateY(-4px); }
+  .tile:hover .tile-shot .color { opacity: 1; }
+  .tile:hover .tile-more .txt { text-decoration-thickness: 3px; }
+}
+@media (hover: none) { .tile-shot .color { opacity: 1; } }
+@media (min-width: 900px) {
+  .tile.is-wide { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; align-content: center; gap: var(--s-6); padding: var(--s-5); }
+  .tile.is-wide.mirror { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .tile.is-wide.mirror .tile-shot { order: 2; }
+  .tile.is-wide .facets { width: 48%; height: 100%; }
+  .tile.is-wide.mirror .facets { right: auto; left: 0; }
+  .tile.is-wide .tile-name { font-size: var(--fs-40); }
+  .tile.is-wide .tile-excerpt { font-size: var(--fs-18); }
+  .tile.is-wide.flip .tile-text { order: 0; }
+}
+@media (max-width: 560px) { .tile { padding: var(--s-3); gap: var(--s-3); } .tile-name { font-size: var(--fs-22); } }
+
+/* story dialog */
+.st-dialog .dialog-title { font-size: var(--fs-28); }
+.sd-figure { margin: 0; background: var(--ink); }
+.sd-figure img { display: block; }
+.sd-meta { --od-gap: var(--s-2) var(--s-3); margin-top: var(--s-4); font-size: var(--fs-16); }
+.sd-campus { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; }
+.sd-quote { margin: var(--s-4) 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s-3); align-items: start; }
+.sd-quote .q { width: 48px; height: 48px; display: grid; place-items: center; background: var(--c-fill); color: var(--c-on-fill); }
+.sd-quote .q .icon { width: 26px; height: 26px; }
+.sd-quote p { margin: 0; font-size: var(--fs-22); line-height: 1.5; }
+.sd-note { margin: var(--s-3) 0 0; font-size: var(--fs-14); color: var(--muted); }
+.sd-actions { --od-gap: var(--s-3); margin-top: var(--s-4); }
+.st-dialog .dialog-foot { justify-content: space-between; align-items: center; }
+.sd-nav { --od-gap: var(--s-2); }
+.sd-pos { margin: 0; font-size: var(--fs-14); color: var(--muted); }
+@media (max-width: 560px) { .sd-quote p { font-size: var(--fs-18); } .sd-quote .q { width: 40px; height: 40px; } }
+
+/* closing CTA band */
+.st-cta { position: relative; overflow: hidden; background: var(--c-fill); color: var(--c-on-fill); padding-block: var(--s-8); }
+.st-cta .facets { position: absolute; top: 0; right: 0; width: min(60%, 720px); height: 100%; color: #fff; opacity: .22; pointer-events: none; }
+.st-cta-inner { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5); align-items: end; }
+.st-cta .pills .pill.o { background: transparent; color: #fff; border-color: #fff; }
+.st-cta .pills .pill.f { background: #fff; color: var(--ink); border-color: #fff; }
+.st-cta p { margin: var(--s-4) 0 0; font-size: var(--fs-18); max-width: 48ch; }
+.st-cta-actions { --od-gap: var(--s-3); }
+.btn-on-color { background: transparent; color: #fff; border-color: #fff; }
+@media (hover: hover) { .btn-on-color:hover { background: #fff; color: var(--ink); } }
+@media (max-width: 900px) { .st-cta-inner { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .st-cta { padding-block: var(--s-7); } .st-cta-actions .btn { width: 100%; } }
+
+.st-dialog [hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .tile:hover { transform: none; } }
+</style>
+</head>
+<body class="no-js" data-page="stories">
+
+<!-- ============ 1. SKIP LINK ============ -->
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ 2. SVG DEFS + SPRITE: duotone filters, #facets mosaic, icons (one outlined 1.75-stroke family) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="duo-fairness" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.051 0.180 0.918"></feFuncR><feFuncG type="table" tableValues="0.171 0.612 0.961"></feFuncG><feFuncB type="table" tableValues="0.169 0.604 0.960"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-respect" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.049 0.176 0.918"></feFuncR><feFuncG type="table" tableValues="0.121 0.431 0.943"></feFuncG><feFuncB type="table" tableValues="0.154 0.549 0.955"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-integrity" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.249 0.890 0.989"></feFuncR><feFuncG type="table" tableValues="0.183 0.655 0.965"></feFuncG><feFuncB type="table" tableValues="0.052 0.184 0.918"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-compassion" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.251 0.898 0.990"></feFuncR><feFuncG type="table" tableValues="0.139 0.498 0.950"></feFuncG><feFuncB type="table" tableValues="0.065 0.231 0.923"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-courage" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.235 0.839 0.984"></feFuncR><feFuncG type="table" tableValues="0.064 0.227 0.923"></feFuncG><feFuncB type="table" tableValues="0.059 0.212 0.921"></feFuncB></feComponentTransfer></filter>
+  </defs>
+  <symbol id="facets" viewBox="0 0 240 160" preserveAspectRatio="xMidYMin slice">
+    <polygon points="0,0 40,0 40,40" fill="currentColor" fill-opacity="0.87"></polygon>
+    <polygon points="0,0 40,40 0,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="40,0 80,0 40,40" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,0 80,40 40,40" fill="currentColor" fill-opacity="0.83"></polygon>
+    <polygon points="120,0 120,40 80,40" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="120,0 160,0 120,40" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="160,0 160,40 120,40" fill="currentColor" fill-opacity="0.73"></polygon>
+    <polygon points="160,0 200,0 160,40" fill="currentColor" fill-opacity="0.50"></polygon>
+    <polygon points="200,0 200,40 160,40" fill="currentColor" fill-opacity="0.96"></polygon>
+    <polygon points="240,0 240,40 200,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,40 40,40 40,80" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="0,40 40,80 0,80" fill="currentColor" fill-opacity="0.78"></polygon>
+    <polygon points="40,40 80,40 40,80" fill="currentColor" fill-opacity="0.74"></polygon>
+    <polygon points="80,40 80,80 40,80" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,40 120,80 80,80" fill="currentColor" fill-opacity="0.65"></polygon>
+    <polygon points="120,40 160,40 120,80" fill="currentColor" fill-opacity="0.79"></polygon>
+    <polygon points="160,40 160,80 120,80" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="200,40 240,40 200,80" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="240,40 240,80 200,80" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,80 40,80 0,120" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="40,80 40,120 0,120" fill="currentColor" fill-opacity="0.51"></polygon>
+    <polygon points="40,80 80,80 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="40,80 80,120 40,120" fill="currentColor" fill-opacity="0.40"></polygon>
+    <polygon points="80,80 120,80 80,120" fill="currentColor" fill-opacity="0.37"></polygon>
+    <polygon points="120,80 120,120 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="120,80 160,80 160,120" fill="currentColor" fill-opacity="0.42"></polygon>
+    <polygon points="120,80 160,120 120,120" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="160,80 200,80 160,120" fill="currentColor" fill-opacity="0.34"></polygon>
+    <polygon points="200,80 200,120 160,120" fill="currentColor" fill-opacity="0.36"></polygon>
+    <polygon points="200,80 240,80 200,120" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="240,80 240,120 200,120" fill="currentColor" fill-opacity="0.23"></polygon>
+    <polygon points="0,120 40,120 40,160" fill="currentColor" fill-opacity="0.22"></polygon>
+    <polygon points="0,120 40,160 0,160" fill="currentColor" fill-opacity="0.17"></polygon>
+    <polygon points="40,120 80,120 80,160" fill="currentColor" fill-opacity="0.24"></polygon>
+    <polygon points="40,120 80,160 40,160" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="80,120 120,120 120,160" fill="currentColor" fill-opacity="0.13"></polygon>
+    <polygon points="80,120 120,160 80,160" fill="currentColor" fill-opacity="0.21"></polygon>
+    <polygon points="120,120 160,120 160,160" fill="currentColor" fill-opacity="0.18"></polygon>
+    <polygon points="120,120 160,160 120,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="160,120 200,120 200,160" fill="currentColor" fill-opacity="0.15"></polygon>
+    <polygon points="160,120 200,160 160,160" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="200,120 240,120 200,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="240,120 240,160 200,160" fill="currentColor" fill-opacity="0.18"></polygon>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5.5 3.5-5.5 3.5z"></path></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 005.1 5.1l1.4-2.3L19 14.5V18a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z"></path></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.3"></circle></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"></path></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2"></rect><path d="M9 7.5v-2A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5v2M3.5 12.5h17M10.5 12.5v1.5h3v-1.5"></path></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 7.5A3.5 3.5 0 006 11v5.5h4.5V12H6M18 7.5a3.5 3.5 0 00-3.5 3.5v5.5H19V12h-4.5"></path></symbol>
+</svg>
+<!-- ============ /SVG DEFS ============ -->
+
+<!-- ============ 3. HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="wrap od-row bar">
+    <a class="brand od-row od-fixed" href="index.html" aria-label="SIS Group of Schools, home">
+      <img src="assets/SIS-Logo-Website.png" width="150" height="150" alt="">
+      <span class="od-stack" style="--od-gap:0">
+        <span class="brand-name">SIS Group of Schools</span>
+        <span class="brand-sub">Singapore Intercultural School</span>
+      </span>
+    </a>
+    <span class="od-fill" aria-hidden="true"></span>
+    <nav class="nav od-row" aria-label="Primary">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="admissions.html" data-nav="admissions">Admissions</a>
+      <a href="news.html" data-nav="news">News</a>
+    </nav>
+    <div class="header-cta od-row od-fixed">
+      <a class="btn btn-outline" href="contact.html">Inquire</a>
+      <a class="btn btn-primary" href="admissions.html#admissions">Book a tour</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+    </div>
+  </div>
+</header>
+<!-- ============ /HEADER ============ -->
+
+<!-- ============ 4. DRAWER (mobile menu, below 1240px) ============ -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="drawer-scrim" type="button" tabindex="-1" aria-label="Close menu"></button>
+  <div class="drawer-panel">
+    <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="drawer-body">
+      <div class="od-row">
+        <span class="brand-name od-fill">Menu</span>
+        <button class="icon-btn" type="button" data-close aria-label="Close menu"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+      <nav aria-label="Mobile">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="news.html" data-nav="news">News</a>
+        <a href="admissions.html#admissions" data-nav="admissions">Admissions</a>
+        <div class="drawer-sub">
+          <a href="stories.html" data-nav="stories">Stories</a>
+          <a href="scholarships.html" data-nav="scholarships">Scholarships</a>
+          <a href="careers.html" data-nav="careers">Careers</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </div>
+      </nav>
+      <div class="od-stack" style="--od-gap:12px">
+        <a class="btn btn-primary" href="admissions.html#admissions">Book a campus tour</a>
+        <a class="btn btn-outline" href="contact.html">Make an inquiry</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ /DRAWER ============ -->
+
+<main id="main">
+  <section class="page-hero st-hero" data-c="fairness" aria-labelledby="st-title">
+    <div class="wrap page-hero-inner page-hero-split">
+      <div class="od-stack" style="--od-gap:24px">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a aria-current="page">Stories</a></li></ol></nav>
+        <h1 id="st-title" class="h-pills pills"><span class="pill o">SIS</span><span class="sr-only"> </span><span class="pill f fair">in Every Step</span></h1>
+        <p class="page-intro">SIS students write letters to their younger selves about what they learned along the way. Open a story to read it, then watch the full letter on YouTube.</p>
+      </div>
+      <div class="st-poster" aria-hidden="true">
+        <svg class="facets"><use href="#facets"></use></svg>
+        <dl>
+          <div><dt>student stories</dt><dd data-stat="stories"></dd></div>
+          <div><dt>campuses and programmes</dt><dd data-stat="campuses"></dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="fricc-band" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <section class="st-wall-sec" aria-labelledby="wall-title">
+    <div class="wrap">
+      <div class="st-filter-head">
+        <h2 id="wall-title">Filter by campus</h2>
+        <p class="st-count" id="st-count" role="status" aria-live="polite"></p>
+      </div>
+      <div class="filter od-cluster st-filter" id="st-filter" role="group" aria-label="Filter stories by campus"></div>
+      <ul class="st-wall" id="st-wall" aria-label="Student stories"></ul>
+      <div class="empty" id="st-empty">
+        <b>No stories for this campus yet</b>
+        <span>Try another campus, or see every story.</span><br>
+        <button class="btn btn-outline" type="button" id="st-reset">Show all stories</button>
+      </div>
+      <noscript><p class="source-note">The story wall needs JavaScript. You can read every story at <a href="https://sisschools.org/essential-voisis/">sisschools.org</a>.</p></noscript>
+    </div>
+  </section>
+
+  <section class="st-cta" data-c="courage" aria-labelledby="cta-title">
+    <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+    <div class="wrap st-cta-inner">
+      <div>
+        <h2 id="cta-title" class="h-sub pills"><span class="pill o">Start</span><span class="sr-only"> </span><span class="pill f">your own story</span></h2>
+        <p>Book a campus tour and see where your first step at SIS could lead.</p>
+      </div>
+      <div class="od-cluster st-cta-actions">
+        <a class="btn btn-white" href="admissions.html#admissions">Start your own story <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <a class="btn btn-on-color" href="news.html">Read SIS news</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- story detail dialog -->
+<div class="dialog dialog-lg st-dialog" id="story-dialog" role="dialog" aria-modal="true" aria-labelledby="sd-title" hidden>
+  <button class="dialog-scrim" type="button" tabindex="-1" aria-label="Close"></button>
+  <div class="dialog-panel">
+    <div class="dialog-head">
+      <h2 class="dialog-title" id="sd-title"></h2>
+      <button class="icon-btn dialog-close" type="button" data-dialog-close aria-label="Close story"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+    </div>
+    <div class="dialog-body" id="sd-body">
+      <figure class="sd-figure"><img class="od-media" id="sd-img" src="" width="16" height="9" alt=""></figure>
+      <div class="od-cluster sd-meta">
+        <span class="sd-campus"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg><span id="sd-campus"></span></span>
+        <span class="chip f" id="sd-cat"></span>
+      </div>
+      <blockquote class="sd-quote">
+        <span class="q" aria-hidden="true"><svg class="icon"><use href="#i-quote"></use></svg></span>
+        <p id="sd-excerpt"></p>
+      </blockquote>
+      <p class="sd-note" id="sd-note" hidden></p>
+      <div class="od-cluster sd-actions">
+        <a class="btn btn-primary" id="sd-video" href="#" target="_blank" rel="noopener" hidden><svg class="icon" aria-hidden="true"><use href="#i-play"></use></svg>Watch the video<span class="sr-only"> on YouTube (opens in a new tab)</span></a>
+        <p class="source-note" id="sd-source" style="margin:0">Source: <a id="sd-source-link" href="#" target="_blank" rel="noopener">sisschools.org</a></p>
+      </div>
+    </div>
+    <div class="dialog-foot">
+      <p class="sd-pos" id="sd-pos" aria-live="polite"></p>
+      <div class="od-row sd-nav">
+        <button class="round-btn" type="button" id="sd-prev" aria-label="Previous story"><svg class="icon" aria-hidden="true"><use href="#i-left"></use></svg></button>
+        <button class="round-btn" type="button" id="sd-next" aria-label="Next story"><svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 6. FOOTER ============ -->
+<footer class="site-footer">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="petals-bg" aria-hidden="true"></div>
+  <div class="wrap footer-inner">
+    <div class="footer-cta">
+      <p class="h-sub pills" style="margin:0">
+        <span class="pill o">Find</span>
+        <span class="pill f intg">Your PACE</span>
+        <span class="pill o">with Us</span>
+      </p>
+      <a class="btn btn-white" href="admissions.html#admissions">Book a campus tour <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand od-stack">
+        <img class="crest" src="assets/SIS-Logo-Website.png" width="150" height="150" alt="SIS crest: a lion above an open book">
+        <p>SIS Group of Schools. Singapore-rooted international education in Indonesia, India, Myanmar and South Korea since 1996.</p>
+        <a class="od-row" href="tel:+622175914414" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg><span class="od-nowrap">+62 21 759 14414</span></a>
+        <a class="od-row" href="mailto:admissions@sisschools.org" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><span class="od-nowrap">admissions@sisschools.org</span></a>
+      </div>
+      <div><h4>Discover</h4><ul><li><a href="index.html#story">About SIS</a></li><li><a href="index.html#values">Core Values</a></li><li><a href="index.html#pace">PACE</a></li><li><a href="stories.html">Stories</a></li></ul></div>
+      <div><h4>Learn</h4><ul><li><a href="index.html#academics">Academics</a></li><li><a href="index.html#university">University pathways</a></li><li><a href="index.html#campuses">Our Schools</a></li><li><a href="scholarships.html">Scholarships</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="news.html">News</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="legal"><span>Unofficial redesign concept, not affiliated with SIS Group of Schools. Content &amp; photos © SIS · official site: <a href="https://sisschools.org/">sisschools.org</a></span><span>Designed with <a href="https://github.com/nexu-io/open-design">Open Design</a> · <a href="https://github.com/sol1560/sis-website-redesign">Source</a></span></div>
+  </div>
+</footer>
+<!-- ============ /FOOTER ============ -->
+
+<!-- ============ 7. TOAST (SIS.toast creates it if missing) ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span></span></div>
+<!-- ============ /TOAST ============ -->
+
+<script src="assets/data.js"></script>
+<script src="assets/sis.js"></script>
+<script>
+(function () {
+  'use strict';
+  var SIS = window.SIS, D = window.SIS_DATA;
+  if (!SIS || !D || !Array.isArray(D.stories)) return;
+  var esc = SIS.esc, $ = SIS.$, $$ = SIS.$$;
+  var COLORS = ['fairness', 'respect', 'integrity', 'compassion', 'courage'];
+  var stories = D.stories.filter(function (s) { return s && s.slug && s.name; });
+  var bySlug = {};
+  stories.forEach(function (s, i) { s._c = COLORS[i % COLORS.length]; s._i = i; bySlug[s.slug] = s; });
+
+  var wall = $('#st-wall'), filterEl = $('#st-filter'), countEl = $('#st-count'), emptyEl = $('#st-empty');
+  var dlg = $('#story-dialog');
+  if (!wall || !dlg) return;
+
+  /* ---------- campuses, in order of first appearance ---------- */
+  var campuses = [];
+  stories.forEach(function (s) { if (s.campus && campuses.indexOf(s.campus) === -1) campuses.push(s.campus); });
+  function countFor(c) { return stories.filter(function (s) { return c === 'all' || s.campus === c; }).length; }
+
+  /* hero stats */
+  var st = $('[data-stat="stories"]'), sc = $('[data-stat="campuses"]');
+  if (st) st.textContent = String(stories.length);
+  if (sc) sc.textContent = String(campuses.length);
+
+  /* ---------- filter buttons ---------- */
+  function fbtn(value, label) {
+    return '<button class="fbtn" type="button" aria-pressed="false" data-campus="' + esc(value) + '"><span class="lbl">' + esc(label) +
+      '</span><span class="count" aria-hidden="true">' + countFor(value) + '</span><span class="sr-only">, ' + countFor(value) + ' stories</span></button>';
+  }
+  if (filterEl) filterEl.innerHTML = fbtn('all', 'All campuses') + campuses.map(function (c) { return fbtn(c, c); }).join('');
+
+  /* ---------- tiles ---------- */
+  function pronounFree(s) { return 'Read ' + s.name + '’s story'; }
+  function moreLabel(s) { return s.videoUrl ? 'Watch the story' : 'Read the story'; }
+  wall.innerHTML = stories.map(function (s) {
+    var img = s.image || null;
+    var shot = '';
+    if (img && img.src) {
+      var ratio = (img.w && img.h) ? ' style="--od-ratio:' + img.w + '/' + img.h + '"' : '';
+      var wh = (img.w && img.h) ? ' width="' + img.w + '" height="' + img.h + '"' : '';
+      shot = '<span class="tile-shot">' +
+        '<img class="od-media duo"' + ratio + ' src="' + esc(img.src) + '"' + wh + ' alt="' + esc(img.alt || '') + '" loading="lazy" decoding="async">' +
+        '<img class="od-media color"' + ratio + ' src="' + esc(img.src) + '"' + wh + ' alt="" loading="lazy" decoding="async">' +
+        (s.videoUrl ? '<span class="play" aria-hidden="true"><svg class="icon"><use href="#i-play"></use></svg></span>' : '') +
+        '</span>';
+    }
+    return '<li class="reveal" data-slug="' + esc(s.slug) + '">' +
+      '<button class="tile" type="button" id="' + esc(s.slug) + '" data-c="' + s._c + '" data-slug="' + esc(s.slug) + '" aria-haspopup="dialog" aria-label="' + esc(s.name + (s.campus ? ', ' + s.campus : '') + '. Open story') + '"' + (s.excerpt ? ' aria-describedby="ex-' + esc(s.slug) + '"' : '') + '>' +
+        '<svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>' +
+        shot +
+        '<span class="tile-text">' +
+          '<span class="pills tile-name"><span class="pill">' + esc(s.name) + '</span></span>' +
+          (s.campus ? '<span class="tile-campus"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>' + esc(s.campus) + '</span>' : '') +
+          (s.excerpt ? '<span class="tile-excerpt od-clamp-3" id="ex-' + esc(s.slug) + '">' + esc(s.excerpt) + '</span>' : '') +
+          '<span class="tile-more"><span class="txt">' + esc(moreLabel(s)) + '</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></span>' +
+        '</span>' +
+      '</button></li>';
+  }).join('');
+  var items = $$('li', wall);
+  var tileOf = function (slug) { return document.getElementById(slug); };
+
+  /* ---------- poster layout: wide / 7+5 / 5+7, recomputed for the visible set ---------- */
+  function layout(visible) {
+    visible.forEach(function (li) {
+      li.classList.remove('span-7', 'span-5');
+      var t = $('.tile', li); t.classList.remove('is-wide', 'mirror', 'flip');
+    });
+    var i = 0, row = 0, wides = 0, pairs = 0, n = visible.length;
+    while (i < n) {
+      var t = $('.tile', visible[i]);
+      if (row % 3 === 0 || n - i === 1) {
+        t.classList.add('is-wide');
+        if (wides++ % 2 === 1) t.classList.add('mirror');
+        i += 1;
+      } else {
+        var a = visible[i], b = visible[i + 1];
+        var bigFirst = pairs++ % 2 === 0;
+        a.classList.add(bigFirst ? 'span-7' : 'span-5');
+        b.classList.add(bigFirst ? 'span-5' : 'span-7');
+        $('.tile', bigFirst ? b : a).classList.add('flip');
+        i += 2;
+      }
+      row++;
+    }
+  }
+
+  /* ---------- filtering ---------- */
+  var active = 'all';
+  function visibleStories() {
+    return stories.filter(function (s) { return active === 'all' || s.campus === active; });
+  }
+  function applyFilter(value, announce) {
+    active = (value === 'all' || campuses.indexOf(value) !== -1) ? value : 'all';
+    if (filterEl) $$('.fbtn', filterEl).forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-campus') === active)); });
+    var shown = [];
+    items.forEach(function (li) {
+      var s = bySlug[li.getAttribute('data-slug')];
+      var on = active === 'all' || s.campus === active;
+      li.hidden = !on;
+      if (on) shown.push(li);
+    });
+    layout(shown);
+    if (emptyEl) emptyEl.classList.toggle('show', shown.length === 0);
+    if (countEl) {
+      var noun = shown.length === 1 ? 'story' : 'stories';
+      countEl.innerHTML = 'Showing <b>' + shown.length + '</b> ' + noun + (active === 'all' ? ' from every campus' : ' from ' + esc(active));
+    }
+    SIS.observeReveal(wall);
+    return announce;
+  }
+  if (filterEl) filterEl.addEventListener('click', function (e) {
+    var b = e.target.closest('.fbtn');
+    if (b) applyFilter(b.getAttribute('data-campus'), true);
+  });
+  var resetBtn = $('#st-reset');
+  if (resetBtn) resetBtn.addEventListener('click', function () {
+    applyFilter('all', true);
+    var first = $('.fbtn', filterEl); if (first) first.focus();
+  });
+  applyFilter('all', false);
+
+  /* ---------- dialog ---------- */
+  var el = {
+    title: $('#sd-title'), img: $('#sd-img'), fig: $('.sd-figure', dlg), campus: $('#sd-campus'), cat: $('#sd-cat'),
+    excerpt: $('#sd-excerpt'), note: $('#sd-note'), video: $('#sd-video'), source: $('#sd-source'), sourceLink: $('#sd-source-link'),
+    pos: $('#sd-pos'), prev: $('#sd-prev'), next: $('#sd-next'), body: $('#sd-body')
+  };
+  var current = null;
+
+  function setHash(slug) {
+    var base = location.pathname + location.search;
+    try { history.replaceState(null, '', slug ? base + '#' + slug : base); } catch (e) { /* file:// or sandbox */ }
+  }
+  function list() {
+    var v = visibleStories();
+    if (current && v.indexOf(current) === -1) v = stories;
+    return v;
+  }
+  function render(s) {
+    current = s;
+    dlg.setAttribute('data-c', s._c);
+    el.title.textContent = s.fullName || s.name;
+    var img = s.image;
+    if (img && img.src) {
+      el.fig.hidden = false;
+      el.img.src = img.src;
+      if (img.w && img.h) { el.img.setAttribute('width', img.w); el.img.setAttribute('height', img.h); el.img.style.setProperty('--od-ratio', img.w + '/' + img.h); }
+      el.img.alt = img.alt || '';
+    } else { el.fig.hidden = true; }
+    el.campus.parentNode.hidden = !s.campus;
+    el.campus.textContent = s.campus || '';
+    el.cat.hidden = !s.category;
+    el.cat.textContent = s.category || '';
+    el.excerpt.parentNode.hidden = !s.excerpt;
+    el.excerpt.textContent = s.excerpt || '';
+    el.note.hidden = !s.note;
+    el.note.textContent = s.note || '';
+    if (s.videoUrl) { el.video.hidden = false; el.video.href = s.videoUrl; } else { el.video.hidden = true; el.video.removeAttribute('href'); }
+    if (s.url) { el.source.hidden = false; el.sourceLink.href = s.url; } else { el.source.hidden = true; }
+    var l = list(), i = l.indexOf(s);
+    el.pos.textContent = 'Story ' + (i + 1) + ' of ' + l.length;
+    el.prev.disabled = l.length < 2;
+    el.next.disabled = l.length < 2;
+    if (el.body) el.body.scrollTop = 0;
+    setHash(s.slug);
+  }
+  function openStory(slug, opener) {
+    var s = bySlug[slug];
+    if (!s) return;
+    render(s);
+    SIS.dialog.open(dlg, opener || tileOf(slug));
+  }
+  function step(d) {
+    if (!current) return;
+    var l = list(), i = l.indexOf(current);
+    if (l.length < 2) return;
+    render(l[(i + d + l.length) % l.length]);
+  }
+  wall.addEventListener('click', function (e) {
+    var t = e.target.closest('.tile');
+    if (t) openStory(t.getAttribute('data-slug'), t);
+  });
+  el.prev.addEventListener('click', function () { step(-1); });
+  el.next.addEventListener('click', function () { step(1); });
+  document.addEventListener('keydown', function (e) {
+    if (!dlg.classList.contains('open') || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+  });
+  dlg.addEventListener('sis:dialog-close', function () {
+    var s = current;
+    current = null;
+    setHash('');
+    /* focus returns to the tile of the story last shown (it may differ from the opener after prev/next) */
+    var t = s && tileOf(s.slug);
+    if (t && !t.closest('li').hidden) t.focus({ preventScroll: false });
+  });
+
+  /* ---------- deep links: stories.html#<slug> ---------- */
+  function fromHash(scroll) {
+    var slug = decodeURIComponent((location.hash || '').slice(1));
+    if (!slug || !bySlug[slug]) return;
+    if (current && current.slug === slug) return;
+    if (active !== 'all' && bySlug[slug].campus !== active) applyFilter('all', false);
+    var t = tileOf(slug);
+    if (t && scroll) t.scrollIntoView({ block: 'center', behavior: 'auto' });
+    openStory(slug, t);
+  }
+  window.addEventListener('hashchange', function () { fromHash(true); });
+  fromHash(true);
+})();
+</script>
+</body></html>

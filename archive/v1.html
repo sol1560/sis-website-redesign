@@ -1,0 +1,1188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SIS Group of Schools — Singapore-rooted. World-ready.</title>
+<meta name="description" content="SIS Group of Schools: Singapore-rooted international education since 1996, across Indonesia, India, Myanmar and South Korea.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* OD-LAYOUT-PRIMITIVES v1 — structure only: display, flex/grid, overflow, wrapping, ratio.
+   Put this @layer first; product CSS outside the layer always wins. */
+@layer od-layout {
+  :where(.od-stack,.od-row,.od-row-top,.od-cluster,.od-grid,.od-field,.od-stat,.od-cell,.od-tile) > :where(*) { min-width: 0; }
+  .od-stack   { display: flex; flex-direction: column; gap: var(--od-gap, 8px); }
+  .od-row     { display: flex; align-items: center; gap: var(--od-gap, 8px); }
+  .od-row-top { display: flex; align-items: flex-start; gap: var(--od-gap, 8px); }
+  .od-cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--od-gap, 8px); }
+  .od-fill    { flex: 1 1 0; min-width: 0; }
+  .od-fixed   { flex: none; }
+  .od-grid    { display: grid; gap: var(--od-gap, 12px); grid-template-columns: repeat(var(--od-cols, 3), minmax(0, 1fr)); }
+  .od-stat, .od-field, .od-cell { display: grid; gap: var(--od-gap, 2px); }
+  :where(.od-stat,.od-field,.od-cell) > :where(*) { display: block; }
+  .od-tile { display: grid; grid-template-rows: auto 1fr; }
+  :where(.od-tile) > :where(*) { display: block; }
+  .od-media { display: block; width: 100%; height: auto; aspect-ratio: var(--od-ratio, auto); }
+  .od-media-cover { object-fit: cover; }
+  .od-truncate { display: block; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .od-clamp-2, .od-clamp-3 { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+  .od-clamp-2 { -webkit-line-clamp: 2; }
+  .od-clamp-3 { -webkit-line-clamp: 3; }
+  .od-lines-2 { min-height: calc(2 * 1.4em); }
+  .od-nowrap  { white-space: nowrap; }
+  .od-keep    { word-break: keep-all; overflow-wrap: anywhere; }
+  .od-screen { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; }
+  .od-scroll { overflow-y: auto; overscroll-behavior: contain; min-height: 0; }
+  .od-rail { display: flex; gap: var(--od-gap, 8px); overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none;
+             padding-inline: var(--od-rail-pad, 16px); scroll-padding-inline: var(--od-rail-pad, 16px); }
+  .od-rail::-webkit-scrollbar { display: none; }
+  :where(.od-rail) > :where(*) { flex: none; scroll-snap-align: start; }
+  :where(.od-rail) > :where(:last-child) { margin-inline-end: var(--od-rail-pad, 16px); }
+  .od-spacer { flex: none; visibility: hidden; pointer-events: none; }
+  .od-touch  { min-width: 44px; min-height: 44px; }
+}
+/* /OD-LAYOUT-PRIMITIVES v1 */
+
+:root {
+  /* palette — derived from the SIS crest (red, gold) and the value-badge teal */
+  --ink: #0E1A24;
+  --ink-2: #1B2B38;
+  --ground: #F5F7F7;
+  --surface: #FFFFFF;
+  --red: #C8102E;
+  --red-deep: #9E0B22;
+  --teal: #0E8C8C;
+  --teal-deep: #0A6464;
+  --teal-wash: #E3F1F1;
+  --gold: #F2B705;
+  --muted: #51606B;
+  --muted-on-ink: #A9B7C1;
+  --line: #DCE2E4;
+  --line-ink: #2C3E4C;
+  --danger: #B3261E;
+  --success: #0A6464;
+
+  /* type */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --fs-14: 14px; --fs-16: 16px; --fs-18: 18px; --fs-22: 22px; --fs-28: 28px;
+  --fs-40: clamp(32px, 3.2vw + 12px, 40px);
+  --fs-56: clamp(36px, 4.4vw + 12px, 56px);
+  --fs-80: clamp(44px, 6vw + 10px, 80px);
+  --fs-112: clamp(56px, 8.5vw + 8px, 112px);
+
+  /* spacing — 8px rhythm */
+  --s-1: 4px; --s-2: 8px; --s-3: 16px; --s-4: 24px; --s-5: 32px; --s-6: 48px; --s-7: 64px; --s-8: 96px; --s-9: 128px;
+  --gutter: clamp(16px, 4vw, 48px);
+  --maxw: 1280px;
+
+  --r-1: 4px; --r-2: 8px;
+  --shield: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+
+  --dur-in: 220ms; --dur-out: 140ms; --dur-lg: 380ms;
+  --ease-out: cubic-bezier(.2,.7,.2,1);
+  --ease-in: cubic-bezier(.5,0,.8,.3);
+  --header-h: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--font-body); font-size: var(--fs-18); line-height: 1.6; }
+img { max-width: 100%; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: 16px; top: -64px; z-index: 100; background: var(--ink); color: #fff; padding: 12px 16px; border-radius: var(--r-1); text-decoration: none; }
+.skip:focus { top: 16px; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: var(--s-8); }
+.eyebrow { font-size: var(--fs-14); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-deep); margin: 0; }
+.on-ink .eyebrow { color: var(--gold); }
+.h-display { font-family: var(--font-display); font-weight: 600; font-variation-settings: "opsz" 144; letter-spacing: -0.02em; line-height: 1.02; margin: 0; }
+.h-section { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-56); line-height: 1.06; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+.lede { font-size: var(--fs-22); line-height: 1.55; color: var(--muted); max-width: 36ch; margin: 0; }
+.on-ink .lede { color: var(--muted-on-ink); }
+.prose { max-width: 62ch; color: var(--muted); margin: 0; }
+em.accent { font-style: italic; color: var(--red); font-weight: 500; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); min-height: 48px; padding: 0 var(--s-4); border-radius: var(--r-1); border: 2px solid transparent; font-weight: 600; font-size: var(--fs-16); text-decoration: none; cursor: pointer; white-space: nowrap;
+  transition: background-color var(--dur-in) var(--ease-out), color var(--dur-in) var(--ease-out), border-color var(--dur-in) var(--ease-out), transform var(--dur-in) var(--ease-out); }
+.btn-primary { background: var(--red); color: #fff; }
+.btn-ghost { background: transparent; border-color: currentColor; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn[disabled] { opacity: .55; cursor: not-allowed; }
+@media (hover: hover) {
+  .btn-primary:hover { background: var(--red-deep); }
+  .btn-ghost:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .on-ink .btn-ghost:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .btn-light:hover { background: var(--gold); }
+}
+.btn:active { transform: translateY(1px); }
+.link-arrow { display: inline-flex; align-items: center; gap: var(--s-2); font-weight: 600; text-decoration: none; min-height: 44px; border-bottom: 2px solid currentColor; }
+.link-arrow svg { transition: transform var(--dur-in) var(--ease-out); }
+@media (hover: hover) { .link-arrow:hover svg { transform: translateX(4px); } .link-arrow:hover { color: var(--red); } }
+.icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
+/* shield mask — the SIS value-badge silhouette */
+.shield { clip-path: var(--shield); }
+
+/* ---------- header ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(245,247,247,.92); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid transparent; transition: border-color var(--dur-in) var(--ease-out); }
+.site-header.scrolled { border-bottom-color: var(--line); }
+.site-header .bar { height: var(--header-h); --od-gap: var(--s-4); }
+.brand { --od-gap: 12px; text-decoration: none; }
+.brand img { width: 44px; height: 44px; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-18); line-height: 1.1; }
+.brand-sub { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); line-height: 1.3; }
+.nav { --od-gap: var(--s-1); }
+.nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; text-decoration: none; font-size: var(--fs-16); font-weight: 500; border-radius: var(--r-1); position: relative; }
+.nav a::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 8px; height: 2px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform var(--dur-in) var(--ease-out); }
+@media (hover: hover) { .nav a:hover::after { transform: scaleX(1); } }
+.nav a[aria-current="true"]::after { transform: scaleX(1); }
+.header-cta { --od-gap: var(--s-2); }
+.header-cta .btn { min-height: 44px; padding: 0 18px; }
+.menu-btn { display: none; width: 48px; height: 48px; border: 0; background: transparent; border-radius: var(--r-1); cursor: pointer; align-items: center; justify-content: center; }
+.menu-btn .icon { width: 26px; height: 26px; }
+
+@media (max-width: 1100px) { .nav { display: none; } .menu-btn { display: inline-flex; } .header-cta .btn-ghost { display: none; } }
+@media (max-width: 560px) { .brand-sub { display: none; } .header-cta .btn-primary { padding: 0 14px; } }
+
+/* drawer */
+.drawer { position: fixed; inset: 0; z-index: 80; display: none; }
+.drawer.open { display: block; }
+.drawer-scrim { position: absolute; inset: 0; background: rgba(14,26,36,.5); opacity: 0; transition: opacity var(--dur-in) var(--ease-out); border: 0; width: 100%; cursor: pointer; }
+.drawer-panel { position: absolute; top: 0; right: 0; bottom: 0; width: min(88vw, 400px); background: var(--surface); padding: var(--s-4); transform: translateX(100%); transition: transform var(--dur-lg) var(--ease-out); display: flex; flex-direction: column; gap: var(--s-4); overflow-y: auto; }
+.drawer.visible .drawer-scrim { opacity: 1; }
+.drawer.visible .drawer-panel { transform: none; }
+.drawer.closing .drawer-scrim { opacity: 0; transition-duration: var(--dur-out); transition-timing-function: var(--ease-in); }
+.drawer.closing .drawer-panel { transform: translateX(100%); transition-duration: 260ms; transition-timing-function: var(--ease-in); }
+.drawer nav a { display: flex; align-items: center; min-height: 56px; font-family: var(--font-display); font-size: var(--fs-28); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--line); }
+.icon-btn { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; border-radius: var(--r-1); cursor: pointer; }
+@media (hover: hover) { .icon-btn:hover { background: var(--teal-wash); } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: var(--s-7) var(--s-8); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: var(--s-7); align-items: center; }
+.hero h1 { font-size: var(--fs-112); }
+.hero h1 .line { display: block; }
+.hero .lede { margin-top: var(--s-5); }
+.hero-actions { margin-top: var(--s-6); --od-gap: var(--s-4); }
+.hero-meta { margin-top: var(--s-6); --od-gap: var(--s-3); color: var(--muted); font-size: var(--fs-14); }
+.hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex: none; }
+.hero-art { display: grid; grid-template-columns: 1.35fr 1fr; gap: var(--s-3); align-items: start; }
+.hero-art figure { margin: 0; }
+.hero-art .main { grid-row: span 2; }
+.hero-art .side { display: grid; gap: var(--s-3); }
+.hero-art .side figure:last-child { margin-top: var(--s-3); }
+.hero-art img { background: var(--line); }
+.hero-caption { margin-top: var(--s-3); font-size: var(--fs-14); color: var(--muted); display: flex; gap: var(--s-2); align-items: baseline; }
+.hero-caption b { color: var(--ink); font-weight: 600; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: var(--s-6); }
+  .hero { padding-top: var(--s-5); }
+}
+
+/* ---------- stats ---------- */
+.stats { background: var(--ink); color: #fff; }
+.stats .od-grid { --od-cols: 4; --od-gap: 0; }
+.stat { padding: var(--s-6) var(--s-4); border-left: 1px solid var(--line-ink); --od-gap: var(--s-2); }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat-num { font-family: var(--font-display); font-size: clamp(40px, 4vw + 8px, 64px); font-weight: 600; line-height: 1; color: #fff; white-space: nowrap; }
+.stat-num small { font-size: .5em; color: var(--gold); margin-left: 2px; }
+.stat-label { font-size: var(--fs-16); color: var(--muted-on-ink); line-height: 1.45; }
+.stats-source { font-size: 13px; color: var(--muted-on-ink); padding-bottom: var(--s-4); margin: 0; }
+@media (max-width: 900px) {
+  .stats .od-grid { --od-cols: 2; }
+  .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+  .stat { border-top: 1px solid var(--line-ink); }
+  .stat:nth-child(-n+2) { border-top: 0; }
+}
+
+/* ---------- origin ---------- */
+.origin-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: center; }
+.origin figure { margin: 0; }
+.origin figcaption { margin-top: var(--s-3); font-size: var(--fs-14); color: var(--muted); }
+.origin .year { font-family: var(--font-display); font-size: var(--fs-112); font-weight: 700; line-height: .9; color: var(--red); margin: 0 0 var(--s-4); letter-spacing: -0.03em; }
+.origin p + p { margin-top: var(--s-3); }
+.mission { margin: var(--s-6) 0 0; padding: var(--s-5) 0 0; border-top: 2px solid var(--ink); font-family: var(--font-display); font-size: var(--fs-28); line-height: 1.35; font-weight: 500; max-width: 30ch; }
+.mission cite { display: block; margin-top: var(--s-3); font-family: var(--font-body); font-style: normal; font-size: var(--fs-14); color: var(--muted); font-weight: 500; }
+@media (max-width: 900px) { .origin-grid { grid-template-columns: 1fr; gap: var(--s-6); } .origin figure { max-width: 420px; } }
+
+/* ---------- FRICC ---------- */
+.values { background: var(--surface); }
+.values-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-6); align-items: end; margin-bottom: var(--s-7); }
+.shields { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-3); }
+.shield-btn { appearance: none; border: 0; background: transparent; padding: 0; cursor: pointer; text-align: center; display: grid; gap: var(--s-3); justify-items: center; }
+.shield-face { width: 100%; max-width: 168px; aspect-ratio: 5 / 6; clip-path: var(--shield); background: var(--teal-wash); color: var(--teal-deep); display: grid; place-items: center; padding-bottom: 12%;
+  transition: background-color var(--dur-in) var(--ease-out), color var(--dur-in) var(--ease-out), transform var(--dur-in) var(--ease-out); }
+.shield-face svg { width: 44%; height: auto; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.shield-letter { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-14); letter-spacing: .14em; color: var(--muted); }
+.shield-name { display: block; font-weight: 600; font-size: var(--fs-18); line-height: 1.3; }
+.shield-btn[aria-selected="true"] .shield-face { background: var(--teal-deep); color: #fff; }
+.shield-btn[aria-selected="true"] .shield-name { color: var(--teal-deep); }
+@media (hover: hover) { .shield-btn:hover .shield-face { transform: translateY(-4px); } .shield-btn[aria-selected="false"]:hover .shield-face { background: #CFE7E7; } }
+.shield-btn:focus-visible { outline: none; }
+.shield-btn:focus-visible .shield-face { outline: 3px solid var(--gold); outline-offset: 0; clip-path: none; border-radius: var(--r-2); }
+.value-panel { margin-top: var(--s-6); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--s-6); padding: var(--s-6) 0 0; border-top: 1px solid var(--line); }
+.value-panel h3 { font-family: var(--font-display); font-size: var(--fs-56); font-weight: 600; margin: 0; line-height: 1; color: var(--teal-deep); }
+.value-panel .kicker { margin: var(--s-2) 0 0; font-size: var(--fs-16); color: var(--muted); }
+.value-panel .body { font-size: var(--fs-22); line-height: 1.55; margin: 0; max-width: 40ch; }
+.value-panel .looks { margin: var(--s-4) 0 0; padding: 0; list-style: none; display: grid; gap: var(--s-2); }
+.value-panel .looks li { display: flex; gap: var(--s-3); align-items: flex-start; color: var(--muted); font-size: var(--fs-16); }
+.value-panel .looks li::before { content: ""; flex: none; width: 10px; height: 12px; margin-top: 7px; background: var(--red); clip-path: var(--shield); }
+.panel-anim { animation: panelIn var(--dur-lg) var(--ease-out); }
+@keyframes panelIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.copy-note { margin-top: var(--s-5); font-size: 13px; color: var(--muted); }
+@media (max-width: 900px) {
+  .values-head { grid-template-columns: 1fr; gap: var(--s-4); }
+  .value-panel { grid-template-columns: 1fr; gap: var(--s-4); }
+}
+@media (max-width: 640px) {
+  .shields { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--s-2); }
+  .shield-name { font-size: 12px; }
+  .shield-letter { display: none; }
+}
+
+/* ---------- PACE ---------- */
+.pace { background: var(--ink); color: #fff; }
+.pace-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-6); align-items: end; margin-bottom: var(--s-7); }
+.pace-head .h-section em { font-style: italic; color: var(--gold); font-weight: 500; }
+.pace-body { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); }
+.pace-rail { position: sticky; top: calc(var(--header-h) + 32px); align-self: start; }
+.pace-letters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
+.pace-letter { appearance: none; border: 0; background: transparent; color: var(--line-ink); cursor: pointer; padding: 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(64px, 8vw, 144px); line-height: 1; text-align: left;
+  transition: color var(--dur-in) var(--ease-out); min-height: 44px; }
+.pace-letter[aria-current="step"] { color: #fff; }
+@media (hover: hover) { .pace-letter:hover { color: var(--muted-on-ink); } .pace-letter[aria-current="step"]:hover { color: #fff; } }
+.pace-progress { margin-top: var(--s-4); height: 4px; background: var(--line-ink); border-radius: 2px; overflow: hidden; }
+.pace-progress span { display: block; height: 100%; width: 100%; background: var(--gold); transform-origin: left; transform: scaleX(.25); transition: transform var(--dur-lg) var(--ease-out); }
+.pace-now { margin-top: var(--s-4); font-size: var(--fs-16); color: var(--muted-on-ink); }
+.pace-now b { color: #fff; font-weight: 600; }
+.pace-chapters { display: grid; gap: var(--s-8); }
+.chapter { padding-bottom: var(--s-6); border-bottom: 1px solid var(--line-ink); }
+.chapter:last-child { border-bottom: 0; }
+.chapter .num { font-size: var(--fs-14); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin: 0; }
+.chapter h3 { font-family: var(--font-display); font-size: var(--fs-56); font-weight: 600; margin: var(--s-2) 0 var(--s-4); line-height: 1.05; }
+.chapter h3 .initial { color: var(--gold); }
+.chapter p { color: var(--muted-on-ink); margin: 0; max-width: 52ch; }
+.chapter .prompt { margin-top: var(--s-4); padding: var(--s-4); background: var(--ink-2); border-radius: var(--r-2); color: #fff; font-size: var(--fs-16); display: flex; gap: var(--s-3); align-items: flex-start; }
+.chapter .prompt .icon { color: var(--gold); margin-top: 3px; }
+.chapter figure { margin: var(--s-5) 0 0; max-width: 360px; }
+.chapter figcaption { margin-top: var(--s-2); font-size: var(--fs-14); color: var(--muted-on-ink); }
+@media (max-width: 900px) {
+  .pace-head { grid-template-columns: 1fr; gap: var(--s-4); }
+  .pace-body { grid-template-columns: 1fr; gap: var(--s-5); }
+  .pace-rail { top: var(--header-h); z-index: 5; background: var(--ink); padding: var(--s-3) 0; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); border-bottom: 1px solid var(--line-ink); }
+  .pace-letter { font-size: 48px; }
+  .pace-now { display: none; }
+  .pace-progress { margin-top: var(--s-2); }
+}
+
+/* ---------- pathways ---------- */
+.path-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-6); align-items: end; margin-bottom: var(--s-6); }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.stage { padding: var(--s-4) var(--s-4) var(--s-5) 0; position: relative; display: grid; gap: var(--s-2); align-content: start; }
+.stage + .stage { padding-left: var(--s-4); border-left: 1px solid var(--line); }
+.stage .step { width: 28px; height: 34px; clip-path: var(--shield); background: var(--red); color: #fff; font-weight: 700; font-size: var(--fs-14); display: grid; place-items: center; padding-bottom: 4px; }
+.stage h3 { font-family: var(--font-display); font-size: var(--fs-28); font-weight: 600; margin: var(--s-2) 0 0; line-height: 1.15; }
+.stage p { margin: 0; color: var(--muted); font-size: var(--fs-16); }
+.curricula { margin-top: var(--s-7); display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-7); align-items: center; }
+.curricula figure { margin: 0; max-width: 400px; }
+.curricula img { border-radius: var(--r-2); border: 1px solid var(--line); background: #fff; }
+.curric-list { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: 0; }
+.curric-list li { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: var(--s-4); padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.curric-list li b { font-weight: 600; }
+.curric-list li span { color: var(--muted); font-size: var(--fs-16); }
+.programmes { margin-top: var(--s-5); --od-gap: var(--s-2); }
+.chip { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px; background: var(--teal-wash); color: var(--teal-deep); font-size: var(--fs-14); font-weight: 600; white-space: nowrap; }
+@media (max-width: 900px) {
+  .path-head, .curricula { grid-template-columns: 1fr; gap: var(--s-4); }
+  .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stage:nth-child(3) { border-left: 0; padding-left: 0; }
+  .stage:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 520px) {
+  .stages { grid-template-columns: 1fr; }
+  .stage + .stage { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+  .curric-list li { grid-template-columns: 1fr; gap: var(--s-1); }
+}
+
+/* ---------- campus finder ---------- */
+.campuses { background: var(--surface); }
+.finder-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5); align-items: end; margin-bottom: var(--s-5); }
+.finder-tools { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--s-4); align-items: center; margin-bottom: var(--s-5); }
+.filter { --od-gap: var(--s-2); --od-rail-pad: 0px; }
+.filter-btn { appearance: none; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); cursor: pointer; font-weight: 600; font-size: var(--fs-16); white-space: nowrap; display: inline-flex; align-items: center; gap: var(--s-2);
+  transition: background-color var(--dur-in) var(--ease-out), border-color var(--dur-in) var(--ease-out), color var(--dur-in) var(--ease-out); }
+.filter-btn .count { font-size: 13px; color: var(--muted); font-weight: 500; }
+.filter-btn[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.filter-btn[aria-pressed="true"] .count { color: var(--muted-on-ink); }
+@media (hover: hover) { .filter-btn[aria-pressed="false"]:hover { border-color: var(--ink); } }
+.search { position: relative; }
+.search .icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.search input { width: 100%; min-height: 48px; padding: 0 16px 0 44px; border: 1.5px solid var(--line); border-radius: var(--r-1); background: var(--ground); font-size: var(--fs-16); }
+.search input:focus { border-color: var(--teal-deep); outline: none; box-shadow: 0 0 0 3px rgba(10,100,100,.2); }
+.campus-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); list-style: none; margin: 0; padding: 0; }
+.campus { border: 1px solid var(--line); border-radius: var(--r-2); padding: var(--s-4); display: grid; gap: var(--s-3); align-content: space-between; background: var(--surface); min-height: 176px;
+  transition: border-color var(--dur-in) var(--ease-out), transform var(--dur-in) var(--ease-out); animation: cardIn var(--dur-lg) var(--ease-out) both; animation-delay: calc(var(--i, 0) * 40ms); }
+@keyframes cardIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (hover: hover) { .campus:hover { border-color: var(--ink); } }
+.campus .top { --od-gap: var(--s-3); }
+.campus .badge { width: 36px; height: 44px; clip-path: var(--shield); background: var(--red); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .04em; display: grid; place-items: center; padding-bottom: 6px; }
+.campus .badge.in { background: var(--teal-deep); }
+.campus .badge.mm { background: var(--ink); }
+.campus .badge.kr { background: var(--red-deep); }
+.campus-name { font-weight: 600; font-size: var(--fs-18); line-height: 1.3; }
+.campus-meta { font-size: var(--fs-14); color: var(--muted); }
+.campus .tour { justify-self: start; display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0; border: 0; background: none; color: var(--red); font-weight: 600; font-size: var(--fs-16); cursor: pointer; }
+@media (hover: hover) { .campus .tour:hover { color: var(--red-deep); text-decoration: underline; text-underline-offset: 4px; } }
+.empty { display: none; padding: var(--s-6); border: 1.5px dashed var(--line); border-radius: var(--r-2); text-align: center; color: var(--muted); }
+.empty.show { display: block; }
+.empty b { display: block; color: var(--ink); font-size: var(--fs-22); font-family: var(--font-display); margin-bottom: var(--s-2); }
+.empty button { margin-top: var(--s-3); }
+.finder-status { font-size: var(--fs-14); color: var(--muted); margin: 0 0 var(--s-3); }
+@media (max-width: 1100px) { .campus-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .finder-head { grid-template-columns: 1fr; }
+  .finder-tools { grid-template-columns: 1fr; }
+  .filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); }
+  .filter::-webkit-scrollbar { display: none; }
+  .campus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) { .campus-grid { grid-template-columns: 1fr; } .campus { min-height: 0; } }
+
+/* ---------- journey ---------- */
+.journey-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5); align-items: end; margin-bottom: var(--s-6); }
+.rail-ctrl { --od-gap: var(--s-2); }
+.round-btn { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--ink); background: transparent; cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+  transition: background-color var(--dur-in) var(--ease-out), color var(--dur-in) var(--ease-out); }
+.round-btn[disabled] { opacity: .35; cursor: not-allowed; }
+@media (hover: hover) { .round-btn:not([disabled]):hover { background: var(--ink); color: #fff; } }
+.journey-rail { --od-gap: var(--s-4); --od-rail-pad: max(var(--gutter), calc((100vw - var(--maxw)) / 2 + var(--gutter))); list-style: none; margin: 0; padding-block: 0 var(--s-2); scroll-behavior: smooth; }
+.moment { width: clamp(248px, 24vw, 300px); display: grid; gap: var(--s-3); align-content: start; }
+.moment img { border-radius: var(--r-2); background: var(--line); }
+.moment .yr { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-40); line-height: 1; color: var(--red); display: flex; align-items: center; gap: var(--s-3); }
+.moment .yr::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.moment h3 { font-size: var(--fs-18); font-weight: 600; margin: 0; line-height: 1.35; }
+.moment p { margin: 0; font-size: var(--fs-16); color: var(--muted); line-height: 1.5; }
+@media (max-width: 640px) { .journey-head { grid-template-columns: 1fr; } }
+
+/* ---------- stories ---------- */
+.stories { background: var(--teal-deep); color: #fff; }
+.stories .h-section { max-width: 18ch; }
+.stories .lede { color: #CFE7E7; }
+.story-grid { margin-top: var(--s-6); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4); list-style: none; padding: 0; }
+.story { display: grid; gap: var(--s-3); text-decoration: none; color: #fff; }
+.story .thumb { position: relative; border-radius: var(--r-2); overflow: hidden; background: #0B4E4E; }
+.story img { transition: transform var(--dur-lg) var(--ease-out); }
+@media (hover: hover) { .story:hover img { transform: scale(1.03); } .story:hover .story-name { text-decoration: underline; text-underline-offset: 4px; } }
+.story-name { font-family: var(--font-display); font-weight: 600; font-size: var(--fs-28); line-height: 1.2; }
+.story-meta { font-size: var(--fs-16); color: #CFE7E7; display: flex; align-items: center; gap: var(--s-2); }
+@media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; max-width: 560px; } }
+
+/* ---------- admissions ---------- */
+.adm-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-8); align-items: start; }
+.steps { list-style: none; margin: var(--s-5) 0 0; padding: 0; counter-reset: s; display: grid; gap: 0; }
+.steps li { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: var(--s-3); padding: var(--s-4) 0; border-top: 1px solid var(--line); }
+.steps li::before { counter-increment: s; content: counter(s); width: 36px; height: 44px; clip-path: var(--shield); background: var(--ink); color: #fff; font-weight: 700; display: grid; place-items: center; padding-bottom: 6px; font-size: var(--fs-16); }
+.steps h3 { margin: 0; font-size: var(--fs-18); font-weight: 600; }
+.steps p { margin: var(--s-1) 0 0; font-size: var(--fs-16); color: var(--muted); }
+.form-card { background: var(--surface); border-radius: var(--r-2); padding: var(--s-6); border: 1px solid var(--line); }
+.form-card h3 { font-family: var(--font-display); font-size: var(--fs-40); font-weight: 600; margin: 0; line-height: 1.1; }
+.form-card .sub { margin: var(--s-2) 0 var(--s-5); color: var(--muted); font-size: var(--fs-16); }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4); }
+.form-grid .full { grid-column: 1 / -1; }
+.field { --od-gap: 6px; }
+.field label { font-weight: 600; font-size: var(--fs-16); }
+.field .req { color: var(--red); margin-left: 2px; }
+.field .hint { font-size: var(--fs-14); color: var(--muted); }
+.field input, .field select, .field textarea { width: 100%; min-height: 48px; padding: 12px 14px; border: 1.5px solid #B8C3C8; border-radius: var(--r-1); background: #fff; font-size: var(--fs-16); line-height: 1.4;
+  transition: border-color var(--dur-in) var(--ease-out), box-shadow var(--dur-in) var(--ease-out); }
+.field textarea { min-height: 112px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--teal-deep); box-shadow: 0 0 0 3px rgba(10,100,100,.2); }
+.field.invalid input, .field.invalid select { border-color: var(--danger); }
+.field .err { display: none; color: var(--danger); font-size: var(--fs-14); font-weight: 500; }
+.field.invalid .err { display: flex; gap: 6px; align-items: flex-start; }
+.field .err .icon { width: 16px; height: 16px; margin-top: 3px; }
+.err-summary { display: none; margin-bottom: var(--s-4); padding: var(--s-3) var(--s-4); border: 1.5px solid var(--danger); border-radius: var(--r-1); background: #FCEEEE; color: var(--ink); font-size: var(--fs-16); }
+.err-summary.show { display: block; }
+.err-summary b { display: block; margin-bottom: var(--s-1); }
+.err-summary ul { margin: 0; padding-left: 20px; }
+.err-summary a { color: var(--danger); font-weight: 600; }
+.form-foot { margin-top: var(--s-5); --od-gap: var(--s-4); flex-wrap: wrap; }
+.form-foot .note { font-size: var(--fs-14); color: var(--muted); }
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(255,255,255,.4); border-top-color: #fff; animation: spin 700ms linear infinite; display: none; }
+.btn.loading .spinner { display: inline-block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.success { display: none; text-align: left; }
+.success.show { display: block; animation: panelIn var(--dur-lg) var(--ease-out); }
+.success .mark { width: 56px; height: 68px; clip-path: var(--shield); background: var(--success); color: #fff; display: grid; place-items: center; padding-bottom: 10px; margin-bottom: var(--s-4); }
+.success .mark .icon { width: 28px; height: 28px; stroke-width: 2.25; }
+.success p { color: var(--muted); margin: var(--s-2) 0 var(--s-5); }
+@media (max-width: 900px) { .adm-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+@media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } .form-card { padding: var(--s-4); } }
+
+/* ---------- footer ---------- */
+.site-footer { background: var(--ink); color: #fff; padding-block: var(--s-8) var(--s-5); }
+.footer-cta { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-5); align-items: end; padding-bottom: var(--s-7); border-bottom: 1px solid var(--line-ink); }
+.footer-cta .h-section { font-size: var(--fs-80); }
+.footer-cta .h-section em { color: var(--gold); font-style: italic; font-weight: 500; }
+.footer-grid { display: grid; grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); gap: var(--s-5); padding-block: var(--s-6); }
+.footer-grid h4 { margin: 0 0 var(--s-3); font-size: var(--fs-14); letter-spacing: .12em; text-transform: uppercase; color: var(--muted-on-ink); font-weight: 600; }
+.footer-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-1); }
+.footer-grid a { text-decoration: none; color: #fff; display: inline-flex; align-items: center; min-height: 36px; font-size: var(--fs-16); }
+@media (hover: hover) { .footer-grid a:hover { color: var(--gold); } }
+.footer-brand { --od-gap: var(--s-3); }
+.footer-brand .crest { width: 64px; height: 64px; background: #fff; border-radius: var(--r-2); padding: 6px; }
+.footer-brand p { margin: 0; color: var(--muted-on-ink); font-size: var(--fs-16); max-width: 34ch; }
+.footer-contact { font-size: var(--fs-16); color: #fff; }
+.legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); padding-top: var(--s-4); border-top: 1px solid var(--line-ink); font-size: var(--fs-14); color: var(--muted-on-ink); }
+@media (max-width: 900px) { .footer-cta { grid-template-columns: 1fr; } .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .footer-grid > :first-child { grid-column: 1 / -1; } }
+
+/* ---------- reveal ---------- */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity var(--dur-lg) var(--ease-out), transform var(--dur-lg) var(--ease-out); transition-delay: calc(var(--d, 0) * 40ms); }
+.reveal.in { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
+
+/* toast */
+.toast { position: fixed; left: 50%; bottom: 24px; z-index: 90; transform: translate(-50%, 16px); opacity: 0; pointer-events: none; background: var(--ink); color: #fff; padding: 14px 20px; border-radius: var(--r-2); font-size: var(--fs-16); max-width: calc(100vw - 32px);
+  transition: opacity var(--dur-in) var(--ease-out), transform var(--dur-in) var(--ease-out); display: flex; gap: var(--s-2); align-items: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+.toast .icon { color: var(--gold); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 1ms !important; animation-iteration-count: 1 !important; transition-duration: 1ms !important; transition-delay: 0ms !important; }
+  .reveal { opacity: 1; transform: none; }
+  .journey-rail { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body class="no-js">
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- icon sprite: one outlined family, 1.75 stroke -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5-5.5 3.5z"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 005.1 5.1l1.4-2.3L19 14.5V18a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z"/></symbol>
+</svg>
+
+<header class="site-header" id="top">
+  <div class="wrap od-row bar">
+    <a class="brand od-row od-fixed" href="#top" aria-label="SIS Group of Schools, home">
+      <img src="../assets/SIS-Logo-Website.png" width="150" height="150" alt="">
+      <span class="od-stack" style="--od-gap:0">
+        <span class="brand-name">SIS</span>
+        <span class="brand-sub">Group of Schools</span>
+      </span>
+    </a>
+    <nav class="nav od-row od-fill" aria-label="Primary">
+      <a href="#story">About</a>
+      <a href="#values">Character</a>
+      <a href="#pace">PACE</a>
+      <a href="#academics">Academics</a>
+      <a href="#campuses">Our Schools</a>
+      <a href="#admissions">Admissions</a>
+    </nav>
+    <span class="od-fill" aria-hidden="true"></span>
+    <div class="header-cta od-row od-fixed">
+      <a class="btn btn-ghost" href="#admissions" data-intent="inquire">Inquire</a>
+      <a class="btn btn-primary" href="#admissions" data-intent="tour">Book a tour</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="drawer-scrim" type="button" tabindex="-1" aria-label="Close menu"></button>
+  <div class="drawer-panel">
+    <div class="od-row">
+      <span class="brand-name od-fill">Menu</span>
+      <button class="icon-btn" type="button" data-close aria-label="Close menu"><svg class="icon"><use href="#i-close"/></svg></button>
+    </div>
+    <nav aria-label="Mobile">
+      <a href="#story">About SIS</a>
+      <a href="#values">Character</a>
+      <a href="#pace">PACE</a>
+      <a href="#academics">Academics</a>
+      <a href="#campuses">Our Schools</a>
+      <a href="#journey">Our Journey</a>
+      <a href="#admissions">Admissions</a>
+    </nav>
+    <div class="od-stack" style="--od-gap:12px">
+      <a class="btn btn-primary" href="#admissions" data-intent="tour">Book a campus tour</a>
+      <a class="btn btn-ghost" href="#admissions" data-intent="inquire">Make an inquiry</a>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow reveal">Singapore Intercultural School · Since 1996</p>
+        <h1 id="hero-title" class="h-display reveal" style="--d:1">
+          <span class="line">Singapore-rooted.</span>
+          <span class="line"><em class="accent">World-ready.</em></span>
+        </h1>
+        <p class="lede reveal" style="--d:2">Thirty years of Singapore-inspired learning, in communities across Indonesia, India, Myanmar and South Korea — an international education that stays trusted, consistent and within reach.</p>
+        <div class="hero-actions od-cluster reveal" style="--d:3">
+          <a class="btn btn-primary" href="#admissions" data-intent="tour">Book a campus tour <svg class="icon"><use href="#i-arrow"/></svg></a>
+          <a class="link-arrow" href="#campuses">Find your campus <svg class="icon"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="hero-meta od-cluster reveal" style="--d:4">
+          <span class="od-row" style="--od-gap:8px"><span class="dot"></span>Singapore · Cambridge · IB</span>
+          <span class="od-row" style="--od-gap:8px"><span class="dot"></span>Preschool to Junior College</span>
+        </div>
+      </div>
+      <div class="reveal" style="--d:2">
+        <div class="hero-art">
+          <figure class="main">
+            <img class="od-media shield" src="../assets/j-1995-conception.webp" width="1080" height="1350" alt="A young SIS student smiling and holding a small tree with its soil in her hands">
+          </figure>
+          <div class="side">
+            <figure><img class="od-media shield" src="../assets/j-2021-expanding-to-india.webp" width="1080" height="1350" alt="Four SIS India students in uniform standing in front of their campus"></figure>
+            <figure><img class="od-media shield" src="../assets/j-2007-first-sis-olympics.webp" width="1080" height="1350" alt="SIS students celebrating with a trophy at a football tournament"></figure>
+          </div>
+        </div>
+        <p class="hero-caption"><b>The shield</b> Every SIS value is worn as a badge. We made it the frame for our students' stories.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats on-ink" aria-label="SIS at a glance">
+    <div class="wrap">
+      <div class="od-grid">
+        <div class="stat od-stat reveal"><span class="stat-num">30</span><span class="stat-label">years of SIS, founded in Jakarta in 1996</span></div>
+        <div class="stat od-stat reveal" style="--d:1"><span class="stat-num">20,000<small>+</small></span><span class="stat-label">students and alumni worldwide</span></div>
+        <div class="stat od-stat reveal" style="--d:2"><span class="stat-num">17<small>+</small></span><span class="stat-label">campuses in 4 countries</span></div>
+        <div class="stat od-stat reveal" style="--d:3"><span class="stat-num">7 <small>yrs</small></span><span class="stat-label">average teacher retention</span></div>
+      </div>
+      <p class="stats-source">Figures as published on sisschools.org.</p>
+    </div>
+  </section>
+
+  <!-- ORIGIN -->
+  <section class="section origin" id="story" aria-labelledby="story-title">
+    <div class="wrap origin-grid">
+      <figure class="reveal">
+        <img class="od-media shield" src="../assets/j-1996-jaspal-sidhu.webp" width="1080" height="1350" alt="SIS founder Jaspal Sidhu, smiling, in a suit">
+        <figcaption>Jaspal Sidhu, founder of SIS</figcaption>
+      </figure>
+      <div>
+        <p class="eyebrow reveal">Where it began</p>
+        <p class="year reveal" style="--d:1" aria-hidden="true">1996</p>
+        <h2 id="story-title" class="h-section reveal" style="--d:2">One Singaporean educator. One school in Jakarta. One belief.</h2>
+        <p class="prose reveal" style="--d:3;margin-top:24px">In 1996, Singaporean educator Jaspal Sidhu opened the first Singapore Intercultural School in Jakarta. He built it on Singapore's education model and on a simple conviction: a world-class education should not be out of reach for the families who want it most.</p>
+        <p class="prose reveal" style="--d:3">Three decades later, that conviction runs through more than seventeen campuses in four countries, and it still shapes every classroom.</p>
+        <blockquote class="mission reveal" style="--d:4">
+          “Quality education that is trusted, consistent, and accessible across communities and generations.”
+          <cite>The SIS commitment</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRICC VALUES -->
+  <section class="section values" id="values" aria-labelledby="values-title">
+    <div class="wrap">
+      <div class="values-head">
+        <div>
+          <p class="eyebrow reveal">Core values · F R I C C</p>
+          <h2 id="values-title" class="h-section reveal" style="--d:1">Five shields every SIS student learns to carry.</h2>
+        </div>
+        <p class="lede reveal" style="--d:2">Grades show what a child knows. Our values shape who they become. Choose a shield to see what it means day to day.</p>
+      </div>
+
+      <div class="shields" role="tablist" aria-label="SIS core values">
+        <button class="shield-btn reveal" role="tab" id="tab-fairness" aria-controls="value-panel" aria-selected="true" data-value="fairness">
+          <span class="shield-face" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 8v32M14 40h20M10 14h28M24 10v4"/><path d="M10 14l-6 13a6 6 0 0012 0L10 14zM38 14l-6 13a6 6 0 0012 0l-6-13z"/></svg></span>
+          <span class="shield-letter" aria-hidden="true">F</span>
+          <span class="shield-name">Fairness</span>
+        </button>
+        <button class="shield-btn reveal" style="--d:1" role="tab" id="tab-respect" aria-controls="value-panel" aria-selected="false" tabindex="-1" data-value="respect">
+          <span class="shield-face" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M24 40S7 30 7 18a8.5 8.5 0 0117-3 8.5 8.5 0 0117 3c0 12-17 22-17 22z"/><path d="M15 24l5 4 4-3 4 3 5-4"/></svg></span>
+          <span class="shield-letter" aria-hidden="true">R</span>
+          <span class="shield-name">Respect</span>
+        </button>
+        <button class="shield-btn reveal" style="--d:2" role="tab" id="tab-integrity" aria-controls="value-panel" aria-selected="false" tabindex="-1" data-value="integrity">
+          <span class="shield-face" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="22" cy="26" r="14"/><circle cx="22" cy="26" r="8"/><circle cx="22" cy="26" r="2"/><path d="M22 26L38 10M33 9h6v6"/></svg></span>
+          <span class="shield-letter" aria-hidden="true">I</span>
+          <span class="shield-name">Integrity</span>
+        </button>
+        <button class="shield-btn reveal" style="--d:3" role="tab" id="tab-compassion" aria-controls="value-panel" aria-selected="false" tabindex="-1" data-value="compassion">
+          <span class="shield-face" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="16" cy="11" r="4"/><circle cx="32" cy="11" r="4"/><path d="M24 42s-15-9-15-20c0-3 2-5 5-5 4 0 6 3 10 8 4-5 6-8 10-8 3 0 5 2 5 5 0 11-15 20-15 20z"/></svg></span>
+          <span class="shield-letter" aria-hidden="true">C</span>
+          <span class="shield-name">Compassion</span>
+        </button>
+        <button class="shield-btn reveal" style="--d:4" role="tab" id="tab-courage" aria-controls="value-panel" aria-selected="false" tabindex="-1" data-value="courage">
+          <span class="shield-face" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M16 6l8 12 8-12"/><circle cx="24" cy="30" r="11"/><path d="M24 24l2 4 4.5.6-3.3 3 .8 4.4-4-2.2-4 2.2.8-4.4-3.3-3L22 28z"/></svg></span>
+          <span class="shield-letter" aria-hidden="true">C</span>
+          <span class="shield-name">Courage</span>
+        </button>
+      </div>
+
+      <div class="value-panel" id="value-panel" role="tabpanel" aria-labelledby="tab-fairness" tabindex="0" aria-live="polite">
+        <div>
+          <h3 data-v="title">Fairness</h3>
+          <p class="kicker" data-v="kicker">Value 1 of 5</p>
+        </div>
+        <div>
+          <p class="body" data-v="body"></p>
+          <ul class="looks" data-v="looks"></ul>
+        </div>
+      </div>
+      <p class="copy-note">Value names are SIS's own. The descriptions are draft copy for SIS to review.</p>
+    </div>
+  </section>
+
+  <!-- PACE -->
+  <section class="section pace on-ink" id="pace" aria-labelledby="pace-title">
+    <div class="wrap">
+      <div class="pace-head">
+        <div>
+          <p class="eyebrow reveal">Desired student learning outcomes</p>
+          <h2 id="pace-title" class="h-section reveal" style="--d:1">Every child learns at their own pace. <em>All of them learn PACE.</em></h2>
+        </div>
+        <p class="lede reveal" style="--d:2">PACE sets out the 21st-century skills that SIS builds into the curriculum at every campus. Here are the four.</p>
+      </div>
+
+      <div class="pace-body">
+        <div class="pace-rail">
+          <div class="pace-letters" role="list" aria-label="PACE chapters">
+            <button class="pace-letter" role="listitem" data-go="p" aria-current="step" aria-label="Perseverance">P</button>
+            <button class="pace-letter" role="listitem" data-go="a" aria-label="Analytical Thinking">A</button>
+            <button class="pace-letter" role="listitem" data-go="c" aria-label="Communication and Collaboration">C</button>
+            <button class="pace-letter" role="listitem" data-go="e" aria-label="Entrepreneurship and Innovation">E</button>
+          </div>
+          <div class="pace-progress" aria-hidden="true"><span></span></div>
+          <p class="pace-now" aria-live="polite">Now reading: <b data-now>Perseverance</b></p>
+        </div>
+
+        <div class="pace-chapters">
+          <article class="chapter" id="pace-p" data-key="p" data-name="Perseverance">
+            <p class="num">01 · P</p>
+            <h3><span class="initial">P</span>erseverance</h3>
+            <p>Students set goals, work steadily toward them, and treat feedback as a tool. When something doesn't work, they revise their approach and keep going.</p>
+            <div class="prompt"><svg class="icon"><use href="#i-spark"/></svg><span>Questions to ask: “What will I try next?” and “What did the feedback tell me?”</span></div>
+            <figure><img class="od-media" src="../assets/j-2007-first-sis-olympics.webp" width="1080" height="1350" alt="Young SIS footballers lifting a trophy together" loading="lazy" style="border-radius:8px"><figcaption>The first SIS Olympics, 2007</figcaption></figure>
+          </article>
+          <article class="chapter" id="pace-a" data-key="a" data-name="Analytical Thinking">
+            <p class="num">02 · A</p>
+            <h3><span class="initial">A</span>nalytical Thinking</h3>
+            <p>Students weigh different perspectives, form hypotheses and test them against evidence. They learn to reason through a problem instead of guessing at it.</p>
+            <div class="prompt"><svg class="icon"><use href="#i-spark"/></svg><span>Questions to ask: “How do I know?” and “What would change my mind?”</span></div>
+          </article>
+          <article class="chapter" id="pace-c" data-key="c" data-name="Communication & Collaboration">
+            <p class="num">03 · C</p>
+            <h3><span class="initial">C</span>ommunication &amp; Collaboration</h3>
+            <p>In schools where many languages meet, students learn to express ideas clearly in more than one language and to contribute to a team as both leader and listener.</p>
+            <div class="prompt"><svg class="icon"><use href="#i-spark"/></svg><span>Questions to ask: “Did everyone understand?” and “What did my team need from me?”</span></div>
+          </article>
+          <article class="chapter" id="pace-e" data-key="e" data-name="Entrepreneurship & Innovation">
+            <p class="num">04 · E</p>
+            <h3><span class="initial">E</span>ntrepreneurship &amp; Innovation</h3>
+            <p>Using design thinking, students spot real problems, prototype solutions and test whether they work. Ideas become useful when someone builds them.</p>
+            <div class="prompt"><svg class="icon"><use href="#i-spark"/></svg><span>Questions to ask: “Who is this for?” and “How could it work better?”</span></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMICS -->
+  <section class="section" id="academics" aria-labelledby="acad-title">
+    <div class="wrap">
+      <div class="path-head">
+        <div>
+          <p class="eyebrow reveal">Academics</p>
+          <h2 id="acad-title" class="h-section reveal" style="--d:1">One continuous path, from first steps to university.</h2>
+        </div>
+        <p class="lede reveal" style="--d:2">SIS students can stay on one connected pathway from preschool through to Junior College, taught with a consistent approach on every campus.</p>
+      </div>
+
+      <ol class="stages">
+        <li class="stage reveal"><span class="step">1</span><h3>Preschool</h3><p>Play-based discovery, first friendships, and early literacy and numeracy.</p></li>
+        <li class="stage reveal" style="--d:1"><span class="step">2</span><h3>Primary</h3><p>Strong foundations in English, mathematics and science, taught in the Singapore tradition.</p></li>
+        <li class="stage reveal" style="--d:2"><span class="step">3</span><h3>Secondary</h3><p>Broader subjects, more independent inquiry, and international qualifications.</p></li>
+        <li class="stage reveal" style="--d:3"><span class="step">4</span><h3>Junior College</h3><p>Pre-university study with university counselling.</p></li>
+      </ol>
+
+      <div class="curricula">
+        <figure class="reveal">
+          <img class="od-media" src="../assets/j-2016-cambridge-ib.webp" width="1081" height="1351" alt="Cambridge International School and International Baccalaureate World School marks" loading="lazy">
+        </figure>
+        <div>
+          <p class="eyebrow reveal">Three recognised curricula</p>
+          <ul class="curric-list">
+            <li class="reveal"><b>Singapore</b><span>The model SIS was founded on, known for rigour in mathematics and science.</span></li>
+            <li class="reveal" style="--d:1"><b>Cambridge</b><span>SIS campuses are Cambridge International Schools.</span></li>
+            <li class="reveal" style="--d:2"><b>IB</b><span>International Baccalaureate programmes at selected campuses.</span></li>
+          </ul>
+          <div class="programmes od-cluster reveal" style="--d:3">
+            <span class="chip">English Bridging Programme</span>
+            <span class="chip">GATEWAY Learning Programme</span>
+            <span class="chip">University counselling</span>
+            <span class="chip">Founder Scholarships</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAMPUS FINDER -->
+  <section class="section campuses" id="campuses" aria-labelledby="camp-title">
+    <div class="wrap">
+      <div class="finder-head">
+        <div>
+          <p class="eyebrow reveal">Our schools</p>
+          <h2 id="camp-title" class="h-section reveal" style="--d:1">Find the SIS near you.</h2>
+        </div>
+      </div>
+      <div class="finder-tools">
+        <div class="filter od-cluster" role="group" aria-label="Filter by country">
+          <button class="filter-btn" type="button" data-country="all" aria-pressed="true">All <span class="count" data-count="all"></span></button>
+          <button class="filter-btn" type="button" data-country="Indonesia" aria-pressed="false">Indonesia <span class="count" data-count="Indonesia"></span></button>
+          <button class="filter-btn" type="button" data-country="India" aria-pressed="false">India <span class="count" data-count="India"></span></button>
+          <button class="filter-btn" type="button" data-country="Myanmar" aria-pressed="false">Myanmar <span class="count" data-count="Myanmar"></span></button>
+          <button class="filter-btn" type="button" data-country="South Korea" aria-pressed="false">South Korea <span class="count" data-count="South Korea"></span></button>
+        </div>
+        <div class="search">
+          <label class="sr-only" for="campus-q">Search campuses by name or city</label>
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="campus-q" type="search" placeholder="Search a city, e.g. Medan" autocomplete="off">
+        </div>
+      </div>
+      <p class="finder-status" id="finder-status" aria-live="polite"></p>
+      <ul class="campus-grid" id="campus-grid"></ul>
+      <div class="empty" id="campus-empty" role="status">
+        <b>No campus matches that search</b>
+        Try another city name or country, or show all campuses.
+        <div><button class="btn btn-ghost" type="button" id="campus-reset">Show all campuses</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="section" id="journey" aria-labelledby="journey-title">
+    <div class="wrap journey-head">
+      <div>
+        <p class="eyebrow reveal">Our journey</p>
+        <h2 id="journey-title" class="h-section reveal" style="--d:1">Thirty years, one step at a time.</h2>
+      </div>
+      <div class="rail-ctrl od-row">
+        <button class="round-btn" type="button" id="rail-prev" aria-label="Earlier moments" aria-controls="journey-rail"><svg class="icon"><use href="#i-left"/></svg></button>
+        <button class="round-btn" type="button" id="rail-next" aria-label="Later moments" aria-controls="journey-rail"><svg class="icon"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <ol class="od-rail journey-rail" id="journey-rail" tabindex="0" aria-label="SIS timeline, 1995 to 2025">
+      <li class="moment"><span class="yr">1995</span><img class="od-media" src="../assets/j-1995-conception.webp" width="1080" height="1350" alt="A child holding a young tree" loading="lazy"><h3>An idea takes root</h3><p>The idea for SIS is conceived.</p></li>
+      <li class="moment"><span class="yr">1996</span><img class="od-media" src="../assets/j-1996-jaspal-sidhu.webp" width="1080" height="1350" alt="Founder Jaspal Sidhu" loading="lazy"><h3>SIS opens in Jakarta</h3><p>Jaspal Sidhu founds the first Singapore Intercultural School.</p></li>
+      <li class="moment"><span class="yr">2003</span><img class="od-media" src="../assets/j-2003-expanding-horizon.webp" width="1080" height="1350" alt="SIS Medan campus exterior" loading="lazy"><h3>Expanding horizons</h3><p>SIS opens beyond Jakarta, in Medan.</p></li>
+      <li class="moment"><span class="yr">2005</span><img class="od-media" src="../assets/j-2005-sis-kelapa-gading-old.webp" width="1080" height="1350" alt="The original SIS Kelapa Gading building" loading="lazy"><h3>Kelapa Gading</h3><p>A new campus serves North East Jakarta.</p></li>
+      <li class="moment"><span class="yr">2007</span><img class="od-media" src="../assets/j-2007-first-sis-olympics.webp" width="1080" height="1350" alt="Students celebrating with a trophy" loading="lazy"><h3>The first SIS Olympics</h3><p>Campuses come together to compete.</p></li>
+      <li class="moment"><span class="yr">2012</span><img class="od-media" src="../assets/j-2012-making-eduation-affordable.webp" width="1080" height="1350" alt="SIS Palembang building under construction" loading="lazy"><h3>Making education affordable</h3><p>SIS Palembang opens.</p></li>
+      <li class="moment"><span class="yr">2016</span><img class="od-media" src="../assets/j-2016-cambridge-ib.webp" width="1081" height="1351" alt="Cambridge and IB marks" loading="lazy"><h3>Cambridge &amp; IB</h3><p>International curricula join the SIS pathway.</p></li>
+      <li class="moment"><span class="yr">2019</span><img class="od-media" src="../assets/j-2019-IFC-award-update.webp" width="1081" height="1351" alt="SIS leaders receiving an IFC award" loading="lazy"><h3>IFC recognition</h3><p>SIS is recognised through its partnership with IFC, part of the World Bank Group.</p></li>
+      <li class="moment"><span class="yr">2020</span><img class="od-media" src="../assets/j-2020-sis-myanmar.webp" width="1080" height="1350" alt="SIS Myanmar campus with red and yellow facade" loading="lazy"><h3>SIS Myanmar</h3><p>A first campus outside Indonesia opens in Yangon.</p></li>
+      <li class="moment"><span class="yr">2021</span><img class="od-media" src="../assets/j-2021-expanding-to-india.webp" width="1080" height="1350" alt="SIS India students" loading="lazy"><h3>Expanding to India</h3><p>SIS opens in Chennai and Mumbai.</p></li>
+      <li class="moment"><span class="yr">2022</span><img class="od-media" src="../assets/j-2022-UNSDG.webp" width="1081" height="1351" alt="UN Sustainable Development Goals logo" loading="lazy"><h3>Aligned with the UN SDGs</h3><p>Learning is linked to the UN Sustainable Development Goals.</p></li>
+      <li class="moment"><span class="yr">2023</span><img class="od-media" src="../assets/j-2023-sis-surabaya.webp" width="1080" height="1350" alt="SIS Surabaya campus" loading="lazy"><h3>SIS Surabaya</h3><p>A new campus opens in East Java.</p></li>
+      <li class="moment"><span class="yr">2024</span><img class="od-media" src="../assets/j-2024-sis-bandung.webp" width="1080" height="1350" alt="SIS Bandung campus" loading="lazy"><h3>SIS Bandung</h3><p>SIS arrives in West Java.</p></li>
+      <li class="moment"><span class="yr">2025</span><img class="od-media" src="../assets/j-2025-sis-north-east-jakarta.webp" width="1080" height="1350" alt="Aerial view of the SIS North East Jakarta campus beside a lake" loading="lazy"><h3>North East Jakarta</h3><p>A new flagship campus for SIS.</p></li>
+    </ol>
+  </section>
+
+  <!-- STORIES -->
+  <section class="section stories" aria-labelledby="stories-title">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--gold)">SIS in every step</p>
+      <h2 id="stories-title" class="h-section reveal" style="margin-top:8px">In their own words.</h2>
+      <p class="lede reveal" style="--d:1;margin-top:16px">SIS students write letters to their younger selves about what they learned along the way.</p>
+      <ul class="story-grid">
+        <li class="reveal"><a class="story" href="https://sisschools.org/about-sis/" target="_blank" rel="noopener">
+          <span class="thumb"><img class="od-media" src="../assets/Madeline-SIS-in-Every-Step.webp" width="2319" height="1305" alt="Video thumbnail: Madeline, SIS Semarang student, reads a letter to her younger self" loading="lazy"></span>
+          <span class="story-name">Madeline</span>
+          <span class="story-meta"><svg class="icon"><use href="#i-play"/></svg>SIS Semarang · Watch on sisschools.org</span>
+        </a></li>
+        <li class="reveal" style="--d:1"><a class="story" href="https://sisschools.org/about-sis/" target="_blank" rel="noopener">
+          <span class="thumb"><img class="od-media" src="../assets/Nikita-Mawarni-SIS-in-Every-Step.webp" width="2319" height="1305" alt="Video thumbnail: Nikita Mawarni's SIS in Every Step story" loading="lazy"></span>
+          <span class="story-name">Nikita Mawarni</span>
+          <span class="story-meta"><svg class="icon"><use href="#i-play"/></svg>Watch on sisschools.org</span>
+        </a></li>
+        <li class="reveal" style="--d:2"><a class="story" href="https://sisschools.org/about-sis/" target="_blank" rel="noopener">
+          <span class="thumb"><img class="od-media" src="../assets/Jin-Hoo-SIS-in-Every-Step.webp" width="2319" height="1305" alt="Video thumbnail: Jin Hoo's SIS in Every Step story" loading="lazy"></span>
+          <span class="story-name">Jin Hoo</span>
+          <span class="story-meta"><svg class="icon"><use href="#i-play"/></svg>Watch on sisschools.org</span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section class="section" id="admissions" aria-labelledby="adm-title">
+    <div class="wrap adm-grid">
+      <div>
+        <p class="eyebrow reveal">Admissions</p>
+        <h2 id="adm-title" class="h-section reveal" style="--d:1">Come and see it for yourself.</h2>
+        <p class="prose reveal" style="--d:2;margin-top:24px">The best way to know whether SIS fits your family is to walk its corridors. Here is how joining works.</p>
+        <ol class="steps">
+          <li class="reveal"><div><h3>Find your campus</h3><p>Choose the SIS campus closest to your home.</p></div></li>
+          <li class="reveal" style="--d:1"><div><h3>Visit</h3><p>Book a campus tour or come to an open house.</p></div></li>
+          <li class="reveal" style="--d:2"><div><h3>Apply online</h3><p>Submit your application through the SIS online admissions platform.</p></div></li>
+          <li class="reveal" style="--d:3"><div><h3>Explore support</h3><p>Ask about Founder Scholarships, offered at selected campuses.</p></div></li>
+        </ol>
+      </div>
+
+      <div class="form-card reveal" style="--d:2">
+        <form id="tour-form" novalidate>
+          <h3 id="form-title">Book a campus tour</h3>
+          <p class="sub" id="form-sub">Tell us a little about your family and the campus will get in touch to confirm a time.</p>
+          <div class="err-summary" id="err-summary" tabindex="-1" role="alert">
+            <b>Please check these details:</b>
+            <ul></ul>
+          </div>
+          <fieldset style="border:0;margin:0;padding:0">
+            <legend class="sr-only">Request type</legend>
+            <div class="od-cluster" style="--od-gap:8px;margin-bottom:24px">
+              <button type="button" class="filter-btn" data-intent-btn="tour" aria-pressed="true">Campus tour</button>
+              <button type="button" class="filter-btn" data-intent-btn="inquire" aria-pressed="false">General inquiry</button>
+            </div>
+          </fieldset>
+          <div class="form-grid">
+            <div class="field od-field" data-field="name">
+              <label for="f-name">Parent or guardian name<span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name">
+              <span class="err" id="e-name"><svg class="icon"><use href="#i-alert"/></svg><span>Enter your full name so the campus knows who to contact.</span></span>
+            </div>
+            <div class="field od-field" data-field="email">
+              <label for="f-email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="e-email">
+              <span class="err" id="e-email"><svg class="icon"><use href="#i-alert"/></svg><span>Enter an email address like name@example.com.</span></span>
+            </div>
+            <div class="field od-field" data-field="phone">
+              <label for="f-phone">Phone or WhatsApp<span class="req" aria-hidden="true">*</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="h-phone e-phone" inputmode="tel">
+              <span class="hint" id="h-phone">Include the country code, e.g. +62</span>
+              <span class="err" id="e-phone"><svg class="icon"><use href="#i-alert"/></svg><span>Enter at least 8 digits, including the country code.</span></span>
+            </div>
+            <div class="field od-field" data-field="campus">
+              <label for="f-campus">Campus<span class="req" aria-hidden="true">*</span></label>
+              <select id="f-campus" name="campus" required aria-describedby="e-campus"><option value="">Select a campus</option></select>
+              <span class="err" id="e-campus"><svg class="icon"><use href="#i-alert"/></svg><span>Choose the campus you'd like to visit.</span></span>
+            </div>
+            <div class="field od-field" data-field="level">
+              <label for="f-level">Your child's stage<span class="req" aria-hidden="true">*</span></label>
+              <select id="f-level" name="level" required aria-describedby="e-level">
+                <option value="">Select a stage</option>
+                <option>Preschool</option><option>Primary</option><option>Secondary</option><option>Junior College</option>
+              </select>
+              <span class="err" id="e-level"><svg class="icon"><use href="#i-alert"/></svg><span>Choose a stage so we can plan the right tour.</span></span>
+            </div>
+            <div class="field od-field" data-field="date">
+              <label for="f-date">Preferred date</label>
+              <input id="f-date" name="date" type="date" aria-describedby="h-date e-date">
+              <span class="hint" id="h-date">Optional. The campus will confirm the time.</span>
+              <span class="err" id="e-date"><svg class="icon"><use href="#i-alert"/></svg><span>Choose a date from tomorrow onwards.</span></span>
+            </div>
+            <div class="field od-field full" data-field="msg">
+              <label for="f-msg">Anything we should know?</label>
+              <textarea id="f-msg" name="msg" aria-describedby="h-msg"></textarea>
+              <span class="hint" id="h-msg">Optional. For example, languages spoken at home or questions about scholarships.</span>
+            </div>
+          </div>
+          <div class="form-foot od-row">
+            <button class="btn btn-primary" type="submit" id="submit-btn"><span class="spinner" aria-hidden="true"></span><span data-label>Request a tour</span></button>
+            <span class="note">This prototype does not send any data.</span>
+          </div>
+        </form>
+        <div class="success" id="form-success" tabindex="-1" role="status">
+          <div class="mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></div>
+          <h3>Thank you. Request received.</h3>
+          <p id="success-text">The campus admissions team will contact you to confirm.</p>
+          <button class="btn btn-ghost" type="button" id="form-again">Send another request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-ink">
+  <div class="wrap">
+    <div class="footer-cta">
+      <h2 class="h-section">Find your <em>pace</em> with us.</h2>
+      <a class="btn btn-light" href="#admissions" data-intent="tour">Book a campus tour <svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand od-stack">
+        <img class="crest" src="../assets/SIS-Logo-Website.png" width="150" height="150" alt="SIS crest: a lion above an open book">
+        <p>SIS Group of Schools. Singapore-rooted international education in Indonesia, India, Myanmar and South Korea since 1996.</p>
+        <a class="footer-contact od-row" href="tel:+622175914414" style="--od-gap:8px"><svg class="icon"><use href="#i-phone"/></svg><span class="od-nowrap">+62 21 759 14414</span></a>
+      </div>
+      <div>
+        <h4>Discover</h4>
+        <ul><li><a href="#story">About SIS</a></li><li><a href="#values">Core values</a></li><li><a href="#pace">PACE</a></li><li><a href="#journey">Our journey</a></li></ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul><li><a href="#academics">Academics</a></li><li><a href="#campuses">Our schools</a></li><li><a href="#admissions">Admissions</a></li><li><a href="#admissions">Scholarships</a></li></ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul><li><a href="https://sisschools.org/" target="_blank" rel="noopener">News</a></li><li><a href="https://sisschools.org/" target="_blank" rel="noopener">Careers</a></li><li><a href="#admissions" data-intent="inquire">Contact us</a></li></ul>
+      </div>
+    </div>
+    <div class="legal"><span>© 2026 SIS Group of Schools</span><span>Redesign concept prototype</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon"><use href="#i-pin"/></svg><span></span></div>
+
+<script>
+document.body.classList.remove('no-js');
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* header state + active nav */
+const header = $('.site-header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
+const navLinks = $$('.nav a');
+const navIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navLinks.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + e.target.id ? 'true' : 'false'));
+}), { rootMargin: '-45% 0px -50% 0px' });
+['story','values','pace','academics','campuses','admissions'].forEach(id => navIO.observe(document.getElementById(id)));
+
+/* reveal */
+const revIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); revIO.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+$$('.reveal').forEach(el => reduce ? el.classList.add('in') : revIO.observe(el));
+
+/* drawer */
+const drawer = $('#drawer'), menuBtn = $('.menu-btn');
+function openDrawer() {
+  drawer.hidden = false; drawer.classList.add('open'); menuBtn.setAttribute('aria-expanded', 'true');
+  requestAnimationFrame(() => drawer.classList.add('visible'));
+  $('[data-close]', drawer).focus(); document.body.style.overflow = 'hidden';
+}
+function closeDrawer(returnFocus = true) {
+  if (!drawer.classList.contains('open')) return;
+  drawer.classList.add('closing'); drawer.classList.remove('visible');
+  setTimeout(() => { drawer.classList.remove('open', 'closing'); drawer.hidden = true; }, reduce ? 0 : 260);
+  menuBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+  if (returnFocus) menuBtn.focus();
+}
+menuBtn.addEventListener('click', openDrawer);
+$('[data-close]', drawer).addEventListener('click', () => closeDrawer());
+$('.drawer-scrim').addEventListener('click', () => closeDrawer());
+$$('nav a, .btn', drawer).forEach(a => a.addEventListener('click', () => closeDrawer(false)));
+drawer.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeDrawer();
+  if (e.key === 'Tab') {
+    const f = $$('a, button:not([tabindex="-1"])', drawer); const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+
+/* FRICC values */
+const VALUES = {
+  fairness: { title: 'Fairness', body: 'Treating everyone by the same standard, whatever their background, language or starting point.', looks: ['Taking turns and sharing resources in class', 'Giving every voice a hearing before a group decides', 'Playing by the rules, even when no one is watching the score'] },
+  respect: { title: 'Respect', body: 'Valuing the people, cultures and ideas around us. In an intercultural school, it is where everything else starts.', looks: ['Learning greetings in a classmate\'s home language', 'Listening fully before disagreeing', 'Caring for shared spaces and materials'] },
+  integrity: { title: 'Integrity', body: 'Doing the right thing and owning our choices, including our mistakes.', looks: ['Handing in work that is honestly our own', 'Keeping promises to teammates', 'Saying "I got that wrong" and fixing it'] },
+  compassion: { title: 'Compassion', body: 'Noticing when someone needs help, and doing something about it.', looks: ['Including the new student at lunch', 'Service projects in the community', 'Asking "Are you okay?" and meaning it'] },
+  courage: { title: 'Courage', body: 'Trying the hard thing: speaking up, attempting the difficult problem, and standing up for what is right.', looks: ['Raising a hand without being sure of the answer', 'Performing, competing or presenting for the first time', 'Standing beside a friend who is being left out'] }
+};
+const tabs = $$('.shield-btn'), panel = $('#value-panel');
+function selectValue(btn, focus) {
+  tabs.forEach(t => { const on = t === btn; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
+  const key = btn.dataset.value, v = VALUES[key], idx = tabs.indexOf(btn) + 1;
+  panel.setAttribute('aria-labelledby', btn.id);
+  $('[data-v="title"]', panel).textContent = v.title;
+  $('[data-v="kicker"]', panel).textContent = `Value ${idx} of 5`;
+  $('[data-v="body"]', panel).textContent = v.body;
+  $('[data-v="looks"]', panel).innerHTML = v.looks.map(l => `<li>${l}</li>`).join('');
+  panel.classList.remove('panel-anim'); void panel.offsetWidth; panel.classList.add('panel-anim');
+  if (focus) btn.focus();
+}
+tabs.forEach((t, i) => {
+  t.addEventListener('click', () => selectValue(t));
+  t.addEventListener('keydown', e => {
+    const k = e.key; let n = null;
+    if (k === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+    if (k === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+    if (k === 'Home') n = tabs[0];
+    if (k === 'End') n = tabs[tabs.length - 1];
+    if (n) { e.preventDefault(); selectValue(n, true); }
+  });
+});
+selectValue(tabs[0]);
+
+/* PACE chapters */
+const letters = $$('.pace-letter'), chapters = $$('.chapter'), bar = $('.pace-progress span'), now = $('[data-now]');
+function setPace(key) {
+  const i = chapters.findIndex(c => c.dataset.key === key);
+  letters.forEach(l => l.dataset.go === key ? l.setAttribute('aria-current', 'step') : l.removeAttribute('aria-current'));
+  bar.style.transform = `scaleX(${(i + 1) / 4})`;
+  now.textContent = chapters[i].dataset.name;
+}
+const paceIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) setPace(e.target.dataset.key); }), { rootMargin: '-40% 0px -55% 0px' });
+chapters.forEach(c => paceIO.observe(c));
+letters.forEach(l => l.addEventListener('click', () => { setPace(l.dataset.go); document.getElementById('pace-' + l.dataset.go).scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }));
+
+/* Campuses */
+const CAMPUSES = [
+  ['SIS South Jakarta', 'Jakarta', 'Indonesia'], ['SIS North East Jakarta', 'Kelapa Gading, Jakarta', 'Indonesia'], ['SIS Pantai Indah Kapuk', 'North Jakarta', 'Indonesia'],
+  ['SIS Senayan', 'Central Jakarta', 'Indonesia'], ['SIS BSD', 'Tangerang', 'Indonesia'], ['SIS Sedayu City', 'Jakarta', 'Indonesia'],
+  ['SIS Cilegon', 'Banten', 'Indonesia'], ['SIS Bandung', 'West Java', 'Indonesia'], ['SIS Semarang', 'Central Java', 'Indonesia'],
+  ['SIS Surabaya', 'East Java', 'Indonesia'], ['SIS Medan', 'North Sumatra', 'Indonesia'], ['SIS Palembang', 'South Sumatra', 'Indonesia'],
+  ['ASIS Chennai', 'Tamil Nadu', 'India'], ['VSIS Mumbai', 'Maharashtra', 'India'],
+  ['SIS Myanmar', 'Yangon', 'Myanmar'], ['SIS Korea', 'Gwangju', 'South Korea']
+];
+const CODE = { 'Indonesia': ['ID', ''], 'India': ['IN', 'in'], 'Myanmar': ['MM', 'mm'], 'South Korea': ['KR', 'kr'] };
+const grid = $('#campus-grid'), empty = $('#campus-empty'), status = $('#finder-status'), q = $('#campus-q');
+let country = 'all';
+$$('[data-count]').forEach(el => { const c = el.dataset.count; el.textContent = c === 'all' ? CAMPUSES.length : CAMPUSES.filter(x => x[2] === c).length; });
+function renderCampuses() {
+  const term = q.value.trim().toLowerCase();
+  const list = CAMPUSES.filter(([n, city, c]) => (country === 'all' || c === country) && (!term || (n + ' ' + city + ' ' + c).toLowerCase().includes(term)));
+  grid.innerHTML = list.map(([n, city, c], i) => `
+    <li class="campus" style="--i:${Math.min(i, 8)}">
+      <div class="top od-row">
+        <span class="badge ${CODE[c][1]}" aria-hidden="true">${CODE[c][0]}</span>
+        <div class="od-fill od-stack" style="--od-gap:2px">
+          <span class="campus-name">${n}</span>
+          <span class="campus-meta">${city}, ${c}</span>
+        </div>
+      </div>
+      <button class="tour" type="button" data-campus="${n}">Book a tour here <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+    </li>`).join('');
+  empty.classList.toggle('show', list.length === 0);
+  status.textContent = list.length ? `Showing ${list.length} of ${CAMPUSES.length} campuses listed` : '';
+}
+$$('.filter-btn[data-country]').forEach(b => b.addEventListener('click', () => {
+  country = b.dataset.country;
+  $$('.filter-btn[data-country]').forEach(x => x.setAttribute('aria-pressed', x === b));
+  renderCampuses();
+}));
+q.addEventListener('input', renderCampuses);
+$('#campus-reset').addEventListener('click', () => { q.value = ''; country = 'all'; $$('.filter-btn[data-country]').forEach(x => x.setAttribute('aria-pressed', x.dataset.country === 'all')); renderCampuses(); q.focus(); });
+renderCampuses();
+
+/* populate campus select */
+const sel = $('#f-campus');
+['Indonesia', 'India', 'Myanmar', 'South Korea'].forEach(c => {
+  const og = document.createElement('optgroup'); og.label = c;
+  CAMPUSES.filter(x => x[2] === c).forEach(([n]) => { const o = document.createElement('option'); o.value = o.textContent = n; og.appendChild(o); });
+  sel.appendChild(og);
+});
+
+const toast = $('#toast'); let toastT;
+function showToast(msg) { $('span', toast).textContent = msg; toast.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('show'), 2600); }
+
+grid.addEventListener('click', e => {
+  const b = e.target.closest('[data-campus]'); if (!b) return;
+  setIntent('tour'); resetForm(false);
+  sel.value = b.dataset.campus; validateField('campus');
+  document.getElementById('admissions').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  showToast(`${b.dataset.campus} selected for your tour`);
+  setTimeout(() => $('#f-name').focus({ preventScroll: true }), reduce ? 0 : 500);
+});
+
+/* Journey rail */
+const rail = $('#journey-rail'), prev = $('#rail-prev'), next = $('#rail-next');
+function railStep() { const m = $('.moment', rail); return m ? m.getBoundingClientRect().width + 24 : 300; }
+function railState() { prev.disabled = rail.scrollLeft <= 4; next.disabled = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4; }
+prev.addEventListener('click', () => rail.scrollBy({ left: -railStep() * 2 }));
+next.addEventListener('click', () => rail.scrollBy({ left: railStep() * 2 }));
+rail.addEventListener('scroll', railState, { passive: true });
+rail.addEventListener('keydown', e => { if (e.key === 'ArrowRight') { e.preventDefault(); rail.scrollBy({ left: railStep() }); } if (e.key === 'ArrowLeft') { e.preventDefault(); rail.scrollBy({ left: -railStep() }); } });
+addEventListener('resize', railState); railState();
+
+/* Form: intent */
+const form = $('#tour-form'), success = $('#form-success'), submitBtn = $('#submit-btn');
+let intent = 'tour';
+function setIntent(i) {
+  intent = i;
+  $$('[data-intent-btn]').forEach(b => b.setAttribute('aria-pressed', b.dataset.intentBtn === i));
+  $('#form-title').textContent = i === 'tour' ? 'Book a campus tour' : 'Make an inquiry';
+  $('#form-sub').textContent = i === 'tour' ? 'Tell us a little about your family and the campus will get in touch to confirm a time.' : 'Ask us anything about SIS, including fees, curricula and scholarships.';
+  $('[data-label]', submitBtn).textContent = i === 'tour' ? 'Request a tour' : 'Send inquiry';
+  $('[data-field="date"]').style.display = i === 'tour' ? '' : 'none';
+}
+$$('[data-intent-btn]').forEach(b => b.addEventListener('click', () => setIntent(b.dataset.intentBtn)));
+$$('a[data-intent]').forEach(a => a.addEventListener('click', () => { setIntent(a.dataset.intent); resetForm(false); }));
+
+/* Form: validation (on blur, then live once invalid) */
+const RULES = {
+  name: v => v.trim().length >= 2,
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+  phone: v => v.replace(/\D/g, '').length >= 8,
+  campus: v => !!v,
+  level: v => !!v,
+  date: v => { if (!v || intent !== 'tour') return true; const d = new Date(v + 'T00:00'); const t = new Date(); t.setHours(0,0,0,0); return d > t; }
+};
+const LABELS = { name: 'Parent or guardian name', email: 'Email', phone: 'Phone or WhatsApp', campus: 'Campus', level: "Your child's stage", date: 'Preferred date' };
+function validateField(name) {
+  const wrap = $(`[data-field="${name}"]`), input = $('input,select', wrap);
+  const ok = RULES[name](input.value);
+  wrap.classList.toggle('invalid', !ok);
+  input.setAttribute('aria-invalid', !ok);
+  return ok;
+}
+Object.keys(RULES).forEach(n => {
+  const el = $(`[data-field="${n}"] input, [data-field="${n}"] select`);
+  el.addEventListener('blur', () => { if (el.value) validateField(n); });
+  el.addEventListener('input', () => { if ($(`[data-field="${n}"]`).classList.contains('invalid')) validateField(n); });
+  el.addEventListener('change', () => { if (el.tagName === 'SELECT') validateField(n); });
+});
+const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+$('#f-date').min = tomorrow.toISOString().slice(0, 10);
+
+const summary = $('#err-summary');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const bad = Object.keys(RULES).filter(n => !validateField(n));
+  if (bad.length) {
+    $('ul', summary).innerHTML = bad.map(n => `<li><a href="#f-${n}">${LABELS[n]}</a></li>`).join('');
+    summary.classList.add('show'); summary.focus();
+    return;
+  }
+  summary.classList.remove('show');
+  submitBtn.disabled = true; submitBtn.classList.add('loading');
+  $('[data-label]', submitBtn).textContent = 'Sending…';
+  setTimeout(() => {
+    submitBtn.disabled = false; submitBtn.classList.remove('loading');
+    form.style.display = 'none';
+    $('#success-text').textContent = intent === 'tour'
+      ? `The ${sel.value} admissions team will contact you to confirm your tour.`
+      : `The ${sel.value} admissions team will reply to your inquiry.`;
+    success.classList.add('show'); success.focus();
+  }, reduce ? 300 : 1100);
+});
+summary.addEventListener('click', e => { const a = e.target.closest('a'); if (!a) return; e.preventDefault(); $(a.getAttribute('href')).focus(); });
+function resetForm(clear = true) {
+  success.classList.remove('show'); form.style.display = '';
+  if (clear) { form.reset(); $$('.field', form).forEach(f => f.classList.remove('invalid')); summary.classList.remove('show'); }
+  setIntent(intent);
+}
+$('#form-again').addEventListener('click', () => { resetForm(true); $('#f-name').focus(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact us · SIS Group of Schools</title>
+<meta name="description" content="Contact SIS Group of Schools: head office details, a directory of every campus, and an inquiry form.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/sis.css">
+<style>
+/* page layer: built only on sis.css tokens */
+.poster { position: relative; overflow: hidden; background: var(--c-fill, var(--ink)); color: var(--c-on-fill, #fff); }
+.poster > .facets { position: absolute; top: 0; right: 0; width: min(64%, 440px); height: 72%; color: var(--facet, #fff); opacity: .26; pointer-events: none; }
+/* dark fills get ink facets so white text keeps its contrast; light fills keep white facets */
+.poster[data-c="fairness"], .poster[data-c="respect"], .poster[data-c="courage"], .poster[data-c="sisred"] { --facet: var(--ink); }
+.poster > :not(.facets) { position: relative; }
+.poster :focus-visible { outline-color: currentColor; }
+.poster a:not(.btn) { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.tint { background: var(--paper); }
+.h-sub { margin: 0; }
+.stat { --od-gap: var(--s-2); }
+.stat .bar { width: 48px; height: 8px; border-radius: var(--pill); background: var(--c); }
+.stat-num { font-size: clamp(32px, 3vw + 8px, 52px); font-weight: 700; line-height: 1.05; }
+.stat-num small { font-size: .45em; font-weight: 500; margin-left: 4px; }
+.stat-label { font-size: var(--fs-16); color: var(--muted); line-height: 1.45; }
+.stat-note { margin: var(--s-4) 0 0; font-size: var(--fs-14); color: var(--muted); }
+.mail-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: var(--fs-16); font-weight: 500; color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; text-decoration-thickness: 2px; overflow-wrap: anywhere; }
+@media (hover: hover) { .mail-link:hover { text-decoration-color: currentColor; } }
+.status-line { margin: 0 0 var(--s-3); font-size: var(--fs-16); color: var(--muted); }
+.status-line b { color: var(--ink); font-weight: 500; }
+.tools { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 360px); gap: var(--s-3); align-items: center; margin-bottom: var(--s-4); }
+@media (max-width: 860px) { .tools { grid-template-columns: 1fr; } }
+.hero-facets { position: relative; min-height: 100%; }
+.quick { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.quick a { display: grid; grid-template-rows: 1fr auto; gap: var(--s-4); min-height: 200px; padding: var(--s-4); text-decoration: none; transition: transform var(--dur-in) var(--ease-out); }
+.quick .q-title { font-size: var(--fs-28); font-weight: 500; line-height: 1.15; align-self: end; }
+.quick .q-go { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--s-2); font-size: var(--fs-16); font-weight: 500; border-top: 2px solid currentColor; padding-top: var(--s-2); }
+@media (hover: hover) { .quick a:hover { transform: translateY(-4px); } }
+@media (max-width: 960px) { .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .quick { grid-template-columns: 1fr; } .quick a { min-height: 140px; } }
+@media (prefers-reduced-motion: reduce) { .quick a:hover { transform: none; } }
+.ct-hero-text { display: grid; gap: var(--s-4); align-content: end; }
+.office { padding: var(--s-5); display: grid; gap: var(--s-4); align-content: start; }
+.office h2 { margin: 0; font-size: var(--fs-28); font-weight: 500; line-height: 1.2; }
+.office .kicker { margin: 0; font-size: var(--fs-14); font-weight: 500; }
+.office ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.office li { border-top: 1px solid currentColor; }
+.office li:last-child { border-bottom: 1px solid currentColor; }
+.office li a { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: var(--s-2) var(--s-3); align-items: center; min-height: 56px; padding: 8px 0; text-decoration: none; }
+.office li .lbl { display: block; font-size: var(--fs-14); }
+.office li .val { display: block; font-size: var(--fs-18); font-weight: 500; overflow-wrap: anywhere; }
+@media (hover: hover) { .office li a:hover .val { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; } }
+.office .office-note { margin: 0; font-size: var(--fs-14); line-height: 1.5; }
+@media (max-width: 560px) { .office { padding: var(--s-4); } }
+
+.dir { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.dir-row { display: grid; grid-template-columns: 16px minmax(0, 3fr) minmax(0, 4fr) auto; gap: var(--s-2) var(--s-4); align-items: center; padding: var(--s-3) 0; border-bottom: 1px solid var(--line); }
+.dir-row[hidden] { display: none; }
+.dir-mark { width: 16px; height: 16px; align-self: start; margin-top: 9px; background: var(--c-fill); }
+.dir-name { margin: 0; font-size: var(--fs-22); font-weight: 500; line-height: 1.25; }
+.dir-meta { margin: 4px 0 0; font-size: var(--fs-14); color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.dir-meta .chip { min-height: 26px; padding: 0 10px; font-size: 13px; border-width: 1.5px; }
+.dir-contact { display: grid; gap: 0; min-width: 0; }
+.dir-contact a { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; font-size: var(--fs-16); color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.dir-contact a span { min-width: 0; }
+@media (hover: hover) { .dir-contact a:hover span { text-decoration: underline; text-underline-offset: 3px; } }
+.dir-note { margin: 4px 0 0; font-size: var(--fs-14); color: var(--muted); line-height: 1.45; }
+.dir-actions { --od-gap: var(--s-2); justify-content: flex-end; }
+.dir-actions .btn { min-height: 44px; padding: 0 18px; font-size: var(--fs-14); }
+@media (max-width: 1024px) { .dir-row { grid-template-columns: 16px minmax(0, 1fr) minmax(0, 1fr); } .dir-actions { grid-column: 2 / -1; justify-content: flex-start; } }
+@media (max-width: 640px) { .dir-row { grid-template-columns: 16px minmax(0, 1fr); } .dir-contact, .dir-actions { grid-column: 2; } }
+
+.inq-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--s-6); align-items: start; }
+.inq-side { padding: var(--s-5) var(--s-4); display: grid; gap: var(--s-3); }
+.inq-side h3 { margin: 0; font-size: var(--fs-28); font-weight: 500; line-height: 1.2; }
+.inq-side p { margin: 0; font-size: var(--fs-16); line-height: 1.55; }
+.inq-side .btn { justify-self: start; }
+@media (max-width: 960px) { .inq-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="no-js" data-page="contact">
+<!-- ============ 1. SKIP LINK ============ -->
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ 2. SVG DEFS + SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="duo-fairness" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.051 0.180 0.918"></feFuncR><feFuncG type="table" tableValues="0.171 0.612 0.961"></feFuncG><feFuncB type="table" tableValues="0.169 0.604 0.960"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-respect" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.049 0.176 0.918"></feFuncR><feFuncG type="table" tableValues="0.121 0.431 0.943"></feFuncG><feFuncB type="table" tableValues="0.154 0.549 0.955"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-integrity" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.249 0.890 0.989"></feFuncR><feFuncG type="table" tableValues="0.183 0.655 0.965"></feFuncG><feFuncB type="table" tableValues="0.052 0.184 0.918"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-compassion" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.251 0.898 0.990"></feFuncR><feFuncG type="table" tableValues="0.139 0.498 0.950"></feFuncG><feFuncB type="table" tableValues="0.065 0.231 0.923"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-courage" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.235 0.839 0.984"></feFuncR><feFuncG type="table" tableValues="0.064 0.227 0.923"></feFuncG><feFuncB type="table" tableValues="0.059 0.212 0.921"></feFuncB></feComponentTransfer></filter>
+  </defs>
+  <symbol id="facets" viewBox="0 0 240 160" preserveAspectRatio="xMidYMin slice">
+    <polygon points="0,0 40,0 40,40" fill="currentColor" fill-opacity="0.87"></polygon>
+    <polygon points="0,0 40,40 0,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="40,0 80,0 40,40" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,0 80,40 40,40" fill="currentColor" fill-opacity="0.83"></polygon>
+    <polygon points="120,0 120,40 80,40" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="120,0 160,0 120,40" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="160,0 160,40 120,40" fill="currentColor" fill-opacity="0.73"></polygon>
+    <polygon points="160,0 200,0 160,40" fill="currentColor" fill-opacity="0.50"></polygon>
+    <polygon points="200,0 200,40 160,40" fill="currentColor" fill-opacity="0.96"></polygon>
+    <polygon points="240,0 240,40 200,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,40 40,40 40,80" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="0,40 40,80 0,80" fill="currentColor" fill-opacity="0.78"></polygon>
+    <polygon points="40,40 80,40 40,80" fill="currentColor" fill-opacity="0.74"></polygon>
+    <polygon points="80,40 80,80 40,80" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,40 120,80 80,80" fill="currentColor" fill-opacity="0.65"></polygon>
+    <polygon points="120,40 160,40 120,80" fill="currentColor" fill-opacity="0.79"></polygon>
+    <polygon points="160,40 160,80 120,80" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="200,40 240,40 200,80" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="240,40 240,80 200,80" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,80 40,80 0,120" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="40,80 40,120 0,120" fill="currentColor" fill-opacity="0.51"></polygon>
+    <polygon points="40,80 80,80 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="40,80 80,120 40,120" fill="currentColor" fill-opacity="0.40"></polygon>
+    <polygon points="80,80 120,80 80,120" fill="currentColor" fill-opacity="0.37"></polygon>
+    <polygon points="120,80 120,120 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="120,80 160,80 160,120" fill="currentColor" fill-opacity="0.42"></polygon>
+    <polygon points="120,80 160,120 120,120" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="160,80 200,80 160,120" fill="currentColor" fill-opacity="0.34"></polygon>
+    <polygon points="200,80 200,120 160,120" fill="currentColor" fill-opacity="0.36"></polygon>
+    <polygon points="200,80 240,80 200,120" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="240,80 240,120 200,120" fill="currentColor" fill-opacity="0.23"></polygon>
+    <polygon points="0,120 40,120 40,160" fill="currentColor" fill-opacity="0.22"></polygon>
+    <polygon points="0,120 40,160 0,160" fill="currentColor" fill-opacity="0.17"></polygon>
+    <polygon points="40,120 80,120 80,160" fill="currentColor" fill-opacity="0.24"></polygon>
+    <polygon points="40,120 80,160 40,160" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="80,120 120,120 120,160" fill="currentColor" fill-opacity="0.13"></polygon>
+    <polygon points="80,120 120,160 80,160" fill="currentColor" fill-opacity="0.21"></polygon>
+    <polygon points="120,120 160,120 160,160" fill="currentColor" fill-opacity="0.18"></polygon>
+    <polygon points="120,120 160,160 120,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="160,120 200,120 200,160" fill="currentColor" fill-opacity="0.15"></polygon>
+    <polygon points="160,120 200,160 160,160" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="200,120 240,120 200,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="240,120 240,160 200,160" fill="currentColor" fill-opacity="0.18"></polygon>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5.5 3.5-5.5 3.5z"></path></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 005.1 5.1l1.4-2.3L19 14.5V18a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z"></path></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.3"></circle></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"></path></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2"></rect><path d="M9 7.5v-2A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5v2M3.5 12.5h17M10.5 12.5v1.5h3v-1.5"></path></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 7.5A3.5 3.5 0 006 11v5.5h4.5V12H6M18 7.5a3.5 3.5 0 00-3.5 3.5v5.5H19V12h-4.5"></path></symbol>
+</svg>
+<!-- ============ /SVG DEFS ============ -->
+
+<!-- ============ 3. HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="wrap od-row bar">
+    <a class="brand od-row od-fixed" href="index.html" aria-label="SIS Group of Schools, home">
+      <img src="assets/SIS-Logo-Website.png" width="150" height="150" alt="">
+      <span class="od-stack" style="--od-gap:0">
+        <span class="brand-name">SIS Group of Schools</span>
+        <span class="brand-sub">Singapore Intercultural School</span>
+      </span>
+    </a>
+    <span class="od-fill" aria-hidden="true"></span>
+    <nav class="nav od-row" aria-label="Primary">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="admissions.html" data-nav="admissions">Admissions</a>
+      <a href="news.html" data-nav="news">News</a>
+    </nav>
+    <div class="header-cta od-row od-fixed">
+      <a class="btn btn-outline" href="contact.html">Inquire</a>
+      <a class="btn btn-primary" href="admissions.html#admissions">Book a tour</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+    </div>
+  </div>
+</header>
+<!-- ============ /HEADER ============ -->
+
+<!-- ============ 4. DRAWER ============ -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="drawer-scrim" type="button" tabindex="-1" aria-label="Close menu"></button>
+  <div class="drawer-panel">
+    <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="drawer-body">
+      <div class="od-row">
+        <span class="brand-name od-fill">Menu</span>
+        <button class="icon-btn" type="button" data-close aria-label="Close menu"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+      <nav aria-label="Mobile">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="news.html" data-nav="news">News</a>
+        <a href="admissions.html#admissions" data-nav="admissions">Admissions</a>
+        <div class="drawer-sub">
+          <a href="stories.html" data-nav="stories">Stories</a>
+          <a href="scholarships.html" data-nav="scholarships">Scholarships</a>
+          <a href="careers.html" data-nav="careers">Careers</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </div>
+      </nav>
+      <div class="od-stack" style="--od-gap:12px">
+        <a class="btn btn-primary" href="admissions.html#admissions">Book a campus tour</a>
+        <a class="btn btn-outline" href="contact.html">Make an inquiry</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ /DRAWER ============ -->
+
+<main id="main">
+  <!-- HERO + HEAD OFFICE -->
+  <section class="page-hero" data-c="respect" aria-labelledby="page-title">
+    <div class="wrap page-hero-inner">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a aria-current="page">Contact</a></li></ol></nav>
+      <div class="page-hero-split">
+        <div class="ct-hero-text">
+          <h1 id="page-title" class="h-pills pills">
+            <span class="pill o">Talk</span>
+            <span class="pill f fair">to</span>
+            <span class="pill f red">Us</span>
+          </h1>
+          <p class="page-intro" id="ct-intro"></p>
+          <div class="page-actions od-cluster">
+            <a class="btn btn-primary" href="#inquiry">Send an inquiry <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn-outline" href="#directory">Find a campus</a>
+          </div>
+        </div>
+        <aside class="office poster" data-c="respect" aria-labelledby="office-title" id="office">
+          <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+          <p class="kicker">Head office</p>
+          <h2 id="office-title">SIS Group of Schools</h2>
+          <ul id="office-list"></ul>
+          <p class="office-note" id="office-note"></p>
+        </aside>
+      </div>
+    </div>
+    <div class="fricc-band" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <!-- DIRECTORY -->
+  <section class="section" id="directory" aria-labelledby="dir-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 id="dir-title" class="h-sub pills reveal">
+            <span class="pill o">Every</span>
+            <span class="pill f resp">Campus</span>
+            <span class="pill o">Directory</span>
+          </h2>
+          <p class="reveal">Call or email a campus directly, or send one inquiry below and choose the campus.</p>
+        </div>
+      </div>
+      <div class="tools">
+        <div class="filter od-cluster" role="group" aria-label="Filter by country" id="dir-filter"></div>
+        <div class="search">
+          <label class="sr-only" for="dir-q">Search campuses by name or city</label>
+          <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input id="dir-q" type="search" placeholder="Search a city, e.g. Medan" autocomplete="off">
+        </div>
+      </div>
+      <p class="status-line" id="dir-status" aria-live="polite"></p>
+      <ul class="dir" id="dir-list"></ul>
+      <div class="empty" id="dir-empty" role="status">
+        <b>No campus matches that search</b>
+        Try another city or country, or show every campus.
+        <div><button class="btn btn-outline" type="button" id="dir-reset">Show all campuses</button></div>
+      </div>
+      <p class="source-note" style="margin-top:var(--s-4)">Contact details as published on sisschools.org. Where a campus has no published phone, email or address, it is left out.</p>
+    </div>
+  </section>
+
+  <!-- INQUIRY -->
+  <section class="section tint" id="inquiry" aria-labelledby="inq-title">
+    <div class="wrap inq-grid">
+      <div class="form-card" style="background:var(--white)">
+        <h2 id="inq-title" class="h-sub pills" style="margin-bottom:var(--s-3)">
+          <span class="pill o">Send</span>
+          <span class="pill f intg">an Inquiry</span>
+        </h2>
+        <p class="sub">Fields marked * are required.</p>
+        <form id="inq-form" novalidate>
+          <div class="err-summary" tabindex="-1" role="alert"><b>Please check these details:</b><ul></ul></div>
+          <div class="form-grid">
+            <div class="field od-field" data-field="name">
+              <label for="inq-name">Your name<span class="req" aria-hidden="true">*</span></label>
+              <input id="inq-name" name="name" type="text" autocomplete="name" aria-describedby="e-name" required>
+              <span class="err" id="e-name"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter your name.</span></span>
+            </div>
+            <div class="field od-field" data-field="email">
+              <label for="inq-email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input id="inq-email" name="email" type="email" autocomplete="email" aria-describedby="e-email" required>
+              <span class="err" id="e-email"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter an email address like name@example.com.</span></span>
+            </div>
+            <div class="field od-field" data-field="phone">
+              <label for="inq-phone">Phone or WhatsApp<span class="req" aria-hidden="true">*</span></label>
+              <input id="inq-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="h-phone e-phone" required>
+              <span class="hint" id="h-phone">Include your country code, e.g. +62.</span>
+              <span class="err" id="e-phone"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter a phone number with at least 8 digits.</span></span>
+            </div>
+            <div class="field od-field" data-field="campus">
+              <label for="inq-campus">Campus<span class="req" aria-hidden="true">*</span></label>
+              <select id="inq-campus" name="campus" aria-describedby="e-campus" required><option value="">Choose a campus…</option><option value="unsure">Not sure yet</option></select>
+              <span class="err" id="e-campus"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Choose a campus, or Not sure yet.</span></span>
+            </div>
+            <div class="field od-field" data-field="stage" id="stage-field">
+              <label for="inq-stage">Child's stage <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+              <select id="inq-stage" name="stage"><option value="">Choose a stage…</option></select>
+            </div>
+            <div class="field od-field" data-field="topic">
+              <label for="inq-topic">Topic<span class="req" aria-hidden="true">*</span></label>
+              <select id="inq-topic" name="topic" aria-describedby="e-topic" required>
+                <option value="">Choose a topic…</option>
+                <option value="admissions">Admissions</option>
+                <option value="fees">Fees</option>
+                <option value="scholarships">Scholarships</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="err" id="e-topic"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Choose what your inquiry is about.</span></span>
+            </div>
+            <div class="field od-field full" data-field="message">
+              <label for="inq-msg">Message<span class="req" aria-hidden="true">*</span></label>
+              <textarea id="inq-msg" name="message" maxlength="800" aria-describedby="c-msg e-msg" required></textarea>
+              <span class="count" id="c-msg" aria-live="polite">0 / 800</span>
+              <span class="err" id="e-msg"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Write at least 10 characters so the team knows how to help.</span></span>
+            </div>
+          </div>
+          <div class="form-foot od-row">
+            <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span><span data-label>Send inquiry</span></button>
+            <span class="note">This prototype does not send data.</span>
+          </div>
+        </form>
+        <div class="success" id="inq-success" tabindex="-1" role="status">
+          <div class="mark"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></div>
+          <h3>Thank you</h3>
+          <p id="inq-success-text">This prototype does not send data.</p>
+          <button class="btn btn-outline" type="button" data-form-again>Send another inquiry</button>
+        </div>
+      </div>
+      <aside class="inq-side poster" data-c="integrity" aria-labelledby="side-title">
+        <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+        <h3 id="side-title">Rather talk now?</h3>
+        <p id="side-text">Call the SIS office, or book a tour and see a campus for yourself.</p>
+        <a class="btn btn-outline" id="side-call" href="#">Call SIS</a>
+        <a class="btn btn-outline" href="admissions.html#admissions">Book a campus tour</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="section" aria-labelledby="quick-title">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="quick-title" class="h-sub pills reveal">
+          <span class="pill o">Quick</span>
+          <span class="pill f cour">Links</span>
+        </h2>
+      </div>
+      <ul class="quick">
+        <li class="reveal"><a class="poster" data-c="courage" href="admissions.html#admissions"><svg class="facets" aria-hidden="true"><use href="#facets"></use></svg><span class="q-title">Book a tour</span><span class="q-go">Admissions <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></span></a></li>
+        <li class="reveal" style="--d:1"><a class="poster" data-c="fairness" href="scholarships.html"><svg class="facets" aria-hidden="true"><use href="#facets"></use></svg><span class="q-title">Scholarships</span><span class="q-go">Founder Scholarship <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></span></a></li>
+        <li class="reveal" style="--d:2"><a class="poster" data-c="respect" href="careers.html"><svg class="facets" aria-hidden="true"><use href="#facets"></use></svg><span class="q-title">Careers</span><span class="q-go">Teach at SIS <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></span></a></li>
+        <li class="reveal" style="--d:3"><a class="poster" data-c="compassion" href="news.html"><svg class="facets" aria-hidden="true"><use href="#facets"></use></svg><span class="q-title">News</span><span class="q-go">Latest from SIS <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></span></a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 6. FOOTER ============ -->
+<footer class="site-footer">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="petals-bg" aria-hidden="true"></div>
+  <div class="wrap footer-inner">
+    <div class="footer-cta">
+      <p class="h-sub pills" style="margin:0">
+        <span class="pill o">Find</span>
+        <span class="pill f intg">Your PACE</span>
+        <span class="pill o">with Us</span>
+      </p>
+      <a class="btn btn-white" href="admissions.html#admissions">Book a campus tour <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand od-stack">
+        <img class="crest" src="assets/SIS-Logo-Website.png" width="150" height="150" alt="SIS crest: a lion above an open book">
+        <p>SIS Group of Schools. Singapore-rooted international education in Indonesia, India, Myanmar and South Korea since 1996.</p>
+        <a class="od-row" href="tel:+622175914414" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg><span class="od-nowrap">+62 21 759 14414</span></a>
+        <a class="od-row" href="mailto:admissions@sisschools.org" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><span class="od-nowrap">admissions@sisschools.org</span></a>
+      </div>
+      <div><h4>Discover</h4><ul><li><a href="index.html#story">About SIS</a></li><li><a href="index.html#values">Core Values</a></li><li><a href="index.html#pace">PACE</a></li><li><a href="stories.html">Stories</a></li></ul></div>
+      <div><h4>Learn</h4><ul><li><a href="index.html#academics">Academics</a></li><li><a href="index.html#university">University pathways</a></li><li><a href="index.html#campuses">Our Schools</a></li><li><a href="scholarships.html">Scholarships</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="news.html">News</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="legal"><span>Unofficial redesign concept, not affiliated with SIS Group of Schools. Content &amp; photos © SIS · official site: <a href="https://sisschools.org/">sisschools.org</a></span><span>Designed with <a href="https://github.com/nexu-io/open-design">Open Design</a> · <a href="https://github.com/sol1560/sis-website-redesign">Source</a></span></div>
+  </div>
+</footer>
+<!-- ============ /FOOTER ============ -->
+
+<!-- ============ 7. TOAST ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span></span></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/sis.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.SIS, D = window.SIS_DATA || {};
+  if (!S) return;
+  var $ = S.$, $$ = S.$$, esc = S.esc;
+  var K = D.contact || {};
+  var ho = K.headOffice || {};
+  var campuses = D.campuses || [];
+  var COLORS = ['fairness', 'respect', 'integrity', 'compassion', 'courage'];
+
+  function telHref(p) {
+    if (!p) return null;
+    var first = String(p).split('/')[0];
+    var plus = /^\s*\(?\s*\+/.test(first);
+    var d = first.replace(/\D/g, '');
+    return d.length >= 6 ? 'tel:' + (plus ? '+' : '') + d : null;
+  }
+  function waHref(p) { var d = String(p || '').replace(/\D/g, ''); return d.length >= 8 ? 'https://wa.me/' + d : null; }
+  function icon(id) { return '<svg class="icon" aria-hidden="true"><use href="#' + id + '"></use></svg>'; }
+
+  /* ---------- hero ---------- */
+  if (K.intro) $('#ct-intro').textContent = K.intro; else $('#ct-intro').hidden = true;
+
+  /* ---------- head office card ---------- */
+  if (ho.name) $('#office-title').textContent = ho.name;
+  var rows = [];
+  var tel = ho.phoneHref || telHref(ho.phone);
+  if (ho.phone && tel) rows.push({ href: tel, icon: 'i-phone', lbl: 'Phone', val: ho.phone });
+  if (ho.email) rows.push({ href: 'mailto:' + ho.email, icon: 'i-mail', lbl: 'Email', val: ho.email });
+  if (K.whatsappGroup && waHref(K.whatsappGroup)) rows.push({ href: waHref(K.whatsappGroup), icon: 'i-phone', lbl: 'WhatsApp', val: K.whatsappGroup, ext: true });
+  if (ho.address) rows.push({ href: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(ho.address), icon: 'i-pin', lbl: 'Address', val: ho.address, ext: true });
+  if (K.social && K.social.youtube) rows.push({ href: K.social.youtube, icon: 'i-play', lbl: 'YouTube', val: 'SIS Group of Schools channel', ext: true });
+  $('#office-list').innerHTML = rows.map(function (r) {
+    return '<li><a href="' + esc(r.href) + '"' + (r.ext ? ' target="_blank" rel="noopener"' : '') + '>' + icon(r.icon) +
+      '<span><span class="lbl">' + esc(r.lbl) + '</span><span class="val">' + esc(r.val) + '</span></span></a></li>';
+  }).join('');
+  var noteBits = [];
+  if (!ho.address) noteBits.push('No separate head office street address is published.');
+  if (K.url) noteBits.push('Source: <a href="' + esc(K.url) + '" target="_blank" rel="noopener">sisschools.org/contact-us</a>.');
+  $('#office-note').innerHTML = noteBits.join(' ');
+  if (!rows.length && !noteBits.length) $('#office').hidden = true;
+
+  var sideCall = $('#side-call');
+  if (ho.phone && tel) { sideCall.href = tel; sideCall.textContent = 'Call ' + ho.phone; }
+  else sideCall.hidden = true;
+
+  /* ---------- directory ---------- */
+  var countries = [];
+  campuses.forEach(function (c) { if (c.country && countries.indexOf(c.country) < 0) countries.push(c.country); });
+  var filterEl = $('#dir-filter');
+  filterEl.innerHTML = '<button class="fbtn" type="button" data-country="all" aria-pressed="true">All <span class="count">' + campuses.length + '</span></button>' +
+    countries.map(function (co) {
+      var n = campuses.filter(function (c) { return c.country === co; }).length;
+      return '<button class="fbtn" type="button" data-country="' + esc(co) + '" aria-pressed="false">' + esc(co) + ' <span class="count">' + n + '</span></button>';
+    }).join('');
+
+  var list = $('#dir-list');
+  list.innerHTML = campuses.map(function (c, i) {
+    var place = [c.city, c.region && c.region !== c.city ? c.region : null].filter(Boolean).join(' · ');
+    var t = telHref(c.phone);
+    var contact = '';
+    if (c.phone && t) contact += '<a href="' + esc(t) + '">' + icon('i-phone') + '<span>' + esc(c.phone) + '</span></a>';
+    if (c.email) contact += '<a href="mailto:' + esc(c.email) + '">' + icon('i-mail') + '<span>' + esc(c.email) + '</span></a>';
+    if (!contact) contact = '<span class="dir-note">No campus phone or email is published.</span>';
+    if (c.notes && /head office/i.test(c.notes)) contact += '<p class="dir-note">These are the group head office contacts.</p>';
+    return '<li class="dir-row reveal" data-i="' + i + '" data-c="' + COLORS[countries.indexOf(c.country) % COLORS.length] + '">' +
+      '<span class="dir-mark" aria-hidden="true"></span>' +
+      '<div><h3 class="dir-name">' + esc(c.name) + '</h3>' +
+        '<p class="dir-meta">' + (place ? '<span>' + esc(place) + '</span>' : '') + '<span class="chip">' + esc(c.country) + '</span>' +
+        (c.status ? '<span class="chip">' + esc(c.status) + '</span>' : '') + '</p></div>' +
+      '<div class="dir-contact">' + contact + '</div>' +
+      '<div class="dir-actions od-cluster">' +
+        '<a class="btn btn-outline" href="campus.html?c=' + encodeURIComponent(c.id) + '">View campus<span class="sr-only">: ' + esc(c.name) + '</span></a>' +
+        '<button class="btn btn-primary" type="button" data-inquire="' + esc(c.id) + '">Inquire<span class="sr-only"> about ' + esc(c.name) + '</span></button>' +
+      '</div></li>';
+  }).join('');
+
+  var state = { country: 'all', q: '' };
+  var status = $('#dir-status'), empty = $('#dir-empty');
+  function hay(c) { return [c.name, c.shortName, c.city, c.region, c.country, c.status].filter(Boolean).join(' ').toLowerCase(); }
+  function render() {
+    var q = state.q.trim().toLowerCase(), n = 0;
+    $$('.dir-row', list).forEach(function (li) {
+      var c = campuses[+li.getAttribute('data-i')];
+      var ok = (state.country === 'all' || c.country === state.country) && (!q || hay(c).indexOf(q) > -1);
+      li.hidden = !ok; if (ok) n++;
+    });
+    status.innerHTML = n
+      ? 'Showing <b>' + n + ' of ' + campuses.length + '</b> campuses' + (state.country !== 'all' ? ' in ' + esc(state.country) : '') + (q ? ' for “' + esc(state.q.trim()) + '”' : '')
+      : 'No campuses found';
+    empty.classList.toggle('show', n === 0);
+  }
+  filterEl.addEventListener('click', function (e) {
+    var b = e.target.closest('.fbtn'); if (!b) return;
+    state.country = b.getAttribute('data-country');
+    $$('.fbtn', filterEl).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    render();
+  });
+  var qInput = $('#dir-q'), qT;
+  qInput.addEventListener('input', function () { clearTimeout(qT); qT = setTimeout(function () { state.q = qInput.value; render(); }, 120); });
+  $('#dir-reset').addEventListener('click', function () {
+    state = { country: 'all', q: '' }; qInput.value = '';
+    $$('.fbtn', filterEl).forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-country') === 'all' ? 'true' : 'false'); });
+    render(); qInput.focus();
+  });
+  render();
+
+  /* ---------- inquiry form selects ---------- */
+  var campSel = $('#inq-campus');
+  campSel.insertAdjacentHTML('beforeend', countries.map(function (co) {
+    return '<optgroup label="' + esc(co) + '">' + campuses.filter(function (c) { return c.country === co; }).map(function (c) {
+      return '<option value="' + esc(c.id) + '">' + esc(c.name) + (c.status ? ' (' + esc(c.status) + ')' : '') + '</option>';
+    }).join('') + '</optgroup>';
+  }).join(''));
+  var levels = (K.formLevels || []).filter(Boolean);
+  if (levels.length) {
+    $('#inq-stage').insertAdjacentHTML('beforeend', levels.map(function (l) { return '<option>' + esc(l) + '</option>'; }).join('') + '<option value="n/a">Not applicable</option>');
+  } else { $('#stage-field').hidden = true; }
+
+  var form = S.validateForm($('#inq-form'), {
+    name: { test: S.rules.minLength(2), label: 'Your name' },
+    email: { test: S.rules.email, label: 'Email' },
+    phone: { test: S.rules.phone, label: 'Phone or WhatsApp' },
+    campus: { test: S.rules.required, label: 'Campus' },
+    topic: { test: S.rules.required, label: 'Topic' },
+    message: { test: S.rules.minLength(10), label: 'Message' }
+  }, {
+    success: '#inq-success',
+    loadingText: 'Sending…',
+    onSuccess: function (v) {
+      var first = String(v.name || '').trim().split(/\s+/)[0];
+      var opt = campSel.options[campSel.selectedIndex];
+      var camp = v.campus && v.campus !== 'unsure' && opt ? opt.text : 'the SIS team';
+      $('#inq-success-text').textContent = 'Thank you, ' + first + '. Your inquiry for ' + camp + ' is ready. This prototype does not send data, so please call or email the campus to reach a person today.';
+      cnt.textContent = '0 / 800';
+    }
+  });
+
+  var msg = $('#inq-msg'), cnt = $('#c-msg');
+  msg.addEventListener('input', function () { cnt.textContent = msg.value.length + ' / 800'; });
+
+  function preselect(id) {
+    for (var i = 0; i < campSel.options.length; i++) if (campSel.options[i].value === id) { campSel.value = id; return true; }
+    return false;
+  }
+  list.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-inquire]'); if (!b) return;
+    if (preselect(b.getAttribute('data-inquire')) && form) form.validateField('campus');
+    $('#inquiry').scrollIntoView({ behavior: S.reduce ? 'auto' : 'smooth', block: 'start' });
+    setTimeout(function () { $('#inq-name').focus({ preventScroll: true }); }, S.reduce ? 0 : 400);
+    S.toast('Campus selected: ' + campSel.options[campSel.selectedIndex].text);
+  });
+
+  /* ?campus=<id> and ?topic=<topic> */
+  var pc = S.param('campus');
+  if (pc) preselect(pc);
+  var pt = (S.param('topic') || '').toLowerCase();
+  if (pt) { var ts = $('#inq-topic'); for (var j = 0; j < ts.options.length; j++) if (ts.options[j].value === pt) ts.value = pt; }
+
+  S.observeReveal();
+})();
+</script>
+</body></html>

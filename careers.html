@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Careers: Teach at SIS · SIS Group of Schools</title>
+<meta name="description" content="Teach at SIS Group of Schools: open roles by campus, how to apply, and a quick application form.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/sis.css">
+<style>
+/* page layer: built only on sis.css tokens */
+.poster { position: relative; overflow: hidden; background: var(--c-fill, var(--ink)); color: var(--c-on-fill, #fff); }
+.poster > .facets { position: absolute; top: 0; right: 0; width: min(64%, 440px); height: 72%; color: var(--facet, #fff); opacity: .26; pointer-events: none; }
+/* dark fills get ink facets so white text keeps its contrast; light fills keep white facets */
+.poster[data-c="fairness"], .poster[data-c="respect"], .poster[data-c="courage"], .poster[data-c="sisred"] { --facet: var(--ink); }
+.poster > :not(.facets) { position: relative; }
+.poster :focus-visible { outline-color: currentColor; }
+.poster a:not(.btn) { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.tint { background: var(--paper); }
+.h-sub { margin: 0; }
+.stat { --od-gap: var(--s-2); }
+.stat .bar { width: 48px; height: 8px; border-radius: var(--pill); background: var(--c); }
+.stat-num { font-size: clamp(32px, 3vw + 8px, 52px); font-weight: 700; line-height: 1.05; }
+.stat-num small { font-size: .45em; font-weight: 500; margin-left: 4px; }
+.stat-label { font-size: var(--fs-16); color: var(--muted); line-height: 1.45; }
+.stat-note { margin: var(--s-4) 0 0; font-size: var(--fs-14); color: var(--muted); }
+.mail-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: var(--fs-16); font-weight: 500; color: var(--ink); text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; text-decoration-thickness: 2px; overflow-wrap: anywhere; }
+@media (hover: hover) { .mail-link:hover { text-decoration-color: currentColor; } }
+.status-line { margin: 0 0 var(--s-3); font-size: var(--fs-16); color: var(--muted); }
+.status-line b { color: var(--ink); font-weight: 500; }
+.tools { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 360px); gap: var(--s-3); align-items: center; margin-bottom: var(--s-4); }
+@media (max-width: 860px) { .tools { grid-template-columns: 1fr; } }
+.hero-facets { position: relative; min-height: 100%; }
+.quick { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-3); }
+.quick a { display: grid; grid-template-rows: 1fr auto; gap: var(--s-4); min-height: 200px; padding: var(--s-4); text-decoration: none; transition: transform var(--dur-in) var(--ease-out); }
+.quick .q-title { font-size: var(--fs-28); font-weight: 500; line-height: 1.15; align-self: end; }
+.quick .q-go { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--s-2); font-size: var(--fs-16); font-weight: 500; border-top: 2px solid currentColor; padding-top: var(--s-2); }
+@media (hover: hover) { .quick a:hover { transform: translateY(-4px); } }
+@media (max-width: 960px) { .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .quick { grid-template-columns: 1fr; } .quick a { min-height: 140px; } }
+@media (prefers-reduced-motion: reduce) { .quick a:hover { transform: none; } }
+.car-hero-text { display: grid; gap: var(--s-4); align-content: end; }
+.hero-poster { margin: 0; display: grid; padding-top: clamp(56px, 8vw, 104px); max-width: 520px; width: 100%; justify-self: end; }
+.hero-poster > .facets { width: 100%; height: 46%; opacity: .5; }
+@media (max-width: 960px) { .hero-poster { justify-self: start; max-width: 420px; } }
+.fact-band { padding-block: var(--s-6); background: var(--paper); }
+.fact-band .od-grid { --od-cols: 4; --od-gap: var(--s-5); }
+@media (max-width: 1024px) { .fact-band .od-grid { --od-cols: 2; } }
+@media (max-width: 480px) { .fact-band .od-grid { --od-cols: 1; } }
+
+.why { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.why li { display: grid; grid-template-rows: auto 1fr auto; gap: var(--s-4); min-height: 380px; padding: var(--s-5) var(--s-4) var(--s-4); }
+.why .w-kicker { font-size: var(--fs-16); font-weight: 500; margin: 0; }
+.why .w-num { align-self: end; font-size: var(--fs-80); font-weight: 700; line-height: .9; letter-spacing: -.02em; }
+.why .w-num small { font-size: .4em; font-weight: 500; margin-left: 6px; letter-spacing: 0; }
+.why .w-text { margin: 0; font-size: var(--fs-18); line-height: 1.45; border-top: 2px solid currentColor; padding-top: var(--s-3); }
+@media (max-width: 900px) { .why { grid-template-columns: 1fr; } .why li { min-height: 0; } }
+
+.openings { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-2); }
+.opening { border: 2px solid var(--ink); background: #fff; }
+.op-h { margin: 0; font-size: inherit; font-weight: inherit; }
+.op-btn { width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: var(--s-3); align-items: center; padding: var(--s-2); padding-right: var(--s-4); border: 0; background: transparent; text-align: left; cursor: pointer; }
+.op-btn:focus-visible { outline-offset: -5px; }
+.op-count { display: grid; place-items: center; width: 64px; height: 64px; background: var(--c-fill); color: var(--c-on-fill); font-size: var(--fs-28); font-weight: 700; line-height: 1; }
+.op-name { font-size: var(--fs-22); font-weight: 500; line-height: 1.25; }
+.op-sub { display: block; font-size: var(--fs-14); color: var(--muted); font-weight: 400; }
+.op-plus { width: 24px; height: 24px; transition: transform var(--dur-in) var(--ease-out); }
+.op-btn[aria-expanded="true"] .op-plus { transform: rotate(45deg); }
+@media (hover: hover) { .op-btn:hover .op-name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; } }
+.op-panel { padding: var(--s-2) var(--s-4) var(--s-5) calc(64px + var(--s-2) + var(--s-3)); display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--s-5); border-top: 1px solid var(--line); }
+.op-panel[hidden] { display: none; }
+.op-panel h4 { margin: var(--s-3) 0 var(--s-2); font-size: var(--fs-16); font-weight: 500; color: var(--muted); }
+.op-panel p { margin: 0 0 var(--s-3); font-size: var(--fs-16); line-height: 1.6; }
+.roles { list-style: none; margin: 0; padding: 0; }
+.roles li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-2) var(--s-3); align-items: center; padding: 8px 0; border-top: 1px solid var(--line); font-size: var(--fs-16); font-weight: 500; }
+.roles li:last-child { border-bottom: 1px solid var(--line); }
+.roles li[hidden] { display: none; }
+.roles .btn { min-height: 40px; padding: 0 16px; font-size: var(--fs-14); }
+.op-mails { --od-gap: 0 var(--s-4); }
+.op-empty { color: var(--muted); }
+@media (max-width: 860px) { .op-panel { grid-template-columns: 1fr; gap: 0; padding-left: var(--s-4); } }
+@media (max-width: 480px) { .op-btn { grid-template-columns: auto minmax(0, 1fr) auto; } .op-btn .chip { display: none; } .op-count { width: 52px; height: 52px; font-size: var(--fs-22); } .op-panel { padding-inline: var(--s-3); } .roles li { grid-template-columns: 1fr; } .roles .btn { justify-self: start; } }
+.list-note { margin: var(--s-4) 0 0; }
+
+.apply-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: var(--s-6); align-items: start; }
+.alt { padding: var(--s-5) var(--s-4); display: grid; gap: var(--s-3); }
+.alt h3 { margin: 0; font-size: var(--fs-28); font-weight: 500; line-height: 1.2; }
+.alt p { margin: 0; font-size: var(--fs-16); line-height: 1.55; }
+.alt .mail-link { color: inherit; text-decoration-color: currentColor; }
+.alt dl { margin: 0; display: grid; gap: var(--s-3); }
+.alt dt { font-size: var(--fs-14); font-weight: 500; }
+.alt dd { margin: 0; }
+@media (max-width: 960px) { .apply-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="no-js" data-page="careers">
+<!-- ============ 1. SKIP LINK ============ -->
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ 2. SVG DEFS + SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="duo-fairness" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.051 0.180 0.918"></feFuncR><feFuncG type="table" tableValues="0.171 0.612 0.961"></feFuncG><feFuncB type="table" tableValues="0.169 0.604 0.960"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-respect" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.049 0.176 0.918"></feFuncR><feFuncG type="table" tableValues="0.121 0.431 0.943"></feFuncG><feFuncB type="table" tableValues="0.154 0.549 0.955"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-integrity" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.249 0.890 0.989"></feFuncR><feFuncG type="table" tableValues="0.183 0.655 0.965"></feFuncG><feFuncB type="table" tableValues="0.052 0.184 0.918"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-compassion" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.251 0.898 0.990"></feFuncR><feFuncG type="table" tableValues="0.139 0.498 0.950"></feFuncG><feFuncB type="table" tableValues="0.065 0.231 0.923"></feFuncB></feComponentTransfer></filter>
+    <filter id="duo-courage" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values=".3 .59 .11 0 0 .3 .59 .11 0 0 .3 .59 .11 0 0 0 0 0 1 0"></feColorMatrix><feComponentTransfer><feFuncR type="table" tableValues="0.235 0.839 0.984"></feFuncR><feFuncG type="table" tableValues="0.064 0.227 0.923"></feFuncG><feFuncB type="table" tableValues="0.059 0.212 0.921"></feFuncB></feComponentTransfer></filter>
+  </defs>
+  <symbol id="facets" viewBox="0 0 240 160" preserveAspectRatio="xMidYMin slice">
+    <polygon points="0,0 40,0 40,40" fill="currentColor" fill-opacity="0.87"></polygon>
+    <polygon points="0,0 40,40 0,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="40,0 80,0 40,40" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,0 80,40 40,40" fill="currentColor" fill-opacity="0.83"></polygon>
+    <polygon points="120,0 120,40 80,40" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="120,0 160,0 120,40" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="160,0 160,40 120,40" fill="currentColor" fill-opacity="0.73"></polygon>
+    <polygon points="160,0 200,0 160,40" fill="currentColor" fill-opacity="0.50"></polygon>
+    <polygon points="200,0 200,40 160,40" fill="currentColor" fill-opacity="0.96"></polygon>
+    <polygon points="240,0 240,40 200,40" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,40 40,40 40,80" fill="currentColor" fill-opacity="0.59"></polygon>
+    <polygon points="0,40 40,80 0,80" fill="currentColor" fill-opacity="0.78"></polygon>
+    <polygon points="40,40 80,40 40,80" fill="currentColor" fill-opacity="0.74"></polygon>
+    <polygon points="80,40 80,80 40,80" fill="currentColor" fill-opacity="0.48"></polygon>
+    <polygon points="80,40 120,80 80,80" fill="currentColor" fill-opacity="0.65"></polygon>
+    <polygon points="120,40 160,40 120,80" fill="currentColor" fill-opacity="0.79"></polygon>
+    <polygon points="160,40 160,80 120,80" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="200,40 240,40 200,80" fill="currentColor" fill-opacity="0.77"></polygon>
+    <polygon points="240,40 240,80 200,80" fill="currentColor" fill-opacity="0.62"></polygon>
+    <polygon points="0,80 40,80 0,120" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="40,80 40,120 0,120" fill="currentColor" fill-opacity="0.51"></polygon>
+    <polygon points="40,80 80,80 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="40,80 80,120 40,120" fill="currentColor" fill-opacity="0.40"></polygon>
+    <polygon points="80,80 120,80 80,120" fill="currentColor" fill-opacity="0.37"></polygon>
+    <polygon points="120,80 120,120 80,120" fill="currentColor" fill-opacity="0.52"></polygon>
+    <polygon points="120,80 160,80 160,120" fill="currentColor" fill-opacity="0.42"></polygon>
+    <polygon points="120,80 160,120 120,120" fill="currentColor" fill-opacity="0.44"></polygon>
+    <polygon points="160,80 200,80 160,120" fill="currentColor" fill-opacity="0.34"></polygon>
+    <polygon points="200,80 200,120 160,120" fill="currentColor" fill-opacity="0.36"></polygon>
+    <polygon points="200,80 240,80 200,120" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="240,80 240,120 200,120" fill="currentColor" fill-opacity="0.23"></polygon>
+    <polygon points="0,120 40,120 40,160" fill="currentColor" fill-opacity="0.22"></polygon>
+    <polygon points="0,120 40,160 0,160" fill="currentColor" fill-opacity="0.17"></polygon>
+    <polygon points="40,120 80,120 80,160" fill="currentColor" fill-opacity="0.24"></polygon>
+    <polygon points="40,120 80,160 40,160" fill="currentColor" fill-opacity="0.29"></polygon>
+    <polygon points="80,120 120,120 120,160" fill="currentColor" fill-opacity="0.13"></polygon>
+    <polygon points="80,120 120,160 80,160" fill="currentColor" fill-opacity="0.21"></polygon>
+    <polygon points="120,120 160,120 160,160" fill="currentColor" fill-opacity="0.18"></polygon>
+    <polygon points="120,120 160,160 120,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="160,120 200,120 200,160" fill="currentColor" fill-opacity="0.15"></polygon>
+    <polygon points="160,120 200,160 160,160" fill="currentColor" fill-opacity="0.27"></polygon>
+    <polygon points="200,120 240,120 200,160" fill="currentColor" fill-opacity="0.26"></polygon>
+    <polygon points="240,120 240,160 200,160" fill="currentColor" fill-opacity="0.18"></polygon>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"></path></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"></path></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"></path></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"></circle><path d="M20 20l-4.2-4.2"></path></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5.5 3.5-5.5 3.5z"></path></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.8 4.5-2.3 1.4a11 11 0 005.1 5.1l1.4-2.3L19 14.5V18a2 2 0 01-2 2A14 14 0 013 6a2 2 0 012-2z"></path></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0113 0c0 5-6.5 11-6.5 11z"></path><circle cx="12" cy="10" r="2.3"></circle></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="M4.5 7.5l7.5 5.5 7.5-5.5"></path></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14.5" rx="2"></rect><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"></path></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12" rx="2"></rect><path d="M9 7.5v-2A1.5 1.5 0 0110.5 4h3A1.5 1.5 0 0115 5.5v2M3.5 12.5h17M10.5 12.5v1.5h3v-1.5"></path></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24"><path d="M9.5 7.5A3.5 3.5 0 006 11v5.5h4.5V12H6M18 7.5a3.5 3.5 0 00-3.5 3.5v5.5H19V12h-4.5"></path></symbol>
+</svg>
+<!-- ============ /SVG DEFS ============ -->
+
+<!-- ============ 3. HEADER ============ -->
+<header class="site-header" id="top">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="wrap od-row bar">
+    <a class="brand od-row od-fixed" href="index.html" aria-label="SIS Group of Schools, home">
+      <img src="assets/SIS-Logo-Website.png" width="150" height="150" alt="">
+      <span class="od-stack" style="--od-gap:0">
+        <span class="brand-name">SIS Group of Schools</span>
+        <span class="brand-sub">Singapore Intercultural School</span>
+      </span>
+    </a>
+    <span class="od-fill" aria-hidden="true"></span>
+    <nav class="nav od-row" aria-label="Primary">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="admissions.html" data-nav="admissions">Admissions</a>
+      <a href="news.html" data-nav="news">News</a>
+    </nav>
+    <div class="header-cta od-row od-fixed">
+      <a class="btn btn-outline" href="contact.html">Inquire</a>
+      <a class="btn btn-primary" href="admissions.html#admissions">Book a tour</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><svg class="icon" aria-hidden="true"><use href="#i-menu"></use></svg></button>
+    </div>
+  </div>
+</header>
+<!-- ============ /HEADER ============ -->
+
+<!-- ============ 4. DRAWER ============ -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="drawer-scrim" type="button" tabindex="-1" aria-label="Close menu"></button>
+  <div class="drawer-panel">
+    <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="drawer-body">
+      <div class="od-row">
+        <span class="brand-name od-fill">Menu</span>
+        <button class="icon-btn" type="button" data-close aria-label="Close menu"><svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg></button>
+      </div>
+      <nav aria-label="Mobile">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="news.html" data-nav="news">News</a>
+        <a href="admissions.html#admissions" data-nav="admissions">Admissions</a>
+        <div class="drawer-sub">
+          <a href="stories.html" data-nav="stories">Stories</a>
+          <a href="scholarships.html" data-nav="scholarships">Scholarships</a>
+          <a href="careers.html" data-nav="careers">Careers</a>
+          <a href="contact.html" data-nav="contact">Contact</a>
+        </div>
+      </nav>
+      <div class="od-stack" style="--od-gap:12px">
+        <a class="btn btn-primary" href="admissions.html#admissions">Book a campus tour</a>
+        <a class="btn btn-outline" href="contact.html">Make an inquiry</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ /DRAWER ============ -->
+
+<main id="main">
+  <!-- HERO -->
+  <section class="page-hero" data-c="courage" aria-labelledby="page-title">
+    <div class="wrap page-hero-inner">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li><a aria-current="page">Careers</a></li></ol></nav>
+      <div class="page-hero-split">
+        <div class="car-hero-text">
+          <p class="page-kicker" id="c-headline">Join our team</p>
+          <h1 id="page-title" class="h-pills pills">
+            <span class="pill f cour">Teach</span>
+            <span class="pill o">at</span>
+            <span class="pill f red">SIS</span>
+          </h1>
+          <p class="page-intro" id="c-intro"></p>
+          <div class="page-actions od-cluster">
+            <a class="btn btn-primary" href="#openings">See openings <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+            <a class="btn btn-outline" href="#apply">Apply now</a>
+          </div>
+        </div>
+        <figure class="hero-poster poster" data-c="courage" aria-hidden="true">
+          <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+          <img class="od-media od-media-cover duo" style="--od-ratio:4/5" src="assets/j-2018-sis-staff.webp" width="1080" height="1350" alt="">
+        </figure>
+      </div>
+    </div>
+    <div class="fricc-band" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  </section>
+
+  <!-- FACT BAND -->
+  <section class="fact-band" aria-label="SIS at a glance">
+    <div class="wrap">
+      <div class="od-grid">
+        <div class="stat od-stat reveal" data-c="courage"><span class="bar"></span><span class="stat-num">7 <small>years</small></span><span class="stat-label">average teacher retention</span></div>
+        <div class="stat od-stat reveal" data-c="respect" style="--d:1"><span class="bar"></span><span class="stat-num">20,000<small>+</small></span><span class="stat-label">students and alumni</span></div>
+        <div class="stat od-stat reveal" data-c="compassion" style="--d:2"><span class="bar"></span><span class="stat-num">4</span><span class="stat-label">countries: Indonesia, India, Myanmar, South Korea</span></div>
+        <div class="stat od-stat reveal" data-c="fairness" style="--d:3"><span class="bar"></span><span class="stat-num" id="fact-roles">&mdash;</span><span class="stat-label" id="fact-roles-label">role titles listed on sisschools.org</span></div>
+      </div>
+      <p class="stat-note">Figures as published by SIS Group of Schools.</p>
+    </div>
+  </section>
+
+  <!-- WHY SIS -->
+  <section class="section" id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 id="why-title" class="h-sub pills reveal">
+            <span class="pill o">Why</span>
+            <span class="pill f fair">SIS</span>
+          </h2>
+          <p class="reveal" id="why-text"></p>
+        </div>
+      </div>
+      <ul class="why">
+        <li class="poster reveal" data-c="courage">
+          <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+          <p class="w-kicker">Inspiring Teachers</p>
+          <span class="w-num">7<small>years</small></span>
+          <p class="w-text">Average teacher retention across SIS schools.</p>
+        </li>
+        <li class="poster reveal" data-c="fairness" style="--d:1">
+          <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+          <p class="w-kicker">A school group with roots</p>
+          <span class="w-num">30<small>years</small></span>
+          <p class="w-text">Of Singapore-rooted education since 1996.</p>
+        </li>
+        <li class="poster reveal" data-c="respect" style="--d:2">
+          <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+          <p class="w-kicker">Room to grow</p>
+          <span class="w-num">17<small>locations</small></span>
+          <p class="w-text">In 11 cities across 4 countries: Indonesia, India, Myanmar and South Korea.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OPENINGS -->
+  <section class="section tint" id="openings" aria-labelledby="open-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2 id="open-title" class="h-sub pills reveal">
+            <span class="pill o">Open</span>
+            <span class="pill f intg">Roles</span>
+            <span class="pill o">by Campus</span>
+          </h2>
+          <p class="reveal">Choose a campus team or search a subject. Open a team to see its roles and how to apply.</p>
+        </div>
+      </div>
+      <div class="tools">
+        <div class="filter od-cluster" role="group" aria-label="Filter by campus team" id="op-filter"></div>
+        <div class="search">
+          <label class="sr-only" for="op-q">Search roles or campuses</label>
+          <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+          <input id="op-q" type="search" placeholder="Search a role, e.g. Chemistry" autocomplete="off">
+        </div>
+      </div>
+      <p class="status-line" id="op-status" aria-live="polite"></p>
+      <ul class="openings" id="op-list"></ul>
+      <div class="empty" id="op-empty" role="status">
+        <b>No roles match that search</b>
+        Try another subject or campus, or send a general application.
+        <div class="od-cluster" style="justify-content:center;--od-gap:8px"><button class="btn btn-outline" type="button" id="op-reset">Show all roles</button><a class="btn btn-primary" href="#apply">General application</a></div>
+      </div>
+      <p class="source-note list-note" id="op-note">Listings as published on sisschools.org — may be out of date.</p>
+    </div>
+  </section>
+
+  <!-- APPLY -->
+  <section class="section" id="apply" aria-labelledby="apply-title">
+    <div class="wrap apply-grid">
+      <div class="form-card">
+        <h2 id="apply-title" class="h-sub pills" style="margin-bottom:var(--s-3)">
+          <span class="pill o">Apply</span>
+          <span class="pill f red">Now</span>
+        </h2>
+        <p class="sub">Tell us who you are and which role interests you. Fields marked * are required.</p>
+        <form id="apply-form" novalidate>
+          <div class="err-summary" tabindex="-1" role="alert"><b>Please check these details:</b><ul></ul></div>
+          <div class="form-grid">
+            <div class="field od-field" data-field="name">
+              <label for="a-name">Full name<span class="req" aria-hidden="true">*</span></label>
+              <input id="a-name" name="name" type="text" autocomplete="name" aria-describedby="e-name" required>
+              <span class="err" id="e-name"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter your full name.</span></span>
+            </div>
+            <div class="field od-field" data-field="email">
+              <label for="a-email">Email<span class="req" aria-hidden="true">*</span></label>
+              <input id="a-email" name="email" type="email" autocomplete="email" aria-describedby="e-email" required>
+              <span class="err" id="e-email"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter an email address like name@example.com.</span></span>
+            </div>
+            <div class="field od-field" data-field="phone">
+              <label for="a-phone">Phone or WhatsApp<span class="req" aria-hidden="true">*</span></label>
+              <input id="a-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="h-phone e-phone" required>
+              <span class="hint" id="h-phone">Include your country code, e.g. +62.</span>
+              <span class="err" id="e-phone"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter a phone number with at least 8 digits.</span></span>
+            </div>
+            <div class="field od-field" data-field="role">
+              <label for="a-role">Role of interest<span class="req" aria-hidden="true">*</span></label>
+              <select id="a-role" name="role" aria-describedby="e-role" required><option value="">Choose a role…</option></select>
+              <span class="err" id="e-role"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Choose a role, or pick the general application.</span></span>
+            </div>
+            <div class="field od-field full" data-field="campus">
+              <label for="a-campus">Campus preference<span class="req" aria-hidden="true">*</span></label>
+              <select id="a-campus" name="campus" aria-describedby="e-campus" required><option value="">Choose a campus…</option><option value="any">No preference</option></select>
+              <span class="err" id="e-campus"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Choose a campus, or No preference.</span></span>
+            </div>
+            <div class="field od-field full" data-field="cv">
+              <label for="a-cv">Link to your CV <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+              <input id="a-cv" name="cv" type="url" inputmode="url" placeholder="https://" aria-describedby="h-cv e-cv">
+              <span class="hint" id="h-cv">A shared drive, LinkedIn or portfolio link.</span>
+              <span class="err" id="e-cv"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Enter a full link starting with https://</span></span>
+            </div>
+            <div class="field od-field full" data-field="message">
+              <label for="a-msg">A short message<span class="req" aria-hidden="true">*</span></label>
+              <textarea id="a-msg" name="message" maxlength="600" aria-describedby="c-msg e-msg" required></textarea>
+              <span class="count" id="c-msg" aria-live="polite">0 / 600</span>
+              <span class="err" id="e-msg"><svg class="icon" aria-hidden="true"><use href="#i-alert"></use></svg><span>Write at least 20 characters about why you want to join SIS.</span></span>
+            </div>
+          </div>
+          <div class="form-foot od-row">
+            <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span><span data-label>Send application</span></button>
+            <span class="note">This prototype does not send data.</span>
+          </div>
+        </form>
+        <div class="success" id="apply-success" tabindex="-1" role="status">
+          <div class="mark"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></div>
+          <h3>Thank you</h3>
+          <p id="apply-success-text">This prototype does not send data.</p>
+          <button class="btn btn-outline" type="button" data-form-again>Start another application</button>
+        </div>
+      </div>
+      <aside class="alt poster" data-c="respect" aria-labelledby="alt-title" id="alt">
+        <svg class="facets" aria-hidden="true"><use href="#facets"></use></svg>
+        <h3 id="alt-title">Prefer email?</h3>
+        <p>SIS asks for a letter of application, a full CV, a recent passport-size photograph and three referees.</p>
+        <dl id="alt-list"></dl>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 6. FOOTER ============ -->
+<footer class="site-footer">
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="petals-bg" aria-hidden="true"></div>
+  <div class="wrap footer-inner">
+    <div class="footer-cta">
+      <p class="h-sub pills" style="margin:0">
+        <span class="pill o">Find</span>
+        <span class="pill f intg">Your PACE</span>
+        <span class="pill o">with Us</span>
+      </p>
+      <a class="btn btn-white" href="admissions.html#admissions">Book a campus tour <svg class="icon" aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand od-stack">
+        <img class="crest" src="assets/SIS-Logo-Website.png" width="150" height="150" alt="SIS crest: a lion above an open book">
+        <p>SIS Group of Schools. Singapore-rooted international education in Indonesia, India, Myanmar and South Korea since 1996.</p>
+        <a class="od-row" href="tel:+622175914414" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg><span class="od-nowrap">+62 21 759 14414</span></a>
+        <a class="od-row" href="mailto:admissions@sisschools.org" style="--od-gap:8px;text-decoration:none;min-height:44px"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg><span class="od-nowrap">admissions@sisschools.org</span></a>
+      </div>
+      <div><h4>Discover</h4><ul><li><a href="index.html#story">About SIS</a></li><li><a href="index.html#values">Core Values</a></li><li><a href="index.html#pace">PACE</a></li><li><a href="stories.html">Stories</a></li></ul></div>
+      <div><h4>Learn</h4><ul><li><a href="index.html#academics">Academics</a></li><li><a href="index.html#university">University pathways</a></li><li><a href="index.html#campuses">Our Schools</a></li><li><a href="scholarships.html">Scholarships</a></li></ul></div>
+      <div><h4>Connect</h4><ul><li><a href="news.html">News</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    </div>
+    <div class="legal"><span>Unofficial redesign concept, not affiliated with SIS Group of Schools. Content &amp; photos © SIS · official site: <a href="https://sisschools.org/">sisschools.org</a></span><span>Designed with <a href="https://github.com/nexu-io/open-design">Open Design</a> · <a href="https://github.com/sol1560/sis-website-redesign">Source</a></span></div>
+  </div>
+</footer>
+<!-- ============ /FOOTER ============ -->
+
+<!-- ============ 7. TOAST ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg><span></span></div>
+
+<script src="assets/data.js"></script>
+<script src="assets/sis.js"></script>
+<script>
+(function () {
+  'use strict';
+  var S = window.SIS, D = window.SIS_DATA || {};
+  if (!S) return;
+  var $ = S.$, $$ = S.$$, esc = S.esc;
+  var C = D.careers || {};
+  var campuses = D.campuses || [];
+  var COLORS = ['fairness', 'respect', 'integrity', 'compassion', 'courage'];
+
+  function plural(n, one, many) { return n + ' ' + (n === 1 ? one : many); }
+  function mailLink(m) { return '<a class="mail-link" href="mailto:' + esc(m) + '"><svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>' + esc(m) + '</a>'; }
+
+  /* ---------- hero ---------- */
+  if (C.headline) {
+    var h = String(C.headline).toLowerCase();
+    $('#c-headline').textContent = h.charAt(0).toUpperCase() + h.slice(1);
+  }
+  if (C.intro) $('#c-intro').textContent = C.intro; else $('#c-intro').hidden = true;
+
+  /* ---------- sections ---------- */
+  var sections = (C.sections || []).map(function (s, i) {
+    return {
+      key: s.campus || ('team-' + i),
+      name: s.name || 'SIS team',
+      overview: (s.overview || []).filter(function (p) { return p && !/click here/i.test(p); }),
+      roles: (s.roles || []).filter(Boolean),
+      how: s.howToApply || null,
+      emails: (s.emails || []).filter(Boolean),
+      c: COLORS[i % COLORS.length]
+    };
+  });
+  var totalRoles = sections.reduce(function (a, s) { return a + s.roles.length; }, 0);
+  $('#fact-roles').textContent = totalRoles ? String(totalRoles) : '—';
+  $('#fact-roles-label').textContent = 'role titles listed across ' + plural(sections.length, 'SIS team', 'SIS teams') + ' on sisschools.org';
+
+  var group = sections.filter(function (s) { return s.key === 'group'; })[0];
+  if (group && group.overview.length) $('#why-text').textContent = group.overview[0];
+  else $('#why-text').hidden = true;
+
+  /* filter buttons */
+  var filterEl = $('#op-filter');
+  filterEl.innerHTML = '<button class="fbtn" type="button" data-k="all" aria-pressed="true">All <span class="count">' + totalRoles + '</span></button>' +
+    sections.map(function (s) {
+      return '<button class="fbtn" type="button" data-k="' + esc(s.key) + '" aria-pressed="false">' + esc(s.name.replace(/\s*\(.*\)$/, '')) + ' <span class="count">' + s.roles.length + '</span></button>';
+    }).join('');
+
+  /* accordion list */
+  var list = $('#op-list');
+  list.innerHTML = sections.map(function (s, i) {
+    var id = 'op-' + i;
+    var roles = s.roles.length
+      ? '<ul class="roles">' + s.roles.map(function (r, j) {
+          return '<li data-role="' + esc(r.toLowerCase()) + '"><span>' + esc(r) + '</span><button class="btn btn-outline" type="button" data-apply="' + i + ':' + j + '">Apply<span class="sr-only"> for ' + esc(r) + ', ' + esc(s.name) + '</span></button></li>';
+        }).join('') + '</ul>'
+      : '<p class="op-empty">No specific role titles are listed for this team right now. You can still send a general application.</p>';
+    var how = s.how
+      ? '<p>' + esc(s.how) + '</p>'
+      : '<p class="op-empty">No application steps are published for this team. Email the address below to ask.</p>';
+    return '<li class="opening" data-k="' + esc(s.key) + '" data-c="' + s.c + '">' +
+      '<h3 class="op-h"><button class="op-btn" type="button" id="' + id + '-b" aria-expanded="false" aria-controls="' + id + '-p">' +
+      '<span class="op-count" aria-hidden="true" data-count>' + s.roles.length + '</span>' +
+      '<span class="op-name">' + esc(s.name) + '<span class="op-sub" data-sub></span></span>' +
+      '<span class="chip" data-chip>' + plural(s.roles.length, 'role', 'roles') + '</span>' +
+      '<svg class="icon op-plus" aria-hidden="true"><use href="#i-plus"></use></svg></button></h3>' +
+      '<div class="op-panel" id="' + id + '-p" role="region" aria-labelledby="' + id + '-b" hidden>' +
+        '<div>' + (s.overview.length ? '<h4>About the team</h4>' + s.overview.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('') : '') +
+          '<h4>Roles listed</h4>' + roles + '</div>' +
+        '<div><h4>How to apply</h4>' + how +
+          (s.emails.length ? '<h4>Email</h4><div class="op-mails od-cluster">' + s.emails.map(mailLink).join('') + '</div>' : '') +
+        '</div>' +
+      '</div></li>';
+  }).join('');
+
+  function setOpen(li, open) {
+    var b = $('.op-btn', li), p = $('.op-panel', li);
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    p.hidden = !open;
+  }
+  list.addEventListener('click', function (e) {
+    var b = e.target.closest('.op-btn');
+    if (b) { var li = b.closest('.opening'); setOpen(li, b.getAttribute('aria-expanded') !== 'true'); return; }
+    var a = e.target.closest('[data-apply]');
+    if (a) {
+      var sel = $('#a-role'); sel.value = a.getAttribute('data-apply');
+      if (form) form.validateField('role');
+      var target = $('#apply');
+      target.scrollIntoView({ behavior: S.reduce ? 'auto' : 'smooth', block: 'start' });
+      setTimeout(function () { sel.focus({ preventScroll: true }); }, S.reduce ? 0 : 400);
+      S.toast('Role selected: ' + sel.options[sel.selectedIndex].text);
+    }
+  });
+
+  /* filter + search */
+  var state = { k: 'all', q: '' };
+  var status = $('#op-status'), empty = $('#op-empty');
+  function apply(expand) {
+    var q = state.q.trim().toLowerCase(), shownRoles = 0, shownTeams = 0;
+    $$('.opening', list).forEach(function (li, i) {
+      var s = sections[i];
+      var inFilter = state.k === 'all' || state.k === s.key;
+      var nameHit = !q || s.name.toLowerCase().indexOf(q) > -1;
+      var hits = 0;
+      $$('.roles li', li).forEach(function (r) {
+        var ok = nameHit || r.getAttribute('data-role').indexOf(q) > -1;
+        r.hidden = !ok; if (ok) hits++;
+      });
+      var visible = inFilter && (nameHit || hits > 0);
+      li.hidden = !visible;
+      $('[data-count]', li).textContent = hits;
+      $('[data-chip]', li).textContent = plural(hits, 'role', 'roles');
+      $('[data-sub]', li).textContent = (q && !nameHit) ? plural(hits, 'match', 'matches') + ' of ' + s.roles.length : '';
+      if (visible) { shownTeams++; shownRoles += hits; }
+      if (expand) setOpen(li, visible && (q !== '' || state.k !== 'all'));
+    });
+    status.innerHTML = shownTeams
+      ? 'Showing <b>' + plural(shownRoles, 'role', 'roles') + '</b> in <b>' + plural(shownTeams, 'campus team', 'campus teams') + '</b>' + (q ? ' for “' + esc(state.q.trim()) + '”' : '')
+      : 'No roles found';
+    empty.classList.toggle('show', shownTeams === 0);
+  }
+  filterEl.addEventListener('click', function (e) {
+    var b = e.target.closest('.fbtn'); if (!b) return;
+    state.k = b.getAttribute('data-k');
+    $$('.fbtn', filterEl).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    apply(true);
+  });
+  var qInput = $('#op-q'), qT;
+  qInput.addEventListener('input', function () { clearTimeout(qT); qT = setTimeout(function () { state.q = qInput.value; apply(true); }, 120); });
+  $('#op-reset').addEventListener('click', function () {
+    state = { k: 'all', q: '' }; qInput.value = '';
+    $$('.fbtn', filterEl).forEach(function (x) { x.setAttribute('aria-pressed', x.getAttribute('data-k') === 'all' ? 'true' : 'false'); });
+    apply(true); qInput.focus();
+  });
+  apply(false);
+  if (sections.length) setOpen($('.opening', list), true);
+
+  if (C.url) $('#op-note').innerHTML = 'Listings as published on <a href="' + esc(C.url) + '" target="_blank" rel="noopener">sisschools.org</a> — may be out of date.';
+
+  /* ---------- form selects ---------- */
+  var roleSel = $('#a-role');
+  roleSel.insertAdjacentHTML('beforeend', sections.filter(function (s) { return s.roles.length; }).map(function (s) {
+    var i = sections.indexOf(s);
+    return '<optgroup label="' + esc(s.name) + '">' + s.roles.map(function (r, j) {
+      return '<option value="' + i + ':' + j + '">' + esc(r) + ' · ' + esc(s.name) + '</option>';
+    }).join('') + '</optgroup>';
+  }).join('') + '<option value="general">Other / general application</option>');
+
+  var campSel = $('#a-campus'), countries = [];
+  campuses.forEach(function (c) { if (c.country && countries.indexOf(c.country) < 0) countries.push(c.country); });
+  campSel.insertAdjacentHTML('beforeend', countries.map(function (co) {
+    return '<optgroup label="' + esc(co) + '">' + campuses.filter(function (c) { return c.country === co; }).map(function (c) {
+      return '<option value="' + esc(c.id) + '">' + esc(c.name) + (c.status ? ' (' + esc(c.status) + ')' : '') + '</option>';
+    }).join('') + '</optgroup>';
+  }).join(''));
+
+  /* message counter */
+  var msg = $('#a-msg'), cnt = $('#c-msg');
+  msg.addEventListener('input', function () { cnt.textContent = msg.value.length + ' / 600'; });
+
+  /* ---------- validation ---------- */
+  var urlOk = function (v) { return /^https?:\/\/[^\s.]+\.[^\s]{2,}$/i.test(String(v).trim()); };
+  var form = S.validateForm($('#apply-form'), {
+    name: { test: S.rules.minLength(2), label: 'Full name' },
+    email: { test: S.rules.email, label: 'Email' },
+    phone: { test: S.rules.phone, label: 'Phone or WhatsApp' },
+    role: { test: S.rules.required, label: 'Role of interest' },
+    campus: { test: S.rules.required, label: 'Campus preference' },
+    cv: { test: S.rules.optional(urlOk), label: 'Link to your CV' },
+    message: { test: S.rules.minLength(20), label: 'Short message' }
+  }, {
+    success: '#apply-success',
+    loadingText: 'Sending…',
+    onSuccess: function (v) {
+      var roleText = roleSel.options[roleSel.selectedIndex] ? roleSel.options[roleSel.selectedIndex].text : '';
+      var first = String(v.name || '').trim().split(/\s+/)[0];
+      var real = C.generalEmail ? ' To apply for real, email <a href="mailto:' + esc(C.generalEmail) + '">' + esc(C.generalEmail) + '</a>.' : '';
+      $('#apply-success-text').innerHTML = 'Thank you, ' + esc(first) + '. We have your interest in <b>' + esc(roleText) + '</b>. This prototype does not send data.' + real;
+      cnt.textContent = '0 / 600';
+    }
+  });
+
+  /* ---------- email alternatives ---------- */
+  var alts = [];
+  if (C.generalEmail) alts.push(['General applications', C.generalEmail]);
+  if (C.internshipEmail) alts.push(['Internships', C.internshipEmail]);
+  var altHTML = alts.map(function (a) { return '<div><dt>' + esc(a[0]) + '</dt><dd>' + mailLink(a[1]) + '</dd></div>'; }).join('');
+  if (C.applyUrl) altHTML += '<div><dt>Official form</dt><dd><a class="mail-link" href="' + esc(C.applyUrl) + '" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"></use></svg>SIS employment application</a></dd></div>';
+  if (altHTML) $('#alt-list').innerHTML = altHTML; else $('#alt').hidden = true;
+
+  S.observeReveal();
+})();
+</script>
+</body></html>

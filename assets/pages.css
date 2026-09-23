@@ -1,0 +1,68 @@
+/* SIS v2: pieces shared by about, academics, schools and admissions (built on sis.css tokens, no new colours or fonts) */
+
+/* hero poster: a colour banner with facets and a duotone photo, like the campus facade */
+.ph-poster { position: relative; margin: 0; display: grid; padding-top: clamp(56px, 7vw, 96px); max-width: 480px; width: 100%; justify-self: end; overflow: hidden; background: var(--c-fill); color: var(--c-on-fill); }
+.ph-poster > .facets { position: absolute; top: 0; right: 0; width: 100%; height: 46%; color: #fff; opacity: .4; pointer-events: none; }
+.ph-poster[data-c="integrity"] > .facets, .ph-poster[data-c="compassion"] > .facets { color: var(--ink); opacity: .22; }
+.ph-poster img { position: relative; display: block; }
+.ph-poster .tag { position: absolute; top: var(--s-3); left: var(--s-3); z-index: 1; font-size: var(--fs-14); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+@media (max-width: 960px) { .ph-poster { justify-self: start; max-width: 420px; } }
+
+/* hero fact row under the intro */
+.ph-facts { list-style: none; margin: var(--s-2) 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); }
+.ph-facts li { display: flex; align-items: baseline; gap: var(--s-2); font-size: var(--fs-16); color: var(--muted); }
+.ph-facts b { font-size: var(--fs-28); font-weight: 700; color: var(--ink); line-height: 1; }
+
+/* "On this page" jump bar, sticks under the header */
+.jump { position: sticky; top: var(--header-h, 76px); z-index: 20; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.jump .wrap { display: flex; align-items: center; gap: var(--s-2); overflow-x: auto; scrollbar-width: none; padding-block: 10px; }
+.jump .wrap::-webkit-scrollbar { display: none; }
+.jump .lbl { flex: none; font-size: var(--fs-14); color: var(--muted); margin-right: var(--s-2); white-space: nowrap; }
+.jump a { flex: none; display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: var(--pill); border: 2px solid transparent; text-decoration: none; font-size: var(--fs-16); font-weight: 500; white-space: nowrap;
+  transition: border-color var(--dur-in) var(--ease-out); }
+.jump a[aria-current="true"] { border-color: var(--ink); }
+@media (hover: hover) { .jump a:hover { border-color: var(--line); } .jump a[aria-current="true"]:hover { border-color: var(--ink); } }
+html:has(.jump) { scroll-padding-top: calc(var(--header-h) + 76px); }
+
+/* bottom CTA band */
+.cta-band { position: relative; overflow: hidden; background: var(--c-fill); color: var(--c-on-fill); }
+.cta-band > .facets { position: absolute; top: 0; left: 0; width: 60%; height: 100%; color: #fff; opacity: .25; pointer-events: none;
+  -webkit-mask-image: linear-gradient(160deg, #000 10%, transparent 70%); mask-image: linear-gradient(160deg, #000 10%, transparent 70%); }
+.cta-grid { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-6); align-items: center; padding-block: var(--s-7); }
+.cta-band h2 { margin: 0; }
+.cta-band .pill.o { background: transparent; color: inherit; border-color: currentColor; }
+.cta-band .pill.f { background: #fff; color: var(--ink); border-color: #fff; }
+.cta-band p { margin: var(--s-4) 0 0; font-size: var(--fs-22); line-height: 1.5; max-width: 40ch; }
+.cta-actions { margin-top: var(--s-5); --od-gap: var(--s-3); }
+.btn-ghost { background: transparent; color: inherit; border-color: currentColor; }
+@media (hover: hover) { .btn-ghost:hover { background: var(--white); color: var(--ink); border-color: var(--white); } }
+.cta-band .btn:focus-visible { outline-color: #fff; }
+.cta-photo { margin: 0; width: 100%; max-width: 360px; justify-self: end; }
+@media (max-width: 960px) { .cta-grid { grid-template-columns: 1fr; } .cta-photo { display: none; } }
+@media (max-width: 560px) { .cta-band p { font-size: var(--fs-18); } }
+
+/* next-step tiles: square colour blocks that link onward */
+.next-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-3); }
+.next-tile { position: relative; overflow: hidden; display: grid; align-content: space-between; gap: var(--s-5); min-height: 240px; padding: var(--s-4); background: var(--c-fill); color: var(--c-on-fill); text-decoration: none;
+  transition: transform var(--dur-in) var(--ease-out); }
+.next-tile .facets { position: absolute; top: 0; right: 0; width: 100%; height: 70%; color: #fff; opacity: .3; pointer-events: none; transition: transform var(--dur-lg) var(--ease-out);
+  -webkit-mask-image: linear-gradient(200deg, #000 10%, transparent 75%); mask-image: linear-gradient(200deg, #000 10%, transparent 75%); }
+.next-tile > :not(.facets) { position: relative; }
+.next-tile .k { font-size: var(--fs-14); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.next-tile h3 { margin: 0; font-size: var(--fs-28); line-height: 1.15; font-weight: 700; }
+.next-tile p { margin: var(--s-2) 0 0; font-size: var(--fs-16); line-height: 1.5; opacity: .92; max-width: 32ch; }
+.next-tile .go { display: inline-flex; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid currentColor; }
+@media (hover: hover) { .next-tile:hover { transform: translateY(-4px); } .next-tile:hover .facets { transform: translateY(6px); } }
+@media (max-width: 860px) { .next-tiles { grid-template-columns: 1fr; } .next-tile { min-height: 0; } }
+
+/* admissions FAQ */
+.faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--s-7); align-items: start; }
+.faq-list { border-top: 2px solid var(--ink); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: var(--s-3); min-height: 64px; padding-block: var(--s-3); font-size: var(--fs-22); font-weight: 500; line-height: 1.35; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary .icon { flex: none; margin-left: auto; transition: transform var(--dur-in) var(--ease-out); }
+.faq-list details[open] summary .icon { transform: rotate(45deg); }
+.faq-list details p { margin: 0 0 var(--s-4); color: var(--muted); max-width: 62ch; }
+.faq-list details p a { color: var(--ink); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+@media (max-width: 860px) { .faq { grid-template-columns: 1fr; gap: var(--s-5); } .faq-list summary { font-size: var(--fs-18); } }
